@@ -114,9 +114,10 @@ Esta entrega contempla el diseño de la arquitectura, definición de requerimien
 - **Ionic Framework** (v7+)
 - **Angular** (v15+)
 - **TypeScript**
-- **Capacitor** (para compatibilidad nativa, si aplica)
-- **SASS** (preprocesador CSS para estilos personalizados)
-- **RxJS** (programación reactiva)
-- **Angular Router** (para navegación entre vistas)
+- **Figma** (para diseño de interfaces y prototipado)
+- **Capacitor**
+- **SASS**
+- **RxJS**
+- **Angular Router**
 
 ---
