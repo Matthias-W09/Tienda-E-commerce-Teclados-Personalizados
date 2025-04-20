@@ -1,121 +1,122 @@
 # Presentado por:
-- Carlos Aguirre
-- Javier Donetch
-- Matias Romero
+- Carlos Aguirre  
+- Javier Donetch  
+- Matías Romero  
+
 # Tienda-E-commerce-Teclados-Personalizados
 
-##  Índice
-1. [Resumen del Proyecto](#resumen-del-proyecto)
-2. [Requerimientos](#requerimientos)
-3. [Arquitectura de la Información](#arquitectura-de-la-información)
-3. [Diseño de prototipos](#prototipo-de-diseño)
-4. [Librerías en Angular](#liberías-usadas-con-angular)
+---
+
+## Índice
+
+1. [Resumen del Proyecto](#resumen-del-proyecto)  
+2. [Requerimientos](#requerimientos)  
+3. [Arquitectura de la Información](#arquitectura-de-la-información)  
+4. [Diseño de prototipos](#prototipo-de-diseño)  
+5. [Librerías en Angular](#librerías-usadas-con-angular)  
+6. [Tecnologías](#tecnologías)
+
+---
 
 ## Resumen del Proyecto
 
+**Tienda-E-commerce-Teclados-Personalizados** es una plataforma web desarrollada con **Ionic + Angular** que permite a los usuarios armar su propio teclado mecánico seleccionando componentes como switches, keycaps, PCB y carcasa.
+
+El proyecto está orientado a ofrecer una experiencia interactiva tanto para el cliente (usuario final), como para los administradores del sistema. Incluye funcionalidades como constructor de teclado, gestión de productos, filtros de búsqueda, generación de promociones y más.
+
+Esta entrega contempla el diseño de la arquitectura, definición de requerimientos, prototipado en Figma y desarrollo de la estructura inicial del frontend.
+
 ---
+
 ## Requerimientos
 
-## Roles del Sistema
+### Roles del Sistema
+
 - **Administrador**: Control total sobre el sistema.
 - **Editor**: Puede crear, editar y eliminar productos.
 - **Visualizador**: Solo puede ver información de productos.
 
+---
 
 ## Requerimientos Funcionales por Rol
 
-### Rol-Administrador
+### Rol - Administrador
 
-- **RF-ADM-01**: El administrador puede registrar nuevos productos.
-- **RF-ADM-02**: El administrador puede editar cualquier producto existente.
-- **RF-ADM-03**: El administrador puede eliminar productos del inventario (borrado lógico).
-- **RF-ADM-04**: El administrador puede configurar alertas de stock mínimo.
-- **RF-ADM-05**: El administrador puede gestionar usuarios y asignar roles.
+- **RF-ADM-01**: Puede registrar nuevos productos.
+- **RF-ADM-02**: Puede editar productos existentes.
+- **RF-ADM-03**: Puede eliminar productos del inventario (borrado lógico).
+- **RF-ADM-04**: Puede configurar alertas de stock mínimo.
+- **RF-ADM-05**: Puede gestionar usuarios y asignar roles.
+- **RF-ADM-06**: Puede generar códigos promocionales.
+- **RF-ADM-07**: Puede crear y gestionar combos/ofertas.
 
-### Rol-Editor
+### Rol - Editor
 
-- **RF-EDT-01**: El editor puede registrar nuevos productos ingresando:
-  - Nombre
-  - Código (único)
-  - Categoría
-  - Precio
-  - Stock (entero positivo)
-  - Descripción
-- **RF-EDT-02**: El editor puede editar productos existentes.
-- **RF-EDT-03**: El editor puede aplicar filtros y buscar productos por nombre, código, categoría, stock o precio.
+- **RF-EDT-01**: Puede registrar nuevos productos con nombre, código, categoría, precio, stock y descripción.
+- **RF-EDT-02**: Puede editar productos.
+- **RF-EDT-03**: Puede buscar productos por diferentes criterios (nombre, código, categoría, stock, precio).
 
-### Rol-Visualizador
+### Rol - Visualizador
 
-- **RF-VIS-01**: El visualizador puede acceder a la lista de productos y sus detalles.
-- **RF-VIS-02**: El visualizador puede utilizar la función de búsqueda y filtrado.
+- **RF-VIS-01**: Puede ver productos y sus detalles.
+- **RF-VIS-02**: Puede usar filtros de búsqueda.
+- **RF-VIS-03**: Puede acceder a la funcionalidad "Arma tu teclado".
+- **RF-VIS-04**: Puede usar ayuda contextual y ver productos destacados.
 
 ---
 
 ## Requerimientos No Funcionales
 
 - **RNF-01: Tiempo de respuesta**
-  - El sistema debe responder a operaciones clave (registro, edición, búsqueda) en menos de **2 segundos** en el 95% de los casos.
+  - El sistema debe responder a acciones clave en menos de 2 segundos en el 95% de los casos.
 
 - **RNF-02: Seguridad**
-  - Solo usuarios autenticados pueden ingresar al sistema.
-  - Los roles deben restringir el acceso a funciones según permisos (Administrador, Editor, Visualizador).
-  - Acceso protegido por HTTPS y almacenamiento seguro de contraseñas.
+  - Acceso mediante autenticación y roles.
+  - Transacciones protegidas con HTTPS.
+  - Almacenamiento seguro de contraseñas.
 
 - **RNF-03: Usabilidad**
-  - La interfaz debe ser intuitiva y fácil de usar.
-  - Compatible con pantallas móviles y escritorio (responsive design).
+  - Interfaz intuitiva y accesible.
+  - Diseño responsive (adaptable a web y móvil).
 
 - **RNF-04: Compatibilidad**
-  - Compatible con los navegadores:
+  - Compatible con:
     - Google Chrome
     - Mozilla Firefox
     - Microsoft Edge
     - Safari
 
 - **RNF-05: Escalabilidad**
-  - El sistema debe ser capaz de manejar más de **10,000 productos** sin pérdida notable de rendimiento.
-
-
-## Requerimientos No Funcionales
-
-### RNF-01: Tiempo de respuesta
-- El sistema debe responder a solicitudes de registro, edición o búsqueda en menos de **2 segundos** en el 95% de los casos.
-
-### RNF-02: Seguridad
-- Solo usuarios autenticados pueden gestionar productos.
-- Debe haber control de roles: administrador, editor, visualizador.
-
-### RNF-03: Usabilidad
-- La interfaz debe ser intuitiva y fácil de usar.
-- Debe seguir principios de diseño responsive para adaptarse a pantallas móviles y de escritorio.
-
-### RNF-04: Compatibilidad
-- El sistema debe funcionar correctamente en los siguientes navegadores:
-  - Google Chrome (última versión)
-  - Mozilla Firefox
-  - Microsoft Edge
-  - Safari
-
-### RNF-05: Escalabilidad
-- El sistema debe poder manejar al menos **10,000 productos** sin disminución significativa del rendimiento
----
-## Arquitectura de la Información 
-[Estructura de Navegación](https://whimsical.com/escuelainf-4qgXnPptro4CqvEugsGNNZ )
+  - Soporte para al menos 10,000 productos sin pérdida significativa de rendimiento.
 
 ---
 
-## Prototipo de diseño 
+## Arquitectura de la Información
+
+[Estructura de Navegación - Whimsical](https://whimsical.com/escuelainf-4qgXnPptro4CqvEugsGNNZ)
+
+---
+
+## Prototipo de Diseño
+
 [Figma - Prototipo de Gestión de Productos](https://www.figma.com/team_invite/redeem/u9JntJiKIwNNdHLfrAdPMs)
 
 ---
-## Liberías usadas con Angular
-- Bootstrap
+
+## Librerías usadas con Angular
+
+- **Bootstrap** – para estilos responsivos y componentes reutilizables
+
+---
 
 ## Tecnologías
+
 - **Ionic Framework** (v7+)
 - **Angular** (v15+)
 - **TypeScript**
-- **Capacitor** (para plugins nativos, si aplica)
-- **SASS** (para estilos)
-- **RxJS** (para manejo reactivo)
+- **Capacitor** (para compatibilidad nativa, si aplica)
+- **SASS** (preprocesador CSS para estilos personalizados)
+- **RxJS** (programación reactiva)
 - **Angular Router** (para navegación entre vistas)
+
+---
