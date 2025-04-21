@@ -91,9 +91,52 @@ Esta entrega contempla el diseño de la arquitectura, definición de requerimien
 
 ---
 
-## Arquitectura de la Información
+## Definicion de la navegacion y experiencia de usuario
 
-[Estructura de Navegación - Whimsical](https://whimsical.com/escuelainf-4qgXnPptro4CqvEugsGNNZ)
+Flujo 1: Visualización de productos destacados
+Objetivo: Ver productos destacados.
+Usuario entra al landing.
+Desliza o hace clic en el carrusel de productos destacados.
+Visualiza distintos teclados destacados.
+Puede hacer clic en alguno (si está habilitado) → Redirige a página de producto o detalle.
+Flujo 2: Explorar partes del teclado
+Objetivo: Conocer y explorar los componentes de un teclado.
+Usuario ve la sección “¿Qué deseas comprar?”.
+Selecciona una categoría: Keycaps, Switches o Marco.
+Clic en la imagen o botón → Redirige a una sección o página con más info y productos del componente seleccionado.
+Flujo 3: Armar tu teclado
+Objetivo: Personalizar un teclado desde cero.
+Usuario ve la sección “Arma tu teclado”.
+Selecciona una opción:
+Armar en solitario.
+Armar con ayuda.
+Es redirigido a un configurador/personalizado de teclado.
+Selecciona partes, estética y preferencias.
+Agrega el teclado al carrito.
+Flujo 4: Selección de estética
+Objetivo: Elegir un estilo visual para el teclado.
+Usuario llega a la sección “Selecciona tu estética”.
+Hace clic en una estética (Asiática, Steampunk, etc.).
+Es llevado a una galería de estilos o a una vista de teclados con esa estética.
+Puede previsualizar cómo lucen los teclados con dicha temática.
+Flujo 5: Opiniones de usuarios
+Objetivo: Ver la experiencia de otros usuarios.
+Usuario navega a “Opiniones Usuarios”.
+Lee las reseñas visibles.
+Flujo 6: Navegación desde el footer
+Objetivo: Acceder a otras secciones o contactar.
+Usuario baja hasta el footer.
+Tiene acceso a:
+Inicio
+Ayuda
+Más vendidos
+Contacto por correo o teléfono
+Flujo 7 (implícito): Comprar
+Aunque no se ve completo en el landing, podría estar implícito desde cualquiera de estos flujos:
+Después de armar un teclado → Agregar al carrito.
+Después de ver un producto destacado → Ver detalle → Agregar al carrito.
+Desde categoría de partes → Agregar partes al carrito.
+
 
 ---
 
