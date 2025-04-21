@@ -38,56 +38,111 @@ Esta entrega contempla el diseño de la arquitectura, definición de requerimien
 
 ---
 
-## Requerimientos Funcionales por Rol
+## 🧩 Requerimientos Funcionales (RF)
 
-### Rol - Administrador
+### RF1: Personalización Interactiva de Teclados
+**Rol:** Usuario  
+**Descripción:**  
+El sistema debe incluir una sección llamada **"Arma tu teclado"**, accesible desde el menú principal. Al ingresar, el usuario podrá personalizar su teclado mediante una interfaz interactiva.
 
-- **RF-ADM-01**: Puede registrar nuevos productos.
-- **RF-ADM-02**: Puede editar productos existentes.
-- **RF-ADM-03**: Puede eliminar productos del inventario (borrado lógico).
-- **RF-ADM-04**: Puede configurar alertas de stock mínimo.
-- **RF-ADM-05**: Puede gestionar usuarios y asignar roles.
-- **RF-ADM-06**: Puede generar códigos promocionales.
-- **RF-ADM-07**: Puede crear y gestionar combos/ofertas.
-
-### Rol - Editor
-
-- **RF-EDT-01**: Puede registrar nuevos productos con nombre, código, categoría, precio, stock y descripción.
-- **RF-EDT-02**: Puede editar productos.
-- **RF-EDT-03**: Puede buscar productos por diferentes criterios (nombre, código, categoría, stock, precio).
-
-### Rol - Visualizador
-
-- **RF-VIS-01**: Puede ver productos y sus detalles.
-- **RF-VIS-02**: Puede usar filtros de búsqueda.
-- **RF-VIS-03**: Puede acceder a la funcionalidad "Arma tu teclado".
-- **RF-VIS-04**: Puede usar ayuda contextual y ver productos destacados.
+**Funcionalidades:**
+- **RF1.1**: Selección de componentes por categoría (Base, Switches, Keycaps, Cable, Accesorios) desde una lista desplegable o vista en cuadrícula.
+- **RF1.2**: Botón de ayuda dentro de cada categoría con explicación funcional de cada tipo y subtipo (ej: *Switches táctiles, clicky...*).
+- **RF1.3**: Validación automática de compatibilidad entre componentes (ej: alertas si un switch no es compatible con la base).
+- **RF1.4**: Visualización de precio dinámico que se actualiza en tiempo real según las selecciones.
+- **RF1.5**: Opción para guardar la configuración (en la cuenta del usuario o como enlace temporal).
 
 ---
 
-## Requerimientos No Funcionales
+### RF2: Generación Dinámica de Códigos Promocionales
+**Rol:** Admin  
+**Descripción:**  
+El sistema debe proporcionar un **panel administrativo exclusivo** para la gestión de códigos promocionales.
 
-- **RNF-01: Tiempo de respuesta**
-  - El sistema debe responder a acciones clave en menos de 2 segundos en el 95% de los casos.
+**Funcionalidades:**
+- **RF2.1**: Crear códigos promocionales con:
+  - Código (manual o auto-generado).
+  - Tipo de descuento (porcentaje o monto fijo).
+  - Fecha de vigencia (inicio y fin).
+  - Límite de usos (global o por usuario).
+  - Filtros para productos o categorías aplicables.
+- **RF2.2**: Editar o eliminar códigos existentes con confirmación para evitar borrado accidental.
 
-- **RNF-02: Seguridad**
-  - Acceso mediante autenticación y roles.
-  - Transacciones protegidas con HTTPS.
-  - Almacenamiento seguro de contraseñas.
+---
 
-- **RNF-03: Usabilidad**
-  - Interfaz intuitiva y accesible.
-  - Diseño responsive (adaptable a web y móvil).
+### RF3: Tienda por Tipo de Producto
+**Rol:** Usuario  
+**Descripción:**  
+El sistema debe incluir una **sección de tienda**, accesible desde el menú principal, donde los usuarios puedan explorar productos por tipo.
 
-- **RNF-04: Compatibilidad**
-  - Compatible con:
-    - Google Chrome
-    - Mozilla Firefox
-    - Microsoft Edge
-    - Safari
+**Funcionalidades:**
+- **RF3.1**: Selección por categorías (Base, Switches, Keycaps, Cable, Accesorios).
+- **RF3.2**: Botón de ayuda por categoría con explicación de cada tipo y subtipo.
+- **RF3.3**: Ordenar productos por criterios (ej: precio, popularidad).
 
-- **RNF-05: Escalabilidad**
-  - Soporte para al menos 10,000 productos sin pérdida significativa de rendimiento.
+---
+
+### RF4: Formulario de Combos y Ofertas
+**Rol:** Admin  
+**Descripción:**  
+El sistema debe permitir crear y administrar **combos y ofertas especiales** a través de un formulario interactivo.
+
+**Funcionalidades:**
+- **RF4.1**: Creación y edición de combos con:
+  - Nombre del combo (ej: *Kit Inicio*).
+  - Selección de productos incluidos (con búsqueda por nombre/SKU y límite de ítems).
+  - Campo de descuento (porcentaje o monto fijo).
+  - Opción de "Descuento recomendado" según márgenes.
+  - Fecha de inicio/fin (con calendario).
+  - Opción "Oferta relámpago" (duración por horas).
+- **RF4.2**: Reglas avanzadas:
+  - Restricción por tipo de usuario (ej: usuarios con al menos 1 compra).
+  - Límite de stock por combo.
+  - Prevención de promociones superpuestas.
+
+---
+
+### RF5: Selector de Estética Inicial
+**Rol:** Usuario  
+**Descripción:**  
+En el primer acceso, el sistema debe mostrar una **pantalla de bienvenida** para elegir un estilo visual predeterminado para la interfaz.
+
+---
+
+### RF6: Formulario de Nuevo Producto
+**Rol:** Admin  
+**Descripción:**  
+El sistema debe incluir un formulario interactivo para agregar productos al catálogo con validaciones en tiempo real.
+
+**Funcionalidades:**
+- **RF6.1**: Campos requeridos:
+  - Nombre del producto.
+  - Tipo de producto (Base, Switches, Keycaps, Accesorios, Prearmado).
+  - Subtipo (ej: switches *clicky*, *tactile*).
+  - Precio.
+  - Stock inicial (≥ 0).
+  - Compatibilidad con otras partes.
+  - Descripción del producto.
+  - Imagen (al menos una).
+
+---
+
+### RF7: Carrusel de Productos y Productos Destacados
+**Rol:** Usuario  
+**Descripción:**  
+El sistema debe mostrar un **carrusel visualmente atractivo** de productos dentro de la página principal (web y móvil).
+
+**Funcionalidades:**
+- **RF7.1**: Carrusel de productos:
+  - Desplazamiento horizontal.
+  - Tarjeta con imagen, nombre, precio y etiqueta (ej: *Nuevo*, *En oferta*).
+  - Navegación por flechas o desplazamiento táctil.
+  - Lazy loading.
+  - Botón "Ver más" hacia el catálogo completo.
+- **RF7.2**: Carrusel de productos destacados:
+  - Sección especial con productos seleccionados por admin.
+  - Resaltado visual con etiqueta *Destacado*.
+  - Misma navegación e interacción que el carrusel general.
 
 ---
 
