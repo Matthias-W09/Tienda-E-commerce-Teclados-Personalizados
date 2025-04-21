@@ -146,58 +146,76 @@ El sistema debe mostrar un **carrusel visualmente atractivo** de productos dentr
 
 ---
 
-## Definicion de la navegacion y experiencia de usuario
+## 🔄 Flujos de Navegación del Landing Page
 
-Flujo 1: Visualización de productos destacados
-Objetivo: Ver productos destacados.
-Usuario entra al landing.
-Desliza o hace clic en el carrusel de productos destacados.
-Visualiza distintos teclados destacados.
-Puede hacer clic en alguno (si está habilitado) → Redirige a página de producto o detalle.
+### 🧩 Flujo 1: Visualización de Productos Destacados
+**🎯 Objetivo:** Ver productos destacados.  
+**Pasos:**
+1. El usuario accede al landing page.
+2. Desliza o hace clic en el carrusel de productos destacados.
+3. Visualiza distintos teclados destacados.
+4. (Opcional) Hace clic en un producto → Redirige a la página de detalle del producto.
 
-Flujo 2: Explorar partes del teclado
-Objetivo: Conocer y explorar los componentes de un teclado.
-Usuario ve la sección “¿Qué deseas comprar?”.
-Selecciona una categoría: Keycaps, Switches o Marco.
-Clic en la imagen o botón → Redirige a una sección o página con más info y productos del componente seleccionado.
+---
 
-Flujo 3: Armar tu teclado
-Objetivo: Personalizar un teclado desde cero.
-Usuario ve la sección “Arma tu teclado”.
-Selecciona una opción:
-Armar en solitario.
-Armar con ayuda.
-Es redirigido a un configurador/personalizado de teclado.
-Selecciona partes, estética y preferencias.
-Agrega el teclado al carrito.
+### 🔍 Flujo 2: Explorar Partes del Teclado
+**🎯 Objetivo:** Conocer y explorar los componentes de un teclado.  
+**Pasos:**
+1. El usuario ve la sección **"¿Qué deseas comprar?"**.
+2. Selecciona una categoría: *Keycaps*, *Switches* o *Marco*.
+3. Hace clic en una imagen o botón → Es redirigido a una sección o página con más información y productos relacionados.
 
-Flujo 4: Selección de estética
-Objetivo: Elegir un estilo visual para el teclado.
-Usuario llega a la sección “Selecciona tu estética”.
-Hace clic en una estética (Asiática, Steampunk, etc.).
-Es llevado a una galería de estilos o a una vista de teclados con esa estética.
-Puede previsualizar cómo lucen los teclados con dicha temática.
+---
 
-Flujo 5: Opiniones de usuarios
-Objetivo: Ver la experiencia de otros usuarios.
-Usuario navega a “Opiniones Usuarios”.
-Lee las reseñas visibles.
+### ⚙️ Flujo 3: Armar tu Teclado
+**🎯 Objetivo:** Personalizar un teclado desde cero.  
+**Pasos:**
+1. El usuario accede a la sección **"Arma tu teclado"**.
+2. Selecciona una modalidad:
+   - Armar en solitario.
+   - Armar con ayuda.
+3. Es redirigido al configurador de teclado.
+4. Selecciona partes, estética y preferencias.
+5. Agrega el teclado al carrito.
 
-Flujo 6: Navegación desde el footer
-Objetivo: Acceder a otras secciones o contactar.
-Usuario baja hasta el footer.
-Tiene acceso a:
-Inicio
-Ayuda
-Más vendidos
-Contacto por correo o teléfono
+---
 
-Flujo 7 (implícito): Comprar
-Aunque no se ve completo en el landing, podría estar implícito desde cualquiera de estos flujos:
-Después de armar un teclado → Agregar al carrito.
-Después de ver un producto destacado → Ver detalle → Agregar al carrito.
-Desde categoría de partes → Agregar partes al carrito.
+### 🎨 Flujo 4: Selección de Estética
+**🎯 Objetivo:** Elegir un estilo visual para el teclado.  
+**Pasos:**
+1. El usuario llega a la sección **"Selecciona tu estética"**.
+2. Hace clic en una estética (ej: Asiática, Steampunk, etc.).
+3. Es redirigido a una galería de estilos o vista filtrada de productos con esa estética.
+4. Puede previsualizar cómo lucen los teclados con esa temática.
 
+---
+
+### 💬 Flujo 5: Opiniones de Usuarios
+**🎯 Objetivo:** Ver la experiencia de otros usuarios.  
+**Pasos:**
+1. El usuario navega a la sección **"Opiniones Usuarios"**.
+2. Lee las reseñas visibles publicadas por otros compradores.
+
+---
+
+### 🔗 Flujo 6: Navegación desde el Footer
+**🎯 Objetivo:** Acceder a otras secciones del sitio o medios de contacto.  
+**Pasos:**
+1. El usuario baja hasta el **footer** del landing.
+2. Puede acceder a:
+   - **Inicio**
+   - **Ayuda**
+   - **Más vendidos**
+   - **Contacto** (correo o teléfono)
+
+---
+
+### 🛒 Flujo 7 (Implícito): Comprar
+**🎯 Objetivo:** Comprar un producto personalizado o individual.  
+**Pasos posibles:**
+- Después de armar un teclado → Agregar al carrito.
+- Desde productos destacados → Ver detalle → Agregar al carrito.
+- Desde categorías de partes → Seleccionar parte → Agregar al carrito.
 
 ---
 
