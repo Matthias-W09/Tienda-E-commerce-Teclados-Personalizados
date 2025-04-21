@@ -146,7 +146,7 @@ El sistema debe mostrar un **carrusel visualmente atractivo** de productos dentr
 
 ---
 
-## 🔄 Flujos de Navegación del Landing Page
+## 🔄 Flujos de Navegación del Landing Page (link de apoyo https://www.canva.com/design/DAGlO_EwYPM/n5XAu4L9lEuTTDRuS4Kz9w/edit?utm_content=DAGlO_EwYPM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ### 🧩 Flujo 1: Visualización de Productos Destacados
 **🎯 Objetivo:** Ver productos destacados.  
