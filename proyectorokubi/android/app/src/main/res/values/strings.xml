@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">proyectorokubi</string>
+    <string name="title_activity_main">proyectorokubi</string>
+    <string name="package_name">ionic.proyectorokubi</string>
+    <string name="custom_url_scheme">ionic.proyectorokubi</string>
+</resources>
