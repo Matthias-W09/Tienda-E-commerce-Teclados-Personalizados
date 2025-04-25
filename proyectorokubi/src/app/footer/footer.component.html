@@ -1,3 +1,42 @@
-<p>
-  footer works!
-</p>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <!-- Columna izquierda (Marca + redes) -->
+      <ion-col size="12" size-md="4" class="footer-left">
+        <ion-text class="footer-brand">
+          <h2>Robuki.cl</h2>
+        </ion-text>
+        
+        <ion-list class="social-icons" lines="none">
+          <ion-item>
+            <ion-icon name="logo-facebook" slot="start"></ion-icon>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="logo-instagram" slot="start"></ion-icon>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="logo-twitter" slot="start"></ion-icon>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="logo-whatsapp" slot="start"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+      <!-- Columna derecha (Contacto) -->
+      <ion-col size="12" size-md="4" class="footer-contact">
+        <ion-text><h3>Contacto</h3></ion-text>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-icon name="mail-outline" slot="start"></ion-icon>
+            <ion-label>rokubicl&#64;gmail.com</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="call-outline" slot="start"></ion-icon>
+            <ion-label>+56 9 5691 3380</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<ion-content class="ion-padding">
+  <div class="logo-container">
+    <h1 class="logo-text">Registro</h1>
+  </div>
+
+  <ion-list class="form-container">
+    <!-- Campos de formulario -->
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Confirmar Contraseña</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="register-button">
+      Registrarse
+    </ion-button>
+  </ion-list>
+
+  <div class="login-link">
+    ¿Ya tienes cuenta? <a routerLink="/inicio-sesion">Inicia sesión</a>
+  </div>
+  <app-footer> </app-footer>
+</ion-content>

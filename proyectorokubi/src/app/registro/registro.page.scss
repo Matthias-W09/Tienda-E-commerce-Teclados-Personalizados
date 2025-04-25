@@ -1,0 +1,55 @@
+ion-content {
+    --background: #f4f4f8;
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 3rem;
+  
+    .logo-text {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #3880ff; /* Color azul de Ionic - puedes cambiarlo */
+      margin: 0;
+    }
+  }
+  
+  .form-container {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+  }
+  
+  .register-button {
+    margin-top: 1.5rem;
+    --border-radius: 8px;
+    height: 50px;
+    font-weight: bold;
+  }
+  
+  .login-link {
+    text-align: center;
+    color: #666;
+  
+    a {
+      color: #3880ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  }
+  
+  /* Estilos para los inputs */
+  ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --border-color: #e0e0e0;
+    margin-bottom: 1rem;
+  
+    ion-label {
+      color: #666;
+    }
+  }

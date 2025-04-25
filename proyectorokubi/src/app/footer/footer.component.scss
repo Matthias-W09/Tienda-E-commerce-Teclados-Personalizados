@@ -1,0 +1,72 @@
+.rokubi-content {
+    --background: #ffffff;
+    
+    .rokubi-section {
+      padding: 2rem;
+      text-align: center;
+      
+      .rokubi-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--ion-color-primary);
+      }
+      
+      .rokubi-slogan {
+        font-size: 1.2rem;
+        color: var(--ion-color-medium);
+      }
+    }
+  }
+  
+  /* Footer */
+  .custom-footer {
+    background: var(--ion-color-light);
+    padding: 1rem 0;
+    
+    ion-col {
+      padding: 1rem;
+    }
+    
+    .footer-brand {
+      h2 {
+        color: var(--ion-color-dark);
+        margin-bottom: 1rem;
+      }
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      
+      ion-icon {
+        font-size: 1.5rem;
+        color: var(--ion-color-primary);
+      }
+    }
+    
+    h3 {
+      color: var(--ion-color-dark);
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links {
+      ion-item {
+        --padding-start: 0;
+        --inner-padding-end: 0;
+      }
+    }
+    
+    .footer-contact {
+      ion-item {
+        --padding-start: 0;
+        --inner-padding-end: 0;
+        
+        ion-icon {
+          margin-right: 8px;
+          color: var(--ion-color-primary);
+        }
+      }
+    }
+  }
