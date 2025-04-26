@@ -32,117 +32,124 @@ Esta entrega contempla el diseño de la arquitectura, definición de requerimien
 
 ### Roles del Sistema
 
-- **Administrador**: Control total sobre el sistema.
-- **Editor**: Puede crear, editar y eliminar productos.
-- **Visualizador**: Solo puede ver información de productos.
+- 🛠️ **Administrador**: Tiene acceso completo al sistema. Puede crear, editar y eliminar productos, combos, promociones y gestionar configuraciones generales.
+- 👤 **Usuario**: Rol general de cliente registrado en la plataforma. Puede navegar la tienda, personalizar teclados, guardar configuraciones y realizar compras.
 
 ---
 
 ## 🧩 Requerimientos Funcionales (RF)
 
+
 ### RF1: Personalización Interactiva de Teclados
 **Rol:** Usuario  
 **Descripción:**  
-El sistema debe incluir una sección llamada **"Arma tu teclado"**, accesible desde el menú principal. Al ingresar, el usuario podrá personalizar su teclado mediante una interfaz interactiva.
+El sistema debe incluir una sección llamada **"Arma tu teclado"**, accesible desde el menú principal, donde el usuario pueda personalizar su teclado.
 
 **Funcionalidades:**
-- **RF1.1**: Selección de componentes por categoría (Base, Switches, Keycaps, Cable, Accesorios) desde una lista desplegable o vista en cuadrícula.
-- **RF1.2**: Botón de ayuda dentro de cada categoría con explicación funcional de cada tipo y subtipo (ej: *Switches táctiles, clicky...*).
-- **RF1.3**: Validación automática de compatibilidad entre componentes (ej: alertas si un switch no es compatible con la base).
-- **RF1.4**: Visualización de precio dinámico que se actualiza en tiempo real según las selecciones.
+- **RF1.1**: Selección de componentes por categoría (Base, Switches, Keycaps, Cable, Accesorios).
+- **RF1.2**: Botón de ayuda dentro de cada categoría explicando los tipos y subtipos.
+- **RF1.3**: Validación automática de compatibilidad entre componentes.
 - **RF1.5**: Opción para guardar la configuración (en la cuenta del usuario o como enlace temporal).
 
 ---
 
 ### RF2: Generación Dinámica de Códigos Promocionales
-**Rol:** Admin  
+**Rol:** Administrador  
 **Descripción:**  
-El sistema debe proporcionar un **panel administrativo exclusivo** para la gestión de códigos promocionales.
+Panel administrativo para crear, editar y eliminar códigos promocionales.
 
 **Funcionalidades:**
-- **RF2.1**: Crear códigos promocionales con:
-  - Código (manual o auto-generado).
-  - Tipo de descuento (porcentaje o monto fijo).
-  - Fecha de vigencia (inicio y fin).
-  - Límite de usos (global o por usuario).
-  - Filtros para productos o categorías aplicables.
-- **RF2.2**: Editar o eliminar códigos existentes con confirmación para evitar borrado accidental.
+- Crear códigos con distintos tipos de descuentos y restricciones.
+- Editar o eliminar códigos con validaciones de seguridad.
 
 ---
 
 ### RF3: Tienda por Tipo de Producto
 **Rol:** Usuario  
 **Descripción:**  
-El sistema debe incluir una **sección de tienda**, accesible desde el menú principal, donde los usuarios puedan explorar productos por tipo.
+Acceso a tienda de partes categorizadas para explorar y comprar componentes de teclado.
 
 **Funcionalidades:**
-- **RF3.1**: Selección por categorías (Base, Switches, Keycaps, Cable, Accesorios).
-- **RF3.2**: Botón de ayuda por categoría con explicación de cada tipo y subtipo.
-- **RF3.3**: Ordenar productos por criterios (ej: precio, popularidad).
+- Filtrar productos por categoría.
+- Botón de ayuda en cada categoría.
+- Ordenar por precio, popularidad, etc.
 
 ---
 
 ### RF4: Formulario de Combos y Ofertas
-**Rol:** Admin  
+**Rol:** Administrador  
 **Descripción:**  
-El sistema debe permitir crear y administrar **combos y ofertas especiales** a través de un formulario interactivo.
+Crear y administrar combos especiales y ofertas.
 
 **Funcionalidades:**
-- **RF4.1**: Creación y edición de combos con:
-  - Nombre del combo (ej: *Kit Inicio*).
-  - Selección de productos incluidos (con búsqueda por nombre/SKU y límite de ítems).
-  - Campo de descuento (porcentaje o monto fijo).
-  - Opción de "Descuento recomendado" según márgenes.
-  - Fecha de inicio/fin (con calendario).
-  - Opción "Oferta relámpago" (duración por horas).
-- **RF4.2**: Reglas avanzadas:
-  - Restricción por tipo de usuario (ej: usuarios con al menos 1 compra).
-  - Límite de stock por combo.
-  - Prevención de promociones superpuestas.
-
----
-
-### RF5: Selector de Estética Inicial
-**Rol:** Usuario  
-**Descripción:**  
-En el primer acceso, el sistema debe mostrar una **pantalla de bienvenida** para elegir un estilo visual predeterminado para la interfaz.
+- Armar combos personalizados con selección de productos.
+- Aplicar descuentos y restricciones de uso.
 
 ---
 
 ### RF6: Formulario de Nuevo Producto
-**Rol:** Admin  
+**Rol:** Administrador  
 **Descripción:**  
-El sistema debe incluir un formulario interactivo para agregar productos al catálogo con validaciones en tiempo real.
+Agregar productos nuevos al catálogo.
 
 **Funcionalidades:**
-- **RF6.1**: Campos requeridos:
-  - Nombre del producto.
-  - Tipo de producto (Base, Switches, Keycaps, Accesorios, Prearmado).
-  - Subtipo (ej: switches *clicky*, *tactile*).
-  - Precio.
-  - Stock inicial (≥ 0).
-  - Compatibilidad con otras partes.
-  - Descripción del producto.
-  - Imagen (al menos una).
+- Formulario con campos obligatorios (nombre, tipo, subtipo, precio, stock, compatibilidad, descripción e imágenes).
+- Validaciones en tiempo real.
 
 ---
 
-### RF7: Carrusel de Productos y Productos Destacados
+## Requerimientos No Funcionales (RNF)
+
+(Aquí movemos aspectos de rendimiento, interfaz y experiencia de usuario)
+
+### RNF1: Visualización de Precio Dinámico en Tiempo Real
 **Rol:** Usuario  
 **Descripción:**  
-El sistema debe mostrar un **carrusel visualmente atractivo** de productos dentro de la página principal (web y móvil).
+El precio total del teclado debe actualizarse de forma inmediata a medida que el usuario selecciona componentes, mejorando la fluidez y experiencia de uso.
 
-**Funcionalidades:**
-- **RF7.1**: Carrusel de productos:
-  - Desplazamiento horizontal.
-  - Tarjeta con imagen, nombre, precio y etiqueta (ej: *Nuevo*, *En oferta*).
-  - Navegación por flechas o desplazamiento táctil.
-  - Lazy loading.
-  - Botón "Ver más" hacia el catálogo completo.
-- **RF7.2**: Carrusel de productos destacados:
-  - Sección especial con productos seleccionados por admin.
-  - Resaltado visual con etiqueta *Destacado*.
-  - Misma navegación e interacción que el carrusel general.
+---
+
+### RNF2: Selector de Estética Inicial
+**Rol:** Usuario  
+**Descripción:**  
+La pantalla de bienvenida debe permitir al usuario elegir una estética predeterminada para la interfaz, mejorando su personalización visual sin afectar las funcionalidades.
+
+---
+
+### RNF3: Carrusel de Productos con Navegación Optimizada
+**Rol:** Usuario  
+**Descripción:**  
+El carrusel de productos destacados debe ofrecer:
+- Lazy loading de imágenes para mejorar el tiempo de carga.
+- Navegación por flechas y desplazamiento táctil en dispositivos móviles.
+
+---
+
+### RNF4: Persistencia de Configuraciones de Teclado
+**Rol:** Usuario  
+**Descripción:**  
+Las configuraciones de teclado personalizadas deben poder guardarse y recuperarse correctamente entre sesiones.
+
+---
+
+### RNF5: Gestión Estable de Promociones
+**Rol:** Administrador  
+**Descripción:**  
+La creación y edición de promociones debe realizarse sin afectar otras operaciones activas en la tienda.
+
+---
+
+### RNF6: Seguridad y Control de Acceso
+**Rol:** Usuario y Administrador  
+**Descripción:**  
+El acceso a funcionalidades de administración debe estar restringido a administradores o editores, sin exposición para usuarios visualizadores.
+
+---
+
+### RNF7: Escalabilidad de la Plataforma
+**Rol:** Usuario y Administrador  
+**Descripción:**  
+El sistema debe ser capaz de manejar más de 1000 productos sin pérdidas significativas de rendimiento en búsqueda, navegación o administración.
 
 ---
 
