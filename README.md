@@ -264,6 +264,10 @@ Para correr este proyecto en tu máquina local, sigue los siguientes pasos:
 2. Navega al directorio del proyecto:
 
     ```
+    cd Tienda-E-commerce-Teclados-Personalizados
+    ```
+
+    ```
     cd proyectorokubi
     ```
 
