@@ -36,7 +36,6 @@ export class FormDinamicaComponent {
   formData: any = {};
 
   ngOnInit() {
-    // Inicializar formData con valores vacíos o predeterminados
     this.fields.forEach(field => {
       this.formData[field.name] = field.value || '';
     });
