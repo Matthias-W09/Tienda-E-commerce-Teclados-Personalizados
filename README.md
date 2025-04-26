@@ -244,3 +244,32 @@ link de apoyo https://www.canva.com/design/DAGlO_EwYPM/n5XAu4L9lEuTTDRuS4Kz9w/ed
 - **Angular Router**
 
 ---
+
+## ⚙️ Instalación
+
+Para correr este proyecto en tu máquina local, sigue los siguientes pasos:
+
+1. Clona este repositorio:
+
+    ```
+    git clone https://github.com/Matthias-W09/Tienda-E-commerce-Teclados-Personalizados.git
+    ```
+
+2. Navega al directorio del proyecto:
+
+    ```
+    cd proyectorokubi
+    ```
+
+3. Instala las dependencias:
+
+    ```
+    npm install
+    ```
+
+4. Corre la aplicación:
+
+    ```
+    ionic serve
+    ```
+
