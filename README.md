@@ -46,10 +46,10 @@ Esta entrega contempla el diseño de la arquitectura, definición de requerimien
 El sistema debe incluir una sección llamada **"Arma tu teclado"**, accesible desde el menú principal, donde el usuario pueda personalizar su teclado.
 
 **Funcionalidades:**
-- **RF1.1**: Selección de componentes por categoría (Base, Switches, Keycaps, Cable, Accesorios).
-- **RF1.2**: Botón de ayuda dentro de cada categoría explicando los tipos y subtipos.
-- **RF1.3**: Validación automática de compatibilidad entre componentes.
-- **RF1.4**: Opción para guardar la configuración (en la cuenta del usuario o como enlace temporal).
+- Selección de componentes por categoría (Base, Switches, Keycaps, Cable, Accesorios).
+- Botón de ayuda dentro de cada categoría explicando los tipos y subtipos.
+- Validación automática de compatibilidad entre componentes.
+- Opción para guardar la configuración (en la cuenta del usuario o como enlace temporal).
 
 ---
 
@@ -87,14 +87,13 @@ Crear y administrar combos especiales y ofertas.
 
 ---
 
-### RF6: Formulario de Nuevo Producto
+### RF5: Formulario de Nuevo Producto
 **Rol:** Administrador  
 **Descripción:**  
 Agregar productos nuevos al catálogo.
 
 **Funcionalidades:**
 - Formulario con campos obligatorios (nombre, tipo, subtipo, precio, stock, compatibilidad, descripción e imágenes).
-- Validaciones en tiempo real.
 
 ---
 
