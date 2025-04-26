@@ -95,11 +95,9 @@ export class LandingPage implements OnInit {
   socialIcons = ['logoFacebook', 'logoTwitter', 'logoInstagram', 'logoYoutube'];
 
   constructor() {
-    // Registrar los íconos que vamos a usar
     addIcons({ logoFacebook, logoTwitter, logoInstagram, logoYoutube });
   }
 
   ngOnInit() {
-    // Puedes añadir lógica de inicialización aquí si es necesario
   }
 }
