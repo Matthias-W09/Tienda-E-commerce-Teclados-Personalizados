@@ -42,12 +42,11 @@ export class InicioAdminPage {
     const selectedItem = this.listItems.find(item => item.id === itemId);
     this.selectedId = itemId;
     this.currentFormType = selectedItem?.formType || null;
-    this.formData = {}; // Resetear datos al cambiar formulario
+    this.formData = {}; 
   }
 
   onFormSubmit(formData: any) {
     console.log('Datos enviados:', formData);
-    // Aquí puedes manejar la lógica según el tipo de formulario
     switch(this.currentFormType) {
       case 'producto':
         this.guardarProducto(formData);
@@ -55,17 +54,14 @@ export class InicioAdminPage {
       case 'promocion':
         this.guardarPromocion(formData);
         break;
-      // ... otros casos
     }
   }
 
   private guardarProducto(producto: any) {
-    // Lógica para guardar producto
     console.log('Guardando producto:', producto);
   }
 
   private guardarPromocion(promocion: any) {
-    // Lógica para guardar promoción
     console.log('Guardando promoción:', promocion);
   }
 }
