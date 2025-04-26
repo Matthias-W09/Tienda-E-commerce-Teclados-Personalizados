@@ -37,7 +37,7 @@ Esta entrega contempla el diseño de la arquitectura, definición de requerimien
 
 ---
 
-## 🧩 Requerimientos Funcionales (RF)
+## Requerimientos Funcionales (RF)
 
 
 ### RF1: Personalización Interactiva de Teclados
@@ -100,7 +100,6 @@ Agregar productos nuevos al catálogo.
 
 ## Requerimientos No Funcionales (RNF)
 
-(Aquí movemos aspectos de rendimiento, interfaz y experiencia de usuario)
 
 ### RNF1: Visualización de Precio Dinámico en Tiempo Real
 **Rol:** Usuario  
