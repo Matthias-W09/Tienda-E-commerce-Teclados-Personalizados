@@ -39,5 +39,4 @@ import { FooterComponent } from 'src/app/footer/footer.component'
   ]
 })
 export class RegistroPage {
-  // Lógica adicional puede ir aquí
 }
