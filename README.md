@@ -129,6 +129,7 @@ El carrusel de productos destacados debe ofrecer:
 **Rol:** Usuario  
 **Descripción:**  
 Las configuraciones de teclado personalizadas deben poder guardarse y recuperarse correctamente entre sesiones.
+(Aunque implica una función del sistema, se clasifica aquí por estar ligada a persistencia de datos y comportamiento esperado a nivel de experiencia de usuario y almacenamiento, no a una acción directa visible.)
 
 ---
 
