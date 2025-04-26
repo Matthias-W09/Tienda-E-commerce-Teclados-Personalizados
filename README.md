@@ -49,7 +49,7 @@ El sistema debe incluir una sección llamada **"Arma tu teclado"**, accesible de
 - **RF1.1**: Selección de componentes por categoría (Base, Switches, Keycaps, Cable, Accesorios).
 - **RF1.2**: Botón de ayuda dentro de cada categoría explicando los tipos y subtipos.
 - **RF1.3**: Validación automática de compatibilidad entre componentes.
-- **RF1.5**: Opción para guardar la configuración (en la cuenta del usuario o como enlace temporal).
+- **RF1.4**: Opción para guardar la configuración (en la cuenta del usuario o como enlace temporal).
 
 ---
 
