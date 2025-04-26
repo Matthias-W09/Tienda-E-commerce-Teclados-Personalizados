@@ -1,28 +1,8 @@
-ion-content {
-  --background: #198089;
-  display: flex;
-
-  .logo-container {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 3rem 0 1.3rem;
-    
-    .logo-text {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #F7DAB2;
-    }
-  }
-
-  .form-container {
+.form-container {
     --background: #F7DAB2;
     background: var(--background);
     border-radius: 12px;
     padding: 16px;
-    margin-right: 20px;
-    margin-left: 20px;
     margin-bottom: 1.5rem;
   
     ion-item {
@@ -41,9 +21,15 @@ ion-content {
         color: #000;
         margin-left: 8px;
       }
+
+      ion-note {
+        display: block;
+        margin: 4px 0 0 8px;
+        font-size: 0.8rem;
+      }
     }
     
-    .register-button {
+    .add-button {
       --background: #F85021;
       margin-top: 1.5rem;
       --border-radius: 8px;
@@ -52,20 +38,3 @@ ion-content {
     }
   
   }
-   
-  .login-link {
-    text-align: center;
-    color: #F7DAB2;
-    margin-bottom: 1.5rem;
-  
-    a {
-      color: #F85021;
-      text-decoration: none;
-      font-weight: 500;
-    }
-  }
-}
-  
-
-  
-

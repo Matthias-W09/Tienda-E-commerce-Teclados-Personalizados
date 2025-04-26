@@ -1,7 +1,7 @@
 ion-header {
     position: absolute;
     width: 100%;
-    height: 164px;
+    height: 60px;
     top: 0;
     left: 0;
     z-index: 10;
@@ -9,7 +9,7 @@ ion-header {
     ion-toolbar {
       height: 100%;
       padding: 0 80px;
-      --background: transparent;
+      --background: #198089;
       --border-width: 0;
       
       .logo-title-container {
@@ -19,13 +19,16 @@ ion-header {
         padding-left: 8px;
       
         .logo {
-          height: 32px; /* Ajusta según necesites */
+          height: 60px;
           width: auto;
         }
       
         ion-title {
           padding: 0;
-          font-size: 1.2rem;
+          font-size: 3rem;
+          --background: transparent;
+          --color: #F85021;
+          cursor: pointer;
         }
       }
       
@@ -36,7 +39,7 @@ ion-header {
           font-family: 'Inter', sans-serif;
           font-weight: 500;
           font-size: 20px;
-          --color: #FFFFFF;
+          --color: #F7DAB2;
           --background-hover: transparent;
           --ripple-color: transparent;
           

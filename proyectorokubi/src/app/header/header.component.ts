@@ -4,7 +4,8 @@ import {
   IonToolbar, 
   IonTitle, 
   IonButtons, 
-  IonButton 
+  IonButton,
+  IonItem
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
     IonToolbar, 
     IonTitle, 
     IonButtons, 
-    IonButton
+    IonButton,
+    IonItem
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']

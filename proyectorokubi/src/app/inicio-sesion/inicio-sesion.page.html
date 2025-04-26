@@ -1,26 +1,33 @@
 
 <app-header></app-header>
 
-<ion-content class="ion-padding">
+<ion-content>
   <div class="login-container">
-    <h1 class="app-name">Inicio Sesión</h1>
-    
-    <ion-item>
-      <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-    
-    <ion-button expand="block" class="ion-margin-top" routerLink="/inicio-admin">Iniciar Sesión</ion-button>
-
-    <div class="switch-action">
-      <ion-text>¿No tienes cuenta? </ion-text>
-      <ion-button fill="clear" routerLink="/registro">Regístrate</ion-button>
-    </div>
+    <h1 class="logo-text">Inicio Sesión</h1>
   </div>
+    
+    <ion-list class="form-container">
+      <ion-item>
+        <ion-label position="fixed">Usuario</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="fixed">Contraseña</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+  
+      <ion-button expand="block" class="login-button" routerLink="/inicio-admin">Iniciar Sesión</ion-button>
+      
+      <div class="olvide-pass">
+        <a routerLink="/registro">¿Olvidaste tu contraseña?</a>
+      </div>
+
+    </ion-list>
+
+  <div class="registrar">
+    ¿No tienes cuenta? <a routerLink="/registro">Regístrate</a>
+  </div>
+  
   <app-footer> </app-footer>
 </ion-content>

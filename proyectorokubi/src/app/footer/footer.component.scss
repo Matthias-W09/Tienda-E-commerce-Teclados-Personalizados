@@ -1,72 +1,102 @@
-.rokubi-content {
-    --background: #ffffff;
-    
-    .rokubi-section {
-      padding: 2rem;
-      text-align: center;
-      
-      .rokubi-title {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: var(--ion-color-primary);
-      }
-      
-      .rokubi-slogan {
-        font-size: 1.2rem;
-        color: var(--ion-color-medium);
-      }
+:host {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: #F7DAB2;
+  border-top: 1px solid #e0e0e0;
+}
+
+ion-content {
+  --background: #F7DAB2;
+  --padding: 0;
+  --margin: 0;
+  height: 225px;
+}
+
+ion-grid {
+  height: 100%;
+  padding: 20px; 
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  justify-content: start;
+  padding: 8px 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  ion-icon {
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
+      color: #F85021;
+    }
+  }
+}
+
+.footer-left h2,
+.footer-links h3,
+.footer-contact h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 24px;
+}
+
+.footer-quick-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+
+  a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #F85021;
+    }
+  }
+}
+
+.footer-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: #000;
+
+    ion-icon {
+      font-size: 20px;
+      color: #000;
+    }
+
+    span {
+      font-weight: 500;
     }
   }
   
-  /* Footer */
-  .custom-footer {
-    background: var(--ion-color-light);
-    padding: 1rem 0;
-    
-    ion-col {
-      padding: 1rem;
-    }
-    
-    .footer-brand {
-      h2 {
-        color: var(--ion-color-dark);
-        margin-bottom: 1rem;
-      }
-    }
-    
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      
-      ion-icon {
-        font-size: 1.5rem;
-        color: var(--ion-color-primary);
-      }
-    }
-    
-    h3 {
-      color: var(--ion-color-dark);
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-    
-    .footer-links {
-      ion-item {
-        --padding-start: 0;
-        --inner-padding-end: 0;
-      }
-    }
-    
-    .footer-contact {
-      ion-item {
-        --padding-start: 0;
-        --inner-padding-end: 0;
-        
-        ion-icon {
-          margin-right: 8px;
-          color: var(--ion-color-primary);
-        }
-      }
-    }
-  }
+}

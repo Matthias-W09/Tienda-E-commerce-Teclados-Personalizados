@@ -20,6 +20,7 @@ import {
   mailOutline,
   callOutline
 } from 'ionicons/icons';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -36,7 +37,8 @@ import {
     IonList,
     IonItem,
     IonLabel,
-    IonIcon
+    IonIcon,
+    RouterModule
   ]
 })
 

@@ -1,4 +1,3 @@
-<!-- landing.page.html -->
 <ion-content>
   <div class="landing-page">
     <app-header></app-header>
@@ -7,67 +6,122 @@
     <section class="featured-section">
       <h2>Destacados</h2>
       <div class="image-grid">
-        <div class="image-item" style="background-image: url('assets/images/image4.png')"></div>
-        <div class="image-item" style="background-image: url('assets/images/image5.png')"></div>
-        <div class="image-item" style="background-image: url('assets/images/image6.png')"></div>
-        <div class="image-item" style="background-image: url('assets/images/image7.png')"></div>
+        <div class="image-item" style="background-image: url('assets/images/image4.jpg')"></div>
+        <div class="image-item" style="background-image: url('assets/images/image4.jpg')"></div>
+        <div class="image-item" style="background-image: url('assets/images/image4.jpg')"></div>
+        <div class="image-item" style="background-image: url('assets/images/image4.jpg')"></div>
       </div>
     </section>
 
     <!-- What to Buy Section -->
-    <section class="products-section">
-      <h2>¿Qué deseas comprar?</h2>
-      <div class="product-cards">
-        <div class="product-card">
-          <div class="product-image" style="background-image: url('assets/images/product1.jpg')"></div>
-          <div class="product-info">
-            <h3>KeyCaps</h3>
-            <p>Son las tapas de las teclas. La parte que tocas con los dedos, normalmente con letras, números o símbolos impresos.</p>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-image" style="background-image: url('assets/images/product2.jpg')"></div>
-          <div class="product-info">
-            <h3>Switches</h3>
-            <p>Detectan la pulsación y determinan la sensación (clicky, suave, etc.) y la respuesta del teclado.</p>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-image" style="background-image: url('assets/images/product3.jpg')"></div>
-          <div class="product-info">
-            <h3>Marco</h3>
-            <p>Es la estructura externa del teclado. Sostiene todas las partes internas y le da forma, estabilidad y estética al teclado.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ion-card class="products-section">
+      <ion-card-header>
+        <ion-card-title>¿Qué deseas comprar?</ion-card-title>
+      </ion-card-header>
+    
+      <ion-grid class="product-cards">
+        <ion-row>
+          <!-- Producto 1 - KeyCaps -->
+          <ion-col size="12" size-md="4">
+            <ion-card class="product-card">
+              <ion-img src="assets/images/producto1.jpg" class="product-image" alt="KeyCaps"></ion-img>
+              <ion-card-content class="product-info">
+                <ion-card-title>KeyCaps</ion-card-title>
+                <ion-text>
+                  <p>Son las tapas de las teclas. La parte que tocas con los dedos, normalmente con letras, números o símbolos impresos.</p>
+                </ion-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+    
+          <!-- Producto 2 - Switches -->
+          <ion-col size="12" size-md="4">
+            <ion-card class="product-card">
+              <ion-img src="assets/images/producto2.jpeg" class="product-image" alt="Switches"></ion-img>
+              <ion-card-content class="product-info">
+                <ion-card-title>Switches</ion-card-title>
+                <ion-text>
+                  <p>Detectan la pulsación y determinan la sensación (clicky, suave, etc.) y la respuesta del teclado.</p>
+                </ion-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+    
+          <!-- Producto 3 - Marco -->
+          <ion-col size="12" size-md="4">
+            <ion-card class="product-card">
+              <ion-img src="assets/images/producto3.jpg" class="product-image" alt="Marco"></ion-img>
+              <ion-card-content class="product-info">
+                <ion-card-title>Marco</ion-card-title>
+                <ion-text>
+                  <p>Es la estructura externa del teclado. Sostiene todas las partes internas y le da forma, estabilidad y estética al teclado.</p>
+                </ion-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
 
-    <!-- Build Section -->
-    <section class="build-section">
-      <h2>Arma Tu Teclado</h2>
-      <p>Arma un teclado personalizado pieza por pieza</p>
-    </section>
+<!-- Build Section -->
+<ion-card class="build-section">
+  <!-- Contenedor de imagen más alto -->
+  <div class="image-container">
+    <ion-img src="assets/images/tecladoRokubi.jpg" 
+             alt="Teclado personalizado" 
+             class="build-image"></ion-img>
+  </div>
+  
+  <!-- Contenido superpuesto -->
+  <div class="content-overlay">
+    <ion-card-header>
+      <ion-card-title class="build-title">Armá Tu Teclado</ion-card-title>
+    </ion-card-header>
+  </div>
+</ion-card>
 
-    <!-- Style Section -->
-    <section class="style-section">
-      <h2>Selecciona Tu Estetica</h2>
-      <div class="style-cards">
-        <div class="style-card">
-          <div class="style-image" style="background-image: url('assets/images/style1.jpg')"></div>
-          <h3>Asiatica</h3>
-        </div>
-        <div class="style-card">
-          <div class="style-image" style="background-image: url('assets/images/style2.jpg')"></div>
-          <h3>SteamPunk</h3>
-        </div>
-      </div>
-    </section>
+ <!-- Action Buttons -->
+ <div class="action-buttons">
+  <button class="primary-button">Armar en Solitario</button>
+  <button class="secondary-button">Armar con Ayuda</button>
+</div>
 
-    <!-- Action Buttons -->
-    <div class="action-buttons">
-      <button class="primary-button">Armar en Solitario</button>
-      <button class="secondary-button">Armar con Ayuda</button>
-    </div>
+  <!-- Style Section -->
+  <ion-card class="style-section">
+    <ion-card-header>
+      <ion-card-title>Selecciona Tu Estética</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid class="style-cards">
+        <ion-row>
+          <!-- Tarjeta Estilo Asiático -->
+          <ion-col size="12" size-md="6">
+            <ion-card class="style-card">
+              <ion-img src="assets/images/EstiloAsiatico.jpg" 
+                      alt="Estilo Asiático"
+                      class="style-image"></ion-img>
+              <ion-card-header>
+                <ion-card-subtitle>Asiática</ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+
+          <!-- Tarjeta Estilo CyberPunk -->
+          <ion-col size="12" size-md="6">
+            <ion-card class="style-card">
+              <ion-img src="assets/images/EstiloCyberPunk.png" 
+                      alt="Estilo CyberPunk"
+                      class="style-image"></ion-img>
+              <ion-card-header>
+                <ion-card-subtitle>SteamPunk</ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 
     <!-- Reviews Section -->
     <section class="reviews-section">
@@ -106,34 +160,5 @@
       </div>
     </section>
 
-    <!-- Rokubi Section -->
-    <section class="rokubi-section">
-      <h1 class="rokubi-title">Rokubi</h1>
-      <p class="rokubi-slogan">Tu estilo, tu juego.</p>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-left">
-        <div class="footer-brand">Robuki.cl</div>
-        <div class="social-icons">
-          <div class="icon"></div>
-          <div class="icon"></div>
-          <div class="icon"></div>
-          <div class="icon"></div>
-        </div>
-      </div>
-      <div class="footer-links">
-        <h3>Quick Links</h3>
-        <a>Inicio</a>
-        <a>Ayuda</a>
-        <a>Más Vendidos</a>
-      </div>
-      <div class="footer-contact">
-        <h3>Contacto</h3>
-        <p>rokubicl&#64;gmail.com</p>
-        <p>+56 9 5691 3380</p>
-      </div>
-    </footer>
-  </div>
-</ion-content>
+    <app-footer> </app-footer>
+    

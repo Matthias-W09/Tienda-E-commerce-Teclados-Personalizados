@@ -1,22 +1,71 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { HeaderComponent } from 'src/app/header/header.component'
-import { FooterComponent } from 'src/app/footer/footer.component'
+import { 
+  IonContent, IonHeader, IonTitle, IonToolbar, IonIcon
+} from '@ionic/angular/standalone';
+import { HeaderComponent } from 'src/app/header/header.component';
+import { SelectableListComponent } from 'src/app/lista-seleccion/lista-seleccion.component';
+import { FooterComponent } from 'src/app/footer/footer.component';
+import { FormDinamicaComponent } from 'src/app/form-dinamica/form-dinamica.component';
+import { FormConfigService } from '../form-config.service';
+import { FormField } from '../form-field.interface';
 
 @Component({
   selector: 'app-inicio-admin',
   templateUrl: './inicio-admin.page.html',
   styleUrls: ['./inicio-admin.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, HeaderComponent, FooterComponent]
+  imports: [ 
+    IonContent, IonHeader, IonTitle, IonToolbar, 
+    CommonModule, FormsModule, IonIcon,
+    HeaderComponent, SelectableListComponent, 
+    FooterComponent, FormDinamicaComponent
+  ]
 })
-export class InicioAdminPage implements OnInit {
+export class InicioAdminPage {
+  listItems = [
+    { id: 1, name: 'Agregar Producto', formType: 'producto' },
+    { id: 2, name: 'Generar código promocional', formType: 'promocion' },
+    { id: 3, name: 'Generar descuentos/combos', formType: 'combo' },
+    { id: 4, name: 'Administrar productos', formType: 'admin-producto' },
+    { id: 5, name: 'Administrar promociones', formType: 'admin-promocion' },
+  ];
+  
+  selectedId: number | null = null;
+  currentFormType: string | null = null;
+  formData: any = {};
 
-  constructor() { }
+  constructor(public formConfig: FormConfigService) {}
 
-  ngOnInit() {
+  onItemSelected(itemId: number) {
+    const selectedItem = this.listItems.find(item => item.id === itemId);
+    this.selectedId = itemId;
+    this.currentFormType = selectedItem?.formType || null;
+    this.formData = {}; // Resetear datos al cambiar formulario
   }
 
+  onFormSubmit(formData: any) {
+    console.log('Datos enviados:', formData);
+    // Aquí puedes manejar la lógica según el tipo de formulario
+    switch(this.currentFormType) {
+      case 'producto':
+        this.guardarProducto(formData);
+        break;
+      case 'promocion':
+        this.guardarPromocion(formData);
+        break;
+      // ... otros casos
+    }
+  }
+
+  private guardarProducto(producto: any) {
+    // Lógica para guardar producto
+    console.log('Guardando producto:', producto);
+  }
+
+  private guardarPromocion(promocion: any) {
+    // Lógica para guardar promoción
+    console.log('Guardando promoción:', promocion);
+  }
 }
