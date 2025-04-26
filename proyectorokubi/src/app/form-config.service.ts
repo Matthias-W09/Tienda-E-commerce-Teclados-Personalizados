@@ -19,7 +19,6 @@ export class FormConfigService {
       { name: 'productosIncluidos', label: 'Productos', type: 'text' },
       { name: 'precioCombo', label: 'Precio especial', type: 'number' }
     ],
-    // ... otras configuraciones
   };
 
   getFormConfig(formType: string): FormField[] {
