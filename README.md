@@ -283,3 +283,4 @@ Para correr este proyecto en tu máquina local, sigue los siguientes pasos:
     ionic serve
     ```
 
+Debes tener Node.js y Ionic instalados antes de ejecutar npm install y ionic serve.
