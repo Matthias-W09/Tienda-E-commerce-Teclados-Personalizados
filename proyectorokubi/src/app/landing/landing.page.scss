@@ -1,4 +1,3 @@
-/* landing.page.scss */
 .landing-page {
     position: relative;
     width: 100%;
@@ -7,7 +6,6 @@
     overflow-x: hidden;
   }
   
-  /* Featured section */
   .featured-section {
     position: absolute;
     width: 100%;
@@ -40,7 +38,6 @@
     }
   }
   
-/* Build your keyboard section */
 .build-section {
   position: absolute;
   width: 100%;
@@ -84,12 +81,12 @@
     .build-title {
       font-family: 'Pixelify Sans', sans-serif;
       font-weight: 600;
-      font-size: clamp(2.5rem, 5vw, 4rem); /* Título responsive */
+      font-size: clamp(2.5rem, 5vw, 4rem); 
       color: #F85021;
       margin-bottom: 15px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-      line-height: 1.2; /* Evita corte de texto */
-      padding: 0 10px; /* Asegura espacio */
+      line-height: 1.2; 
+      padding: 0 10px; 
     }
     
     .build-description {
@@ -135,7 +132,6 @@
     }
   }
 
-  /* Responsive para tablets/desktop */
   @media (min-width: 768px) {
     .content-overlay {
       padding: 60px 40px;
@@ -152,7 +148,6 @@
     }
   }
 
-  /* Ajuste para pantallas muy grandes */
   @media (min-width: 1200px) {
     .image-container {
       height: 900px;
@@ -160,7 +155,6 @@
   }
 }
   
-  /* What to buy section */
   .products-section {
     position: absolute;
     width: 100%;
@@ -229,7 +223,6 @@
     }
   }
   
-/* Choose your style section - Versión con Ionic */
 .style-section {
   position: absolute;
   width: 100%;
@@ -288,7 +281,6 @@
     }
   }
 
-  /* Responsive para desktop */
   @media (min-width: 768px) {
     .style-cards {
       padding: 0 24px;
@@ -304,7 +296,6 @@
   }
 }
   
-  /* User reviews section */
   .reviews-section {
     position: absolute;
     width: 100%;
@@ -381,7 +372,6 @@
   }
   
  
-  /* Buttons */
   .action-buttons {
     position: absolute;
     width: 515px;
