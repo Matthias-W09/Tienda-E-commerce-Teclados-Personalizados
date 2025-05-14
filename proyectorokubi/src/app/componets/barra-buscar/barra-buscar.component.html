@@ -1,0 +1,12 @@
+<ion-item>
+  <ion-icon slot="start" name="search"></ion-icon>
+  <ion-input 
+    placeholder="Buscar..."
+    (ionInput)="onSearchChange($event)">
+  </ion-input>
+  <ion-button fill="clear" (click)="clearSearch()" *ngIf="searchText">
+    <a target="_blank" rel="noopener noreferrer">
+    <ion-icon slot="icon-only" name="close"></ion-icon>
+    </a>
+  </ion-button>
+</ion-item>

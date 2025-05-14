@@ -6,18 +6,22 @@ export class FormConfigService {
   private formConfigs: { [key: string]: FormField[] } = {
     producto: [
       { name: 'nombre', label: 'Nombre', type: 'text', required: true },
+      { name: 'codigo', label: 'Codigo', type: 'text', required: true },
       { name: 'precio', label: 'Precio', type: 'number', required: true },
-      { name: 'descripcion', label: 'Descripción', type: 'textarea' }
+      { name: 'descripcion', label: 'Descripción', type: 'textarea'},
+      { name: 'stock', label: 'Stock', type: 'number'},
+      { name: 'categoria', label: 'Categoria', type: 'textarea', required: true },
+      { name: 'compatibilidades', label: 'Compatibilidades', type: 'textarea'},
     ],
     promocion: [
-      { name: 'codigo', label: 'Código', type: 'text', required: true },
-      { name: 'descuento', label: 'Descuento (%)', type: 'number' },
-      { name: 'validoHasta', label: 'Válido hasta', type: 'date' }
+      { name: 'codigo', label: 'Código', type: 'text'},
+      { name: 'descuento', label: 'Descuento (%)', type: 'number', required: true},
+      { name: 'validoHasta', label: 'Válido hasta', type: 'date', required: true}
     ],
     combo: [
-      { name: 'nombreCombo', label: 'Nombre del Combo', type: 'text' },
-      { name: 'productosIncluidos', label: 'Productos', type: 'text' },
-      { name: 'precioCombo', label: 'Precio especial', type: 'number' }
+      { name: 'nombreCombo', label: 'Nombre del Combo', type: 'text', required: true},
+      { name: 'productosIncluidos', label: 'Productos', type: 'text', required: true},
+      { name: 'descuento', label: 'Descuento (%)', type: 'number', required: true}
     ],
   };
 

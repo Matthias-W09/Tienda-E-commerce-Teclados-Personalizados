@@ -1,0 +1,11 @@
+ion-content{
+    .admin-container{
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            min-height: 0; /* Crucial para el cálculo flexible */
+            overflow: hidden;
+            margin-top: 55px;
+        }
+    }
+}

@@ -1,0 +1,49 @@
+.products-section {
+  position: relative;
+  width: 100%;
+  background: #198089;
+  left: 0;
+  box-shadow: none;
+  
+  ion-card-header {
+    padding-bottom: 0;
+    
+    ion-card-title {
+      font-family: 'Pixelify Sans', sans-serif;
+      font-size: 2rem;
+      color: #F85021;
+      text-align: center;
+    }
+  }
+
+  ion-card-content.cards-container {
+    padding: 0;
+    height: 420px; /* Altura fija para contenedor */
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: block;
+    white-space: nowrap;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .cards-wrapper {
+    display: inline-block;
+    padding: 16px;
+    height: 100%;
+  }
+
+  app-product-card {
+    display: inline-flex;
+    width: 280px;
+    height: 380px;
+    margin-right: 16px;
+    vertical-align: top;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

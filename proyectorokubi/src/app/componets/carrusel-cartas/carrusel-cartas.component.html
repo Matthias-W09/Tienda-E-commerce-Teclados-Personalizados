@@ -1,0 +1,17 @@
+<ion-card class="products-section">
+  <ion-card-header>
+    <ion-card-title>¿Qué deseas comprar?</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content class="cards-container">
+    <div class="cards-wrapper">
+      <app-product-card
+        *ngFor="let product of products"
+        [title]="product.name"
+        [imageUrl]="product.image"
+        [description]="product.description"
+        [altText]="product.altText">
+      </app-product-card>
+    </div>
+  </ion-card-content>
+</ion-card>

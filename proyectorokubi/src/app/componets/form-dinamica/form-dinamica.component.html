@@ -1,0 +1,21 @@
+<ion-list class="form-container">
+  <ion-item *ngFor="let field of fields">
+    <ion-label position="fixed">{{field.label}}</ion-label>
+    <ion-input 
+      [type]="field.type"
+      [(ngModel)]="formData[field.name]"
+      [required]="field.required || false">
+    </ion-input>
+    <ion-note *ngIf="field.required && !formData[field.name]" color="danger">
+      Campo requerido
+    </ion-note>
+  </ion-item>
+
+  <ion-button 
+    expand="block" 
+    class="register-button"
+    [style.--background]="buttonColor"
+    (click)="onSubmit()">
+    {{submitButtonText}}
+  </ion-button>
+</ion-list>

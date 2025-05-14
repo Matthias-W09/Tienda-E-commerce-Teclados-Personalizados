@@ -1,0 +1,28 @@
+:host {
+  flex: 1;
+  max-width: 25%;
+  height: 100%;
+  overflow-y: auto;
+  background: #F7DAB2;
+
+  ion-list {
+    background: transparent;
+    padding: 0;
+    
+    ion-item {
+      --background: transparent;
+      --padding-start: 1rem;
+      --padding-end: 1rem;
+      --min-height: 50px;
+      --color: #000000 !important;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+      &.selected {
+        --background: rgba(#F85021, 0.2);
+        font-weight: bold;
+        color:#F85021;
+      }
+    }
+  }
+}

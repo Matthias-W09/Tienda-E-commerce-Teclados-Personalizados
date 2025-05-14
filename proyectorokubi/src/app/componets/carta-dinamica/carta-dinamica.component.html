@@ -1,0 +1,18 @@
+<ion-card  
+  routerLink="/productos-principal" 
+  [queryParams]="{ title: title }" 
+  class="product-card">
+
+  <img src="{{ imageUrl }}" alt="{{ altText || title }}" class="product-image" />
+  <ion-card-content class="product-info">
+    <ion-card-title>{{ title }}</ion-card-title>
+
+    <!-- *ngIf no funciono -->
+    @if (showDescription && (description || altText)) {
+      <ion-text class="description-text">
+        {{ description || altText }}
+      </ion-text>
+    }
+
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+
+    <div slot="start" class="logo-title-container">
+      <img src="assets/images/image.png" alt="Logo Robuki" routerLink="/landing" class="logo">
+      <ion-title routerLink="/landing">Robuki</ion-title>
+    </div>
+
+    <app-barra-buscar (searchChange)="onSearch($event)" class="barraBuscar"></app-barra-buscar>
+
+    <ion-buttons slot="end">
+      <ion-button>Configuracion</ion-button>
+      <ion-button routerLink="/inicio-sesion">Inicio Sesion</ion-button>
+      <ion-button>Carrito</ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
