@@ -5,7 +5,6 @@ import {
   IonTitle, 
   IonButtons, 
   IonButton,
-  IonItem
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -22,7 +21,6 @@ import { BarraBuscarComponent } from '../../componets/barra-buscar/barra-buscar.
     IonTitle, 
     IonButtons, 
     IonButton,
-    IonItem,
     BarraBuscarComponent
   ],
   templateUrl: './header.component.html',

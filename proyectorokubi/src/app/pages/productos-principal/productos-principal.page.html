@@ -1,17 +1,29 @@
 <ion-content>
   <app-header></app-header>
 
-  <div class="admin-container">
-    <div class="content-wrapper">
+  <div class="layout-wrapper">
+    <!-- 1/4 izquierda -->
+    <div class="admin-container">
       <app-selectable-list
-        class="main-content" 
-        [items]="listItems" 
+        class="main-content"
+        [items]="listItems"
         [selectedItemId]="selectedId"
         (itemSelected)="onItemSelected($event)">
       </app-selectable-list>
     </div>
+
+    <!-- 3/4 derecha -->
+    <div class="cards-wrapper">
+      <app-product-card
+        *ngFor="let product of products"
+        [title]="product.name"
+        [imageUrl]="product.image"
+        [altText]="product.altText"
+        [precio]="product.precio">
+      </app-product-card>
+    </div>
   </div>
-  
+
 </ion-content>
 
 <app-footer></app-footer>

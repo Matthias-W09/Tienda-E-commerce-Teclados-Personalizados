@@ -1,6 +1,6 @@
 :host {
   display: block;
-  min-width: 280px;
+  min-width: 220px;
   height: auto;  // Cambiado a auto para adaptarse al contenido
   scroll-snap-align: start;
   flex-shrink: 0;
@@ -44,14 +44,22 @@
       font-size: 0.95rem;
       color: #F7DAB2;
       margin: 8px 0 0 0;
-      flex: 1 1 auto; // Ocupa el espacio disponible
-      overflow: hidden; // Maneja contenido largo
+      overflow: hidden;
+      transition: all 0.3s ease;
+    
+      &.expanded {
+        min-height: calc(1.2em * 4); // espacio para ~4 líneas
+        opacity: 1;
+        visibility: visible;
+      }
+    
+      &.collapsed {
+        min-height: 1.2em; // 1 línea
+        opacity: 0.8;       // puede estar visible, pero más tenue si quieres
+        visibility: visible; // mostramos shortLabel, así que debe verse
+      }
     }
 
-    .empty-space {
-      flex: 1;
-      min-height: 1rem; // Espacio mínimo cuando no hay descripción
-    }
   }
   
   &:hover {

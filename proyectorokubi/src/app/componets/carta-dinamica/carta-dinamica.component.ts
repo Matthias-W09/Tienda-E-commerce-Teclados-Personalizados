@@ -4,16 +4,16 @@ import {
   IonCard, 
   IonCardContent, 
   IonCardTitle, 
-  IonImg, 
   IonText,
 } from '@ionic/angular/standalone';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './carta-dinamica.component.html',
   styleUrls: ['./carta-dinamica.component.scss'],
   standalone: true,
-  imports: [IonCard, IonCardContent, IonCardTitle, IonImg, IonText, RouterModule]
+  imports: [IonCard, IonCardContent, IonCardTitle, IonText, CommonModule ,RouterModule]
 })
 
 export class ProductCardComponent {
@@ -23,5 +23,6 @@ export class ProductCardComponent {
   @Input() description: string = '';
   @Input() altText: string = '';
   @Input() showDescription: boolean = false;
+  @Input() precio: string = '';
 }
 
