@@ -8,7 +8,7 @@ import { HeaderComponent } from '../../componets/header/header.component';
 import { FooterComponent } from '../../componets/footer/footer.component';
 import { SelectableListComponent } from '../../componets/lista-seleccion/lista-seleccion.component';
 import { FormDinamicaComponent } from '../../componets/form-dinamica/form-dinamica.component';
-import { FormConfigService } from '../../form-config.service';
+import { FormConfigService } from '../../services/forms/form-config.service';
 
 @Component({
   selector: 'app-inicio-admin',

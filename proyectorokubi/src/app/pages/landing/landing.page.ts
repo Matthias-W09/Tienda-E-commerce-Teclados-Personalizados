@@ -17,6 +17,7 @@ import { FooterComponent } from '../../componets/footer/footer.component';
 import { ProductCardComponent } from '../../componets/carta-dinamica/carta-dinamica.component';
 import { addIcons } from 'ionicons';
 import { logoFacebook, logoTwitter, logoInstagram, logoYoutube } from 'ionicons/icons';
+import { ProductoService } from '../../services/productos/producto-service.service';
 
 @Component({
   selector: 'app-landing',
@@ -42,27 +43,6 @@ import { logoFacebook, logoTwitter, logoInstagram, logoYoutube } from 'ionicons/
   ]
 })
 export class LandingPage implements OnInit {
-  products = [
-    {
-      name: 'KeyCaps',
-      image: 'assets/images/producto1.jpg',
-      description: 'Son las tapas de las teclas. La parte que tocas con los dedos, normalmente con letras, números o símbolos impresos.',
-      altText: 'Teclas para teclados'
-    },
-    {
-
-      name: 'Switches',
-      image: 'assets/images/producto2.jpeg',
-      description: 'Detectan la pulsación y determinan la sensación (clicky, suave, etc.) y la respuesta del teclado.',
-      altText: 'Switches para teclados'
-    },
-    {
-      name: 'Carcasa',
-      image: 'assets/images/producto3.jpg',
-      description: 'Es la estructura externa del teclado. Sostiene todas las partes internas y le da forma, estabilidad y estética al teclado.',
-      altText: 'Marco para teclados'
-    }
-  ];
 
   styles = [
     {
@@ -97,11 +77,13 @@ export class LandingPage implements OnInit {
   ];
 
   socialIcons = ['logoFacebook', 'logoTwitter', 'logoInstagram', 'logoYoutube'];
+  categorias: any[] = [];
 
-  constructor() {
+  constructor(private productoService: ProductoService) {
     addIcons({ logoFacebook, logoTwitter, logoInstagram, logoYoutube });
   }
 
   ngOnInit() {
+    this.categorias = this.productoService.getCategorias();
   }
 }

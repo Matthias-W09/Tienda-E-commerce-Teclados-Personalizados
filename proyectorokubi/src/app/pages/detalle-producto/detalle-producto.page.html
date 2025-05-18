@@ -1,0 +1,21 @@
+<app-header></app-header>
+
+<ion-content>
+
+  <ion-title>{{ producto.name }}</ion-title>
+
+  <div class="imagen">
+    <div class="img-wrapper">
+      <ion-img [src]="producto.image"></ion-img>
+    </div>
+  </div>
+
+  <div class="infoProduct">
+    <ion-text class="descripcion">Descripción: {{ producto.altText }}</ion-text>
+    <ion-text class="precio">Precio: {{ producto.precio }}</ion-text>
+  </div>
+
+  <app-footer></app-footer>
+
+</ion-content>
+

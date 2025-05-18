@@ -1,9 +1,9 @@
 <ion-card  
-  routerLink="/productos-principal" 
+  [routerLink]=" urlPage" 
   [queryParams]="{ title: title }" 
   class="product-card">
 
-  <img src="{{ imageUrl }}" alt="{{ altText || title }}" class="product-image" />
+  <img [src]="imageUrl " [alt]=" altText || title" class="product-image" />
 
   <ion-card-content class="product-info">
     <ion-card-title>{{ title }}</ion-card-title>

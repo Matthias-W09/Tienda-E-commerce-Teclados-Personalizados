@@ -20,11 +20,12 @@
       <ion-card-content class="cards-container">
         <div class="cards-wrapper">
           <app-product-card
-            *ngFor="let product of products"
-            [title]="product.name"
-            [imageUrl]="product.image"
-            [description]="product.description"
-            [altText]="product.altText"
+            *ngFor="let categoria of categorias"
+            [urlPage]="'/productos-principal'"
+            [title]="categoria.name"
+            [imageUrl]="categoria.image"
+            [description]="categoria.description"
+            [altText]="categoria.altText"
             [showDescription] = "true">
           </app-product-card>
         </div>

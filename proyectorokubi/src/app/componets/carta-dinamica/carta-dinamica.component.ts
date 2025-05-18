@@ -18,10 +18,11 @@ import { CommonModule } from '@angular/common';
 
 export class ProductCardComponent {
   
-  @Input() title: string = '';
-  @Input() imageUrl: string = '';
-  @Input() description: string = '';
-  @Input() altText: string = '';
+  @Input() urlPage!: string;
+  @Input() title!: string;
+  @Input() imageUrl!: string;
+  @Input() description?: string;
+  @Input() altText?: string;
   @Input() showDescription: boolean = false;
   @Input() precio: string = '';
 }
