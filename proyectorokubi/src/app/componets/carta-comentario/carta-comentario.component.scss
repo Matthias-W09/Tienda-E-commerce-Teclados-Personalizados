@@ -1,0 +1,87 @@
+.comentario {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  margin: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  ion-card-content {
+    padding: 1.5rem;
+  }
+
+  .producName {
+    font-size: 1.2rem;
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: left;
+    padding: 0;
+  }
+
+  .texto {
+    display: block;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .reviewer-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --min-height: auto;
+    --background: transparent;
+  }
+
+  .review-avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .reviewer-info {
+    .name {
+      display: block;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+
+    .valoracion {
+      color: #F85021;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .comentario {
+    ion-card-content {
+      padding: 1.25rem;
+    }
+    
+    .review-avatar {
+      width: 45px;
+      height: 45px;
+    }
+    
+    .texto {
+      font-size: 1rem;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+.seccionComentarios {
+  padding: 3rem 1rem;
+  text-align: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+
+  ion-title {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: 600;
+    color: #F85021;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+
+    /* Subrayado decorativo */
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #F85021;
+      border-radius: 2px;
+    }
+  }
+
+  .cartasComentarios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+
+    /* Efecto hover en las cartas */
+    app-carta-comentario {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+      }
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .seccionComentarios {
+    padding: 2rem 0.5rem;
+
+    .cartasComentarios {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .seccionComentarios {
+    padding: 1.5rem 0.5rem;
+
+    ion-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cartasComentarios {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,21 +1,42 @@
 <app-header></app-header>
 
 <ion-content>
-
-  <ion-title>{{ producto.name }}</ion-title>
-
-  <div class="imagen">
-    <div class="img-wrapper">
-      <ion-img [src]="producto.image"></ion-img>
+  <div class="contenido">
+    <div class="imagen">
+      <div class="img-wrapper">
+        <ion-img [src]="producto.image"></ion-img>
+      </div>
     </div>
-  </div>
 
-  <div class="infoProduct">
-    <ion-text class="descripcion">Descripción: {{ producto.altText }}</ion-text>
-    <ion-text class="precio">Precio: {{ producto.precio }}</ion-text>
+    <div class="infoProduct">
+      <ion-title>{{ producto.name }}</ion-title>
+
+      <ion-text class="descripcion">Descripción: {{ producto.altText }}</ion-text>
+      <ion-text class="descripcion">Precio por unidad: ${{ producto.precio }}</ion-text>
+      <ion-text class="descripcion">Compatibilidades: proximante</ion-text>
+      <ion-text class="descripcion">Stock disponible: {{ producto.stock }}</ion-text>
+      
+      <div class="botones">
+
+        <ion-text class="compra">{{apartados}}</ion-text>
+
+        <ion-button class="boton-circular" (click)="sumar()">
+          <ion-icon name="add" [style.font-size]="'50px'"></ion-icon>
+        </ion-button>
+
+        <ion-button class="boton-circular" (click)="restar()">
+          <ion-icon name="remove" [style.font-size]="'50px'"></ion-icon>
+        </ion-button>
+
+        <ion-text class="total">Total: ${{total}} </ion-text>
+
+        <ion-button class = "carrito" >Agregar al carrito</ion-button>
+      </div>
+    </div>
   </div>
 
   <app-footer></app-footer>
 
 </ion-content>
 
+ 

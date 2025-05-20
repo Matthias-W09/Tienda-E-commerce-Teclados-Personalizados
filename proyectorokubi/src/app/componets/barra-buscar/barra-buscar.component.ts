@@ -5,6 +5,9 @@ import {
   IonButton,
   IonItem
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { search, close } from 'ionicons/icons';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-barra-buscar',
@@ -15,12 +18,18 @@ import {
       IonIcon, 
       IonInput, 
       IonButton,
-      IonItem]
+      IonItem,
+      CommonModule
+    ]
 })
 export class BarraBuscarComponent {
   searchText: string = '';
   
   @Output() searchChange = new EventEmitter<string>();
+
+  constructor() {
+    addIcons({search,close});
+  }
 
   onSearchChange(event: any) {
     this.searchText = event.target.value;

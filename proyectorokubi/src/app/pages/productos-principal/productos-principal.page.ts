@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent} from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../componets/header/header.component';
 import { FooterComponent } from '../../componets/footer/footer.component';
 import { ProductCardComponent } from '../../componets/carta-dinamica/carta-dinamica.component';
@@ -14,10 +14,13 @@ import { ProductoService } from '../../services/productos/producto-service.servi
   templateUrl: './productos-principal.page.html',
   styleUrls: ['./productos-principal.page.scss'],
   standalone: true,
-  imports: [
-    IonCardContent, 
-    IonContent, HeaderComponent,FooterComponent, 
-    ProductCardComponent, CommonModule, FormsModule,
+  imports: [ 
+    IonContent, 
+    HeaderComponent,
+    FooterComponent, 
+    ProductCardComponent, 
+    CommonModule, 
+    FormsModule,
     SelectableListComponent
   ]
 })

@@ -1,127 +1,29 @@
+<app-header></app-header>
+
 <ion-content>
-  <app-header></app-header>
   <div class="landing-page">
 
     <section class="featured-section">
-      <h2>Destacados</h2>
-      <div class="image-grid">
-        <div class="image-item" style="background-image: url('assets/images/image4.jpg')"></div>
-        <div class="image-item" style="background-image: url('assets/images/image4.jpg')"></div>
-        <div class="image-item" style="background-image: url('assets/images/image4.jpg')"></div>
-        <div class="image-item" style="background-image: url('assets/images/image4.jpg')"></div>
-      </div>
+      <app-carrusel-destacados></app-carrusel-destacados>
     </section>
 
-    <ion-card class="products-section">
-      <ion-card-header>
-        <ion-card-title>¿Qué deseas comprar?</ion-card-title>
-      </ion-card-header>
-    
-      <ion-card-content class="cards-container">
-        <div class="cards-wrapper">
-          <app-product-card
-            *ngFor="let categoria of categorias"
-            [urlPage]="'/productos-principal'"
-            [title]="categoria.name"
-            [imageUrl]="categoria.image"
-            [description]="categoria.description"
-            [altText]="categoria.altText"
-            [showDescription] = "true">
-          </app-product-card>
-        </div>
-      </ion-card-content>
-    </ion-card>
+    <section class="products-section">
+      <app-carrusel-cartas [categorias]="categorias"></app-carrusel-cartas>
+    </section>
 
-    <ion-card class="build-section">
-      <div class="image-container">
-        <ion-img src="assets/images/tecladoRokubi.jpg" 
-                alt="Teclado personalizado" 
-                class="build-image"></ion-img>
-      </div>
-    
-      <div class="content-overlay">
-        <ion-card-header>
-          <ion-card-title class="build-title">Armá Tu Teclado</ion-card-title>
-        </ion-card-header>
-      </div>
-    </ion-card>
+    <section class="build-section">
+      <app-seccion-armar></app-seccion-armar>
+    </section>
 
-    <div class="action-buttons">
-      <button class="primary-button">Armar en Solitario</button>
-      <button class="secondary-button">Armar con Ayuda</button>
-    </div>
-
-    <ion-card class="style-section">
-      <ion-card-header>
-        <ion-card-title>Selecciona Tu Estética</ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        <ion-grid class="style-cards">
-          <ion-row>
-            <ion-col size="12" size-md="6">
-              <ion-card class="style-card">
-                <ion-img src="assets/images/EstiloAsiatico.jpg" 
-                        alt="Estilo Asiático"
-                        class="style-image"></ion-img>
-                <ion-card-header>
-                  <ion-card-subtitle>Asiática</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
-            </ion-col>
-
-            <ion-col size="12" size-md="6">
-              <ion-card class="style-card">
-                <ion-img src="assets/images/EstiloCyberPunk.png" 
-                        alt="Estilo CyberPunk"
-                        class="style-image"></ion-img>
-                <ion-card-header>
-                  <ion-card-subtitle>SteamPunk</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-card-content>
-    </ion-card>
+    <section class="style-section">
+      <app-seccion-estilos></app-seccion-estilos>
+    </section>
 
     <section class="reviews-section">
-      <h2>Opiniones Usuarios</h2>
-      <div class="review-cards">
-        <div class="review-card">
-          <p class="review-text">"Más que un teclado, una sensación"</p>
-          <div class="reviewer">
-            <div class="avatar"></div>
-            <div class="reviewer-info">
-              <div class="name">Ben Dover</div>
-              <div class="rating">5 Estrellas</div>
-            </div>
-          </div>
-        </div>
-        <div class="review-card">
-          <p class="review-text">"Una locura estos switches, nunca había sentido algo asi"</p>
-          <div class="reviewer">
-            <div class="avatar"></div>
-            <div class="reviewer-info">
-              <div class="name">Anita Dick</div>
-              <div class="rating">4.5 Estrellas</div>
-            </div>
-          </div>
-        </div>
-        <div class="review-card">
-          <p class="review-text">"Teclado bueno, le encantó a mi nieto"</p>
-          <div class="reviewer">
-            <div class="avatar"></div>
-            <div class="reviewer-info">
-              <div class="name">Dixon Mayas</div>
-              <div class="rating">5 Estrellas</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-seccion-comentarios></app-seccion-comentarios>
     </section>
-    
   </div>
+  
   <app-footer> </app-footer>
 </ion-content>
     

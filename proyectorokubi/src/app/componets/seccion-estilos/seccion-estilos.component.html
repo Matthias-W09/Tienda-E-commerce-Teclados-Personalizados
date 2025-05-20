@@ -1,0 +1,13 @@
+<div class="seccionEstilos">
+  <ion-title>Selecciona Tu Estética</ion-title>
+
+  <div class="estilos">
+    <app-carta-destacado class = "cartas"
+      *ngFor="let estilo of styles"
+      [urlPage]="'/productos-principal'"
+      [title]="estilo.name"
+      [imageUrl]="estilo.image"
+      [altText]="estilo.altText">
+    </app-carta-destacado>
+  </div>
+</div>

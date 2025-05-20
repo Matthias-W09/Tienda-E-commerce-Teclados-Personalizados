@@ -1,17 +1,25 @@
-<ion-card class="products-section">
-  <ion-card-header>
-    <ion-card-title>¿Qué deseas comprar?</ion-card-title>
-  </ion-card-header>
+<div class="carousel-container">
 
-  <ion-card-content class="cards-container">
-    <div class="cards-wrapper">
-      <app-product-card
-        *ngFor="let product of products"
-        [title]="product.name"
-        [imageUrl]="product.image"
-        [description]="product.description"
-        [altText]="product.altText">
-      </app-product-card>
-    </div>
-  </ion-card-content>
-</ion-card>
+  <ion-title class="productsTitle">¿Qué deseas comprar?</ion-title>
+
+  <button class="carousel-nav prev" (click)="prev()">‹</button>
+  <button class="carousel-nav next" (click)="next()">›</button>
+  
+  <div class="carousel-track" [style.transform]="'translateX(' + offset + 'px)'">
+    <app-product-card 
+      *ngFor="let categoria of categorias; let i = index"
+      [urlPage]="'/productos-principal'"
+      [title]="categoria.name"
+      [imageUrl]="categoria.image"
+      [description]="categoria.description"
+      [altText]="categoria.altText"
+      [showDescription]="true"
+      [class.active]="i === currentIndex"
+      [class.left-side]="i === currentIndex - 1"
+      [class.right-side]="i === currentIndex + 1"
+      [class.far-left]="i === currentIndex - 2"
+      [class.far-right]="i === currentIndex + 2"
+      >
+    </app-product-card>
+  </div>
+</div>

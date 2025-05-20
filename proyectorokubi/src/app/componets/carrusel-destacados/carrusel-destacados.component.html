@@ -1,0 +1,14 @@
+<div class="carouselContainer">
+  <ion-title class="destacadosTitle">Productos Destacados</ion-title>
+ 
+  <div class="carousel-track">
+    
+    <app-carta-destacado 
+      *ngFor="let producto of destacados"
+      [urlPage]="'/detalle-producto/' + producto.id"
+      [title]="producto.name"
+      [imageUrl]="producto.image"
+      [altText]="producto.altText">
+    </app-carta-destacado>
+  </div>
+</div>

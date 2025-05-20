@@ -1,49 +1,115 @@
-.products-section {
+.carousel-container {
+  padding: 3rem 1rem;
+  text-align: center;
   position: relative;
-  width: 100%;
-  background: #198089;
-  left: 0;
-  box-shadow: none;
-  
-  ion-card-header {
-    padding-bottom: 0;
-    
-    ion-card-title {
-      font-family: 'Pixelify Sans', sans-serif;
-      font-size: 2rem;
-      color: #F85021;
-      text-align: center;
-    }
-  }
-
-  ion-card-content.cards-container {
-    padding: 0;
-    height: 420px; /* Altura fija para contenedor */
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: block;
-    white-space: nowrap;
-    
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  .cards-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+  .productsTitle {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: 600;
+    color: #F85021;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
     display: inline-block;
-    padding: 16px;
-    height: 100%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #F85021;
+      border-radius: 2px;
+    }
+  }
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+}
+
+app-product-card {
+  flex: 0 0 320px; 
+  height: 380px;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  position: relative;
+  
+  &.left-side {
+    transform: translateX(40%) scale(0.9);
+    opacity: 0.8;
+    z-index: 1;
+  }
+  
+  &.right-side {
+    transform: translateX(-40%) scale(0.9);
+    opacity: 0.8;
+    z-index: 1;
+  }
+  
+  &.active {
+    transform: scale(1.05);
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
   }
 
-  app-product-card {
-    display: inline-flex;
-    width: 280px;
-    height: 380px;
-    margin-right: 16px;
-    vertical-align: top;
-    
-    &:last-child {
-      margin-right: 0;
-    }
+  /* Cartas más lejanas */
+  &.far-left {
+    transform: translateX(80%) scale(0.8);
+    opacity: 0.6;
+  }
+  
+  &.far-right {
+    transform: translateX(-80%) scale(0.8);
+    opacity: 0.6;
+  }
+}
+
+/* Efecto de profundidad */
+.carousel-track::before,
+.carousel-track::after {
+  content: '';
+  flex: 0 0 calc(50% - 160px); /* Espacio para cartas laterales */
+}
+
+/* Controles de navegación mejorados */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  cursor: pointer;
+  z-index: 20;
+  border: none;
+  font-size: 1.8rem;
+  color: #333;
+  
+  &:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  &.prev {
+    left: -30px;
+  }
+  
+  &.next {
+    right: -30px;
   }
 }

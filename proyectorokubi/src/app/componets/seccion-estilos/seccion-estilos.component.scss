@@ -1,0 +1,93 @@
+.seccionEstilos {
+  margin: 3rem auto;
+  background: transparent;
+  box-shadow: none;
+  max-width: 1400px;
+  padding: 0 1rem;
+  text-align: center;
+  position: relative;
+
+  ion-title {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: 600;
+    color: #F85021;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #F85021;
+      border-radius: 2px;
+    }
+  }
+
+  .estilos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+
+    .cartas {
+      margin: 0;
+      background: rgba(25, 128, 137, 0.7);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        background: rgba(25, 128, 137, 0.8);
+      }
+
+      /* Override card content styles */
+      ion-card-content {
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+      }
+
+      .productName {
+        color: #F7DAB2;
+        font-weight: 600;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .seccionEstilos {
+    margin: 2rem auto;
+    
+    .estilos {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .seccionEstilos {
+    margin: 1.5rem auto;
+    padding: 0 0.5rem;
+    
+    ion-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .estilos {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+  }
+}

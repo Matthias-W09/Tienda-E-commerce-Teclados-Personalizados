@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { 
-  IonContent, IonHeader, IonTitle, IonToolbar, IonIcon
+  IonContent, IonIcon
 } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../componets/header/header.component';
 import { FooterComponent } from '../../componets/footer/footer.component';
@@ -16,10 +16,14 @@ import { FormConfigService } from '../../services/forms/form-config.service';
   styleUrls: ['./inicio-admin.page.scss'],
   standalone: true,
   imports: [ 
-    IonContent, IonHeader, IonTitle, IonToolbar, 
-    CommonModule, FormsModule, IonIcon,
-    HeaderComponent, SelectableListComponent, 
-    FooterComponent, FormDinamicaComponent
+    IonContent, 
+    CommonModule, 
+    FormsModule, 
+    IonIcon,
+    HeaderComponent, 
+    SelectableListComponent, 
+    FooterComponent, 
+    FormDinamicaComponent
   ]
 })
 export class InicioAdminPage {

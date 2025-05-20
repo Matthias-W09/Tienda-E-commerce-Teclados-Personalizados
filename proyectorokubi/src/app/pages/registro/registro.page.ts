@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
   IonContent, 
   IonList, 
   IonItem, 
@@ -22,9 +19,6 @@ import { FooterComponent } from '../../componets/footer/footer.component';
   styleUrls: ['./registro.page.scss'],
   standalone: true,
   imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     IonList,
     IonItem,

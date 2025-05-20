@@ -13,7 +13,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './carta-dinamica.component.html',
   styleUrls: ['./carta-dinamica.component.scss'],
   standalone: true,
-  imports: [IonCard, IonCardContent, IonCardTitle, IonText, CommonModule ,RouterModule]
+  imports: [
+    IonCard, 
+    IonCardContent, 
+    IonCardTitle, 
+    IonText, 
+    CommonModule,
+    RouterModule
+  ]
 })
 
 export class ProductCardComponent {

@@ -6,36 +6,61 @@ import { Injectable } from '@angular/core';
 export class ProductoService {
   private productos = [
     {
-      id: 0,
+      id: 1,
       categoriaId: 1,
       name: 'KeyCaps Blancas',
       image: 'assets/images/producto1.jpg',
       altText: 'Teclas para teclados',
-      precio: '$10.00'
-    },
-    {
-      id: 1,
-      categoriaId: 1,
-      name: 'KeyCaps Negras',
-      image: 'assets/images/producto2.jpeg',
-      altText: 'Switches para teclados',
-      precio: '$10.00'
+      stock: 12,
+      precio: '10.00'
     },
     {
       id: 2,
       categoriaId: 1,
+      name: 'KeyCaps Negras',
+      image: 'assets/images/producto2.jpeg',
+      altText: 'Switches para teclados',
+      stock: 17,
+      precio: '10.00'
+    },
+    {
+      id: 3,
+      categoriaId: 1,
       name: 'KeyCaps Rojas',
       image: 'assets/images/producto3.jpg',
       altText: 'Marco para teclados',
-      precio: '$10.00'
+      stock: 3,
+      precio: '10.00'
     },
+    {
+      id: 4,
+      categoriaId: 1,
+      name: 'KeyCaps Azules',
+      image: 'assets/images/producto3.jpg',
+      altText: 'Marco para teclados',
+      stock: 25,
+      precio: '10.00'
+    },
+    {
+      id: 5,
+      categoriaId: 1,
+      name: 'KeyCaps Verdes',
+      image: 'assets/images/producto3.jpg',
+      altText: 'Marco para teclados',
+      stock: 10,
+      precio: '10.00'
+    }
+  ];
+
+  private destacados =[
     {
       id: 3,
       categoriaId: 1,
       name: 'KeyCaps Azules',
       image: 'assets/images/producto3.jpg',
       altText: 'Marco para teclados',
-      precio: '$10.00'
+      stock: 25,
+      precio: '10.00'
     },
     {
       id: 4,
@@ -43,9 +68,10 @@ export class ProductoService {
       name: 'KeyCaps Verdes',
       image: 'assets/images/producto3.jpg',
       altText: 'Marco para teclados',
-      precio: '$10.00'
+      stock: 10,
+      precio: '10.00'
     }
-  ];
+  ]
 
   private categorias = [
     {
@@ -82,11 +108,22 @@ export class ProductoService {
     return this.productos;
   }
 
+  getDestacados() {
+    return this.destacados;
+  }
+
+  getdestacadosPorId(id: number) {
+    return this.destacados.find(p => p.id === id);
+  }
+
   getCategorias(): any[] {
     return this.categorias;
   }
 
   getProductoPorId(id: number) {
+    if(id == 200){
+      return 'Teclado Personalizado'
+    }
     return this.productos.find(p => p.id === id);
   }
 

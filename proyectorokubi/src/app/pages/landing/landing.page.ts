@@ -2,58 +2,37 @@ import { RouterModule } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { 
-  IonContent, 
-  IonCol,
-  IonRow,
-  IonGrid,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
-  IonImg, IonCardSubtitle } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../componets/header/header.component';
 import { FooterComponent } from '../../componets/footer/footer.component';
-import { ProductCardComponent } from '../../componets/carta-dinamica/carta-dinamica.component';
-import { addIcons } from 'ionicons';
-import { logoFacebook, logoTwitter, logoInstagram, logoYoutube } from 'ionicons/icons';
+import { CarruselDestacadosComponent } from '../../componets/carrusel-destacados/carrusel-destacados.component';
+import { CarruselCartasComponent } from '../../componets/carrusel-cartas/carrusel-cartas.component';
+import { SeccionArmarComponent } from '../../componets/seccion-armar/seccion-armar.component';
+import { SeccionEstilosComponent } from '../../componets/seccion-estilos/seccion-estilos.component';
+import { SeccionComentariosComponent } from '../../componets/seccion-comentarios/seccion-comentarios.component';
 import { ProductoService } from '../../services/productos/producto-service.service';
+import { IonContent } from '@ionic/angular/standalone';
+
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.page.html',
   styleUrls: ['./landing.page.scss'],
   standalone: true,
-  imports: [IonCardSubtitle, 
-    IonContent, 
-    IonCol,
-    IonRow,
-    IonGrid,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardContent,
-    IonImg,
+  imports: [
+    IonContent,
     CommonModule, 
     FormsModule,
     RouterModule,
     HeaderComponent,
     FooterComponent,
-    ProductCardComponent
+    CarruselCartasComponent,
+    CarruselDestacadosComponent,
+    SeccionArmarComponent,
+    SeccionEstilosComponent,
+    SeccionComentariosComponent,
   ]
 })
 export class LandingPage implements OnInit {
-
-  styles = [
-    {
-      name: 'Asiatica',
-      image: 'assets/images/style1.jpg'
-    },
-    {
-      name: 'SteamPunk',
-      image: 'assets/images/style2.jpg'
-    }
-  ];
 
   reviews = [
     {
@@ -76,12 +55,9 @@ export class LandingPage implements OnInit {
     }
   ];
 
-  socialIcons = ['logoFacebook', 'logoTwitter', 'logoInstagram', 'logoYoutube'];
   categorias: any[] = [];
 
-  constructor(private productoService: ProductoService) {
-    addIcons({ logoFacebook, logoTwitter, logoInstagram, logoYoutube });
-  }
+  constructor(private productoService: ProductoService) { }
 
   ngOnInit() {
     this.categorias = this.productoService.getCategorias();

@@ -1,0 +1,18 @@
+<ion-card class="comentario">
+  <ion-card-content>
+    <ion-title class="producName">{{producName}}</ion-title>
+    
+    <ion-text class="texto">{{texto}}</ion-text>
+    
+    <ion-item lines="none" class="reviewer-item">
+      <ion-avatar slot="start" class="review-avatar">
+        <img [src]="avatarUrl" [alt]="name"/>
+      </ion-avatar>
+      
+      <ion-label class="reviewer-info">
+        <ion-text class="name">{{ name }}</ion-text>
+        <ion-text class="valoracion">{{ valoracion }}</ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-card-content>
+</ion-card>

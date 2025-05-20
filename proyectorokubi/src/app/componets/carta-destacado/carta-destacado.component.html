@@ -1,0 +1,13 @@
+<div class="destacadosCard">
+  <ion-card  
+    [routerLink]="urlPage" 
+    [queryParams]="{ title: title }" 
+    class="product-card">
+
+    <ion-img [src]="imageUrl " [alt]=" altText || title" class="imageItem" />
+
+    <ion-card-content class="productInfo">
+      <ion-card-title class="productName">{{ title }}</ion-card-title>
+    </ion-card-content>
+  </ion-card>
+</div>

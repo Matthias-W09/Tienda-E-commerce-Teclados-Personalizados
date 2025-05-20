@@ -1,0 +1,87 @@
+.carouselContainer {
+    padding: 3rem 1rem;
+    text-align: center;
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .destacadosTitle {
+        font-family: 'Pixelify Sans', sans-serif;
+        font-weight: 600;
+        color: #F85021;
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 2rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 3px;
+          background: #F85021;
+          border-radius: 2px;
+        }
+    }
+
+    .carousel-track {
+        display: flex;
+        gap: 1.5rem;
+        transition: transform 0.5s ease-out;
+        padding: 1rem 0;
+        cursor: grab;
+
+        &:active {
+        cursor: grabbing;
+        }
+
+      app-carta-destacado {
+        flex: 0 0 auto;
+        width: 300px;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+      }
+    }
+}
+
+
+// Estilos responsivos
+@media (max-width: 768px) {
+  .carouselContainer {
+    padding: 2rem 0.5rem;
+
+    .carousel-track {
+      gap: 1rem;
+      
+      app-carta-destacado {
+        width: 250px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .carouselContainer {
+    padding: 1.5rem 0;
+
+    .destacadosTitle {
+      margin-bottom: 1.5rem;
+    }
+
+    .carousel-track {
+      gap: 0.8rem;
+      
+      app-carta-destacado {
+        width: 220px;
+      }
+    }
+  }
+}
