@@ -3,9 +3,13 @@ import {
   IonHeader, 
   IonToolbar, 
   IonTitle, 
-  IonButtons, 
-  IonButton,
+  IonIcon
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { 
+  cart, 
+  logIn
+} from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BarraBuscarComponent } from '../../componets/barra-buscar/barra-buscar.component';
@@ -18,9 +22,8 @@ import { BarraBuscarComponent } from '../../componets/barra-buscar/barra-buscar.
     RouterModule,
     IonHeader, 
     IonToolbar, 
-    IonTitle, 
-    IonButtons, 
-    IonButton,
+    IonTitle,
+    IonIcon,
     BarraBuscarComponent
   ],
   templateUrl: './header.component.html',
@@ -28,7 +31,13 @@ import { BarraBuscarComponent } from '../../componets/barra-buscar/barra-buscar.
 })
 export class HeaderComponent  implements OnInit {
 
-  constructor() { }
+  idUsuario : number = 0; //constante para pruebas
+  constructor() { 
+    addIcons({ 
+      cart, 
+      logIn
+    });
+  }
 
   onSearch(query: string) {
     console.log('Buscando:', query);

@@ -3,25 +3,33 @@ ion-content {
 
   .contenido {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
+    flex-direction: column;
+    gap: 30px;
     padding: 3rem;
     margin: 2rem;
+    align-items: center;
+  }
+  
+  .filaUno {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
     flex-wrap: wrap;
   }
 
   .imagen {
     flex: 1;
+    min-width: 300px;
     max-width: 50%;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
 
     .img-wrapper {
-      width: 90%;
+      width: 100%;
       max-width: 400px;
       overflow: hidden;
       border-radius: 24px;
@@ -39,6 +47,7 @@ ion-content {
 
   .infoProduct {
     flex: 1;
+    min-width: 300px;
     max-width: 50%;
     background: #F7DAB2;
     border-radius: 16px;
@@ -51,7 +60,6 @@ ion-content {
       font-size: 2.2rem;
       margin: 0 0 1.5rem;
       font-weight: bold;
-      width: 100%;
     }
 
     ion-text {
@@ -119,5 +127,13 @@ ion-content {
       }
     }
   }
-}
 
+  .seccionComentarios {
+    width: 100%;
+    max-width: 1200px;
+    background: #F7DAB2;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+}

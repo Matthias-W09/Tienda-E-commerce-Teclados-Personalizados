@@ -1,14 +1,21 @@
 <div class="carouselContainer">
   <ion-title class="destacadosTitle">Productos Destacados</ion-title>
- 
-  <div class="carousel-track">
-    
-    <app-carta-destacado 
-      *ngFor="let producto of destacados"
-      [urlPage]="'/detalle-producto/' + producto.id"
-      [title]="producto.name"
-      [imageUrl]="producto.image"
-      [altText]="producto.altText">
-    </app-carta-destacado>
+
+  <div class="carousel-controls">
+    <button (click)="prev()" class="nav-button">‹</button>
+
+    <div class="carousel-track-wrapper">
+      <div class="carousel-track" [style.transform]="'translateX(-' + currentOffset + 'px)'">
+        <app-carta-destacado
+          *ngFor="let producto of destacados"
+          [urlPage]="'/detalle-producto/' + producto.id"
+          [title]="producto.name"
+          [imageUrl]="producto.image"
+          [altText]="producto.altText">
+        </app-carta-destacado>
+      </div>
+    </div>
+
+    <button (click)="next()" class="nav-button">›</button>
   </div>
 </div>

@@ -8,7 +8,7 @@ import { HeaderComponent } from '../../componets/header/header.component';
 import { FooterComponent } from '../../componets/footer/footer.component';
 import { SelectableListComponent } from '../../componets/lista-seleccion/lista-seleccion.component';
 import { FormDinamicaComponent } from '../../componets/form-dinamica/form-dinamica.component';
-import { FormConfigService } from '../../services/forms/form-config.service';
+import {GatewayServiciosService} from '../../services/gatewayServicios/gateway-servicios.service';
 
 @Component({
   selector: 'app-inicio-admin',
@@ -39,7 +39,7 @@ export class InicioAdminPage {
   currentFormType: string | null = null;
   formData: any = {};
 
-  constructor(public formConfig: FormConfigService) {}
+  constructor(public formConfig: GatewayServiciosService) {}
 
   onItemSelected(itemId: number) {
     const selectedItem = this.listItems.find(item => item.id === itemId);

@@ -6,13 +6,14 @@
       <ion-title routerLink="/landing">Robuki</ion-title>
     </div>
 
-    <app-barra-buscar (searchChange)="onSearch($event)" class="barraBuscar"></app-barra-buscar>
-
-    <ion-buttons slot="end">
-      <ion-button>Configuracion</ion-button>
-      <ion-button routerLink="/inicio-sesion">Inicio Sesion</ion-button>
-      <ion-button>Carrito</ion-button>
-    </ion-buttons>
+    <div class="barraBuscar">
+      <app-barra-buscar (searchChange)="onSearch($event)" class="barraBuscar"></app-barra-buscar>
+    </div>
+    
+    <div class="secciones">
+      <ion-icon name="log-in" routerLink="/inicio-sesion"></ion-icon>
+      <ion-icon name="cart" routerLink="/carrito"></ion-icon>
+    </div>
 
   </ion-toolbar>
 </ion-header>

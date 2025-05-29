@@ -1,6 +1,7 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductCardComponent } from '../../componets/carta-dinamica/carta-dinamica.component';
+import { ProductCardComponent} from '../../componets/carta-dinamica/carta-dinamica.component';
+import { GatewayServiciosService } from '../../services/gatewayServicios/gateway-servicios.service';
 import { IonGrid, IonButton, IonIcon} from '@ionic/angular/standalone';
 import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonTitle} from '@ionic/angular/standalone';
 
@@ -19,31 +20,45 @@ import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonTitle} from '@
     IonButton,
     IonIcon,
     CommonModule,
-    ProductCardComponent]
+    ProductCardComponent
+  ]
 })
 export class CarruselCartasComponent  implements OnInit {
   
-  @Input() categorias: any[] = [];
+  categorias: any[] = [];
+
+  constructor(private servicios: GatewayServiciosService){}
   
   ngOnInit() {
+    this.categorias = this.servicios.obtenerCategorias();
     setInterval(() => this.next(), 5000);
   }
 
-  currentIndex = 2; // Índice central inicial
-  offset = 0;
-  cardWidth = 280; // Mismo valor que en SCSS
-  gap = 24; // Mismo valor que en SCSS
+  cardWidth = 300 + 24; // 300px card + 24px approx gap
+  visibleCards = 4;
+  currentIndex = 0;
 
-  get cards() {
-    const arr = this.categorias;
-    return [...arr.slice(-2), ...arr, ...arr.slice(0, 2)];
+  get maxIndex(): number {
+    return Math.max(0, this.categorias.length - this.visibleCards);
+  }
+
+  get currentOffset(): number {
+    return this.currentIndex * this.cardWidth;
   }
 
   next() {
-    this.currentIndex = (this.currentIndex + 1) % this.categorias.length;
+    if (this.currentIndex === this.maxIndex) {
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex++;
+    }
+  }
+  prev() {
+    if (this.currentIndex === 0) {
+      this.currentIndex = this.maxIndex;
+    } else {
+      this.currentIndex--;
+    }
   }
 
-  prev() {
-    this.currentIndex = (this.currentIndex - 1 + this.categorias.length) % this.categorias.length;
-  }
 }

@@ -7,7 +7,7 @@ import { FooterComponent } from '../../componets/footer/footer.component';
 import { ProductCardComponent } from '../../componets/carta-dinamica/carta-dinamica.component';
 import { SelectableListComponent } from '../../componets/lista-seleccion/lista-seleccion.component';
 import { ActivatedRoute } from '@angular/router';
-import { ProductoService } from '../../services/productos/producto-service.service';
+import {GatewayServiciosService} from '../../services/gatewayServicios/gateway-servicios.service';
 
 @Component({
   selector: 'app-productos-principal',
@@ -32,7 +32,7 @@ export class ProductosPrincipalPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productoService: ProductoService
+    private productoService: GatewayServiciosService
   ) {}
 
   onItemSelected(itemId: number) {
@@ -41,11 +41,11 @@ export class ProductosPrincipalPage implements OnInit {
   }
 
   cargarProductosPorCategoria(categoriaId: number) {
-    this.productos = this.productoService.getProductosPorCategoria(categoriaId);
+    this.productos = this.productoService.obtenerPorCategoria(categoriaId);
   }
 
   ngOnInit() {
-    this.categorias = this.productoService.getCategorias();
+    this.categorias = this.productoService.obtenerCategorias();
 
     this.route.queryParams.subscribe(params => {
       const receivedTitle = params['title'];

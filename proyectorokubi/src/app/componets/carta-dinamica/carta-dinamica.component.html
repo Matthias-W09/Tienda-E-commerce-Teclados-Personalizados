@@ -9,13 +9,13 @@
     <ion-card-title>{{ title }}</ion-card-title>
 
     <ion-text 
-    class="description-text"
-    [ngClass]="{
-      'expanded': showDescription && (description || altText),
-      'collapsed': !(showDescription && (description || altText))
-    }">
-    {{ showDescription && (description || altText) ? (description || altText) : precio }}
-  </ion-text>
+      class="description-text"
+      [ngClass]="{
+        'expanded': showDescription && (description || altText),
+        'collapsed': !(showDescription && (description || altText))
+      }">
+      {{ showDescription && (description || altText) ? (description || altText) : precio }}
+    </ion-text>
 
   </ion-card-content>
 </ion-card>

@@ -101,6 +101,12 @@ export class ProductoService {
       image: 'assets/images/producto3.jpg',
       description: 'Es la estructura externa del teclado. Sostiene todas las partes internas y le da forma, estabilidad y estética al teclado.',
       altText: 'Marco para teclados'
+    },{
+      id: 4,
+      name: 'Nuevo',
+      image: 'assets/images/producto3.jpg',
+      description: 'Es la estructura externa del teclado. Sostiene todas las partes internas y le da forma, estabilidad y estética al teclado.',
+      altText: 'Marco para teclados'
     }
   ];
 
@@ -121,9 +127,6 @@ export class ProductoService {
   }
 
   getProductoPorId(id: number) {
-    if(id == 200){
-      return 'Teclado Personalizado'
-    }
     return this.productos.find(p => p.id === id);
   }
 

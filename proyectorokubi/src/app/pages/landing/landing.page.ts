@@ -55,11 +55,8 @@ export class LandingPage implements OnInit {
     }
   ];
 
-  categorias: any[] = [];
-
   constructor(private productoService: ProductoService) { }
 
   ngOnInit() {
-    this.categorias = this.productoService.getCategorias();
   }
 }

@@ -16,7 +16,7 @@
       <div class="main-content">
         @if (currentFormType) {
           <app-dynamic-form
-            [fields]="formConfig.getFormConfig(currentFormType)"
+            [fields]="formConfig.obtenerConfiguracionFormulario(currentFormType)"
             [submitButtonText]="'Guardar ' + currentFormType"
             (formSubmit)="onFormSubmit($event)">
           </app-dynamic-form>

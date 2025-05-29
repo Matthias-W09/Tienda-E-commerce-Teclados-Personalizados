@@ -2,24 +2,24 @@
 
   <ion-title class="productsTitle">¿Qué deseas comprar?</ion-title>
 
-  <button class="carousel-nav prev" (click)="prev()">‹</button>
-  <button class="carousel-nav next" (click)="next()">›</button>
-  
-  <div class="carousel-track" [style.transform]="'translateX(' + offset + 'px)'">
-    <app-product-card 
-      *ngFor="let categoria of categorias; let i = index"
-      [urlPage]="'/productos-principal'"
-      [title]="categoria.name"
-      [imageUrl]="categoria.image"
-      [description]="categoria.description"
-      [altText]="categoria.altText"
-      [showDescription]="true"
-      [class.active]="i === currentIndex"
-      [class.left-side]="i === currentIndex - 1"
-      [class.right-side]="i === currentIndex + 1"
-      [class.far-left]="i === currentIndex - 2"
-      [class.far-right]="i === currentIndex + 2"
-      >
-    </app-product-card>
+  <div class="carousel-controls">
+    <button class="carousel-nav prev" (click)="prev()">‹</button>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track" [style.transform]="'translateX(-' + currentOffset + 'px)'">
+        <app-product-card 
+          *ngFor="let categoria of categorias"
+          [urlPage]="'/productos-principal'"
+          [title]="categoria.name"
+          [imageUrl]="categoria.image"
+          [description]="categoria.description"
+          [altText]="categoria.altText"
+          [showDescription]="true">
+        </app-product-card>
+      </div>
+    </div>
+
+    <button class="carousel-nav next" (click)="next()">›</button>
   </div>
 </div>
+

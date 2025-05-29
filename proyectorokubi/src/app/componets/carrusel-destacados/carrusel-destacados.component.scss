@@ -1,87 +1,101 @@
 .carouselContainer {
-    padding: 3rem 1rem;
+  padding: 3rem 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .destacadosTitle {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: 600;
+    color: #F85021;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 2rem;
     text-align: center;
     position: relative;
-    max-width: 1400px;
-    margin: 0 auto;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #F85021;
+      border-radius: 2px;
+    }
+  }
+
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .carousel-track-wrapper {
     overflow: hidden;
+    max-width: calc(5 * 300px + 4 * 24px); // 5 cartas + 4 gaps
+  }
 
-    .destacadosTitle {
-        font-family: 'Pixelify Sans', sans-serif;
-        font-weight: 600;
-        color: #F85021;
-        font-size: clamp(2rem, 5vw, 3rem);
-        margin-bottom: 2rem;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        position: relative;
-        display: inline-block;
+  .carousel-track {
+    display: flex;
+    gap: 1.5rem; // ~24px
+    transition: transform 0.5s ease-out;
+    padding: 1rem 0;
 
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 80px;
-          height: 3px;
-          background: #F85021;
-          border-radius: 2px;
-        }
-    }
+    app-carta-destacado {
+      flex: 0 0 auto;
+      width: 300px;
+      transition: transform 0.3s ease;
 
-    .carousel-track {
-        display: flex;
-        gap: 1.5rem;
-        transition: transform 0.5s ease-out;
-        padding: 1rem 0;
-        cursor: grab;
-
-        &:active {
-        cursor: grabbing;
-        }
-
-      app-carta-destacado {
-        flex: 0 0 auto;
-        width: 300px;
-        transition: transform 0.3s ease;
-
-        &:hover {
-            transform: translateY(-5px);
-        }
+      &:hover {
+        transform: translateY(-5px);
       }
     }
-}
+  }
 
+  .nav-button {
+    font-size: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: background 0.3s;
 
-// Estilos responsivos
-@media (max-width: 768px) {
-  .carouselContainer {
-    padding: 2rem 0.5rem;
-
-    .carousel-track {
-      gap: 1rem;
-      
-      app-carta-destacado {
-        width: 250px;
-      }
+    &:hover {
+      background: rgba(0, 0, 0, 0.4);
     }
   }
 }
 
-@media (max-width: 480px) {
-  .carouselContainer {
-    padding: 1.5rem 0;
+// Responsive ajustes para tablet y móvil
+@media (max-width: 1024px) {
+  .carousel-track-wrapper {
+    max-width: calc(3 * 280px + 2 * 16px);
+  }
 
-    .destacadosTitle {
-      margin-bottom: 1.5rem;
+  .carousel-track {
+    gap: 1rem;
+
+    app-carta-destacado {
+      width: 280px;
     }
+  }
+}
 
-    .carousel-track {
-      gap: 0.8rem;
-      
-      app-carta-destacado {
-        width: 220px;
-      }
+@media (max-width: 600px) {
+  .carousel-track-wrapper {
+    max-width: calc(1 * 250px);
+  }
+
+  .carousel-track {
+    gap: 0.5rem;
+
+    app-carta-destacado {
+      width: 250px;
     }
   }
 }

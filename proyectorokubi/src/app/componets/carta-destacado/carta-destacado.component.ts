@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { 
   IonCard,
-  IonCardHeader,
   IonCardTitle,
   IonCardContent,
   IonImg
@@ -15,7 +14,6 @@ import {
   standalone: true,
   imports: [
     IonCard,
-    IonCardHeader,
     IonCardTitle,
     IonCardContent,
     IonImg,

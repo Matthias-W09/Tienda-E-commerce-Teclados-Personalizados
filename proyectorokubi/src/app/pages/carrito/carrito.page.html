@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+<ion-content>
+  <div class="carrito">
+
+    <div class="titulo">
+      <ion-title>Tu carrito</ion-title>
+    </div>
+
+    <ng-container *ngIf="carrito$ | async as carrito">
+      <div *ngIf="carrito.length === 0" class="carrito-vacio">
+        <ion-title>Tu carrito está vacío</ion-title>
+      </div>
+
+      <div *ngIf="carrito.length > 0" class="contenido">
+        <div class="itemsCarrito">
+          <app-carta-carrito
+            *ngFor="let item of carrito"
+            [productoID]="item.idProducto"
+            [unidadesProducto]="item.apartadosProductos"
+            [totalProducto]="item.totalProducto"
+            (productoEliminado)="manejarProductoEliminado($event)"
+            (productoActualizado)="manejarProductoActualizado($event)">
+          </app-carta-carrito>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="featured-section">
+    <app-carrusel-destacados></app-carrusel-destacados>
+  </div>
+
+  <app-footer></app-footer>
+</ion-content>

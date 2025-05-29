@@ -1,0 +1,35 @@
+.comentarios {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px;
+  gap: 12px; // Espacio general entre elementos
+
+  ion-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #F85021;
+    margin: 0;
+    padding: 8px 0;
+  }
+
+  .nuevoComent {
+    width: 100%;
+    margin-bottom: 10px;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --background: #f5f5f5;
+    border-radius: 8px;
+    color: #000;
+  }
+
+  app-carta-comentario {
+    width: 100%;
+    margin-bottom: 16px; // Espacio entre comentarios
+    
+    &:last-child {
+      margin-bottom: 0; // Elimina el margen del último elemento
+    }
+  }
+}

@@ -15,7 +15,8 @@ import {
 } from 'ionicons/icons';
 import { HeaderComponent } from '../../componets/header/header.component';
 import { FooterComponent } from '../../componets/footer/footer.component';
-import { ProductoService } from '../../services/productos/producto-service.service';
+import { ComentsProductComponent } from '../../componets/coments-product/coments-product.component';
+import { GatewayServiciosService } from '../../services/gatewayServicios/gateway-servicios.service';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -29,6 +30,7 @@ import { ProductoService } from '../../services/productos/producto-service.servi
     IonText,
     IonButton,
     IonIcon,
+    ComentsProductComponent,
     HeaderComponent, 
     FooterComponent]
 })
@@ -37,10 +39,11 @@ export class DetalleProductoPage implements OnInit {
   producto: any;
   apartados: number = 0;
   total: number = 0;
+  id: number = 0;
 
   constructor(
     private route: ActivatedRoute,
-    private productoService: ProductoService
+    private servicios: GatewayServiciosService
   ) {
     addIcons({ 
       add,
@@ -66,11 +69,15 @@ export class DetalleProductoPage implements OnInit {
     this.total = parseFloat(this.producto.precio) * this.apartados
   }
 
-  ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+  agregar(){
+    this.servicios.agregarProductoAlCarrito(this.id, this.apartados, this.total)
+  }
 
-    if (!isNaN(id)) {
-      this.producto = this.productoService.getProductoPorId(id);
+  ngOnInit() {
+    this.id = Number(this.route.snapshot.paramMap.get('idProducto'));
+
+    if (!isNaN(this.id)) {
+      this.producto = this.servicios.obtenerProductoPorId(this.id);
     } else {
       console.warn('ID de producto inválido');
     }

@@ -1,0 +1,31 @@
+<ion-card class="prodcuto">
+  <ion-card-content>
+
+    <a [routerLink]="'/detalle-producto/' + producto.id" class="col-imagen">
+      <ion-img class="imagen" [src]="producto.image" [alt]="producto.name"></ion-img>
+    </a>
+
+    <a [routerLink]="'/detalle-producto/' + producto.id" class="col-titulo">
+      <ion-title class="producName">{{ producto.name }}</ion-title>
+    </a>
+
+    <div class="col-detalles">
+      <ion-text>Precio por unidad: {{ producto.precio }}</ion-text>
+      <ion-text>Unidades: {{ unidadesProducto }}</ion-text>
+      <ion-text>Total: ${{ totalProducto }}</ion-text>
+
+      <div class="botones-cantidad">
+        <ion-button class="boton-circular" (click)="sumar()">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+
+        <ion-button class="boton-circular" (click)="restar()">
+          <ion-icon name="remove"></ion-icon>
+        </ion-button>
+      </div>
+
+      <ion-button class="eliminar" (click)="borrarProductoCart()">Eliminar producto</ion-button>
+    </div>
+
+  </ion-card-content>
+</ion-card>
