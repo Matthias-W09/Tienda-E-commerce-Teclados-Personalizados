@@ -30,5 +30,5 @@ export class CartaComentarioComponent{
   @Input() texto: string = '';
   @Input() avatarUrl: string = '';
   @Input() name: string = '';
-  @Input() valoracion: string = '';
+  @Input() valoracion: Number = 0;
 }

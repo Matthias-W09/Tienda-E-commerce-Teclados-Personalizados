@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Observable } from 'rxjs';
 import {GatewayServiciosService} from '../../services/gatewayServicios/gateway-servicios.service';
 import { 
   IonCard, 
@@ -21,6 +22,9 @@ import {
   templateUrl: './carta-carrito.component.html',
   styleUrls: ['./carta-carrito.component.scss'],
   standalone: true,
+  providers: [
+    GatewayServiciosService
+  ],
   imports: [
     IonCard,
     IonCardContent,
@@ -50,7 +54,19 @@ export class CartaCarritoComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.producto = this.servicios.obtenerProductoPorId(this.productoID);
+    if (!isNaN(this.productoID) && this.productoID > 0) {
+    this.servicios.obtenerProductoPorId(this.productoID).subscribe({
+      next: (producto) => {
+        this.producto = producto; // Asignar el producto recibido
+        console.log('Producto cargado:', this.producto);
+      },
+      error: (err) => {
+        console.error('Error al cargar producto:', err);
+      }
+    });
+  } else {
+    console.warn('ID de producto inválido');
+  }
   }
 
   borrarProductoCart() {

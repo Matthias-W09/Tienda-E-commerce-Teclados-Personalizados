@@ -14,6 +14,9 @@ import {GatewayServiciosService} from '../../services/gatewayServicios/gateway-s
   templateUrl: './productos-principal.page.html',
   styleUrls: ['./productos-principal.page.scss'],
   standalone: true,
+  providers: [
+    GatewayServiciosService
+  ],
   imports: [ 
     IonContent, 
     HeaderComponent,
@@ -21,7 +24,7 @@ import {GatewayServiciosService} from '../../services/gatewayServicios/gateway-s
     ProductCardComponent, 
     CommonModule, 
     FormsModule,
-    SelectableListComponent
+    SelectableListComponent,
   ]
 })
 export class ProductosPrincipalPage implements OnInit {
@@ -41,30 +44,31 @@ export class ProductosPrincipalPage implements OnInit {
   }
 
   cargarProductosPorCategoria(categoriaId: number) {
-    this.productos = this.productoService.obtenerPorCategoria(categoriaId);
+    this.productoService.obtenerPorCategoria(categoriaId).subscribe(productos => {
+      this.productos = productos;
+    });
   }
 
   ngOnInit() {
-    this.categorias = this.productoService.obtenerCategorias();
+  this.productoService.obtenerCategorias$().subscribe(categorias => {
+    this.categorias = categorias;
 
-    this.route.queryParams.subscribe(params => {
-      const receivedTitle = params['title'];
+    const receivedTitle = this.route.snapshot.queryParams['title'];
+    if (receivedTitle) {
+      const foundItem = this.categorias.find(item =>
+        item.name.toLowerCase() === receivedTitle.toLowerCase()
+      );
 
-      if (receivedTitle) {
-        const foundItem = this.categorias.find(item =>
-          item.name.toLowerCase() === receivedTitle.toLowerCase()
-        );
-
-        if (foundItem) {
-          this.selectedId = foundItem.id;
-        } else {
-          console.warn(`El título "${receivedTitle}" no existe en categorías.`);
-          this.selectedId = 0;
-        }
+      if (foundItem) {
+        this.selectedId = foundItem.id;
+      } else {
+        console.warn(`El título "${receivedTitle}" no existe en categorías.`);
+        this.selectedId = 0;
       }
+    }
 
-      this.cargarProductosPorCategoria(this.selectedId);
-    });
-  }
+    this.cargarProductosPorCategoria(this.selectedId);
+  });
+}
 }
 

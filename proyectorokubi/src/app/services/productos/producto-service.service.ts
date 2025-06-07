@@ -1,137 +1,52 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
-  private productos = [
-    {
-      id: 1,
-      categoriaId: 1,
-      name: 'KeyCaps Blancas',
-      image: 'assets/images/producto1.jpg',
-      altText: 'Teclas para teclados',
-      stock: 12,
-      precio: '10.00'
-    },
-    {
-      id: 2,
-      categoriaId: 1,
-      name: 'KeyCaps Negras',
-      image: 'assets/images/producto2.jpeg',
-      altText: 'Switches para teclados',
-      stock: 17,
-      precio: '10.00'
-    },
-    {
-      id: 3,
-      categoriaId: 1,
-      name: 'KeyCaps Rojas',
-      image: 'assets/images/producto3.jpg',
-      altText: 'Marco para teclados',
-      stock: 3,
-      precio: '10.00'
-    },
-    {
-      id: 4,
-      categoriaId: 1,
-      name: 'KeyCaps Azules',
-      image: 'assets/images/producto3.jpg',
-      altText: 'Marco para teclados',
-      stock: 25,
-      precio: '10.00'
-    },
-    {
-      id: 5,
-      categoriaId: 1,
-      name: 'KeyCaps Verdes',
-      image: 'assets/images/producto3.jpg',
-      altText: 'Marco para teclados',
-      stock: 10,
-      precio: '10.00'
-    }
-  ];
+  private readonly baseUrl = 'http://localhost:3000/api';
+  private readonly categoriasUrl = `${this.baseUrl}/categories`;
+  private readonly productosUrl = `${this.baseUrl}/products`;
+  private readonly destacadosUrl = `${this.productosUrl}/destacados`;
 
-  private destacados =[
-    {
-      id: 3,
-      categoriaId: 1,
-      name: 'KeyCaps Azules',
-      image: 'assets/images/producto3.jpg',
-      altText: 'Marco para teclados',
-      stock: 25,
-      precio: '10.00'
-    },
-    {
-      id: 4,
-      categoriaId: 1,
-      name: 'KeyCaps Verdes',
-      image: 'assets/images/producto3.jpg',
-      altText: 'Marco para teclados',
-      stock: 10,
-      precio: '10.00'
-    }
-  ]
+  private categoriasSubject = new BehaviorSubject<any[]>([]);
+  categorias$: Observable<any[]> = this.categoriasSubject.asObservable();
 
-  private categorias = [
-    {
-      id: 0,
-      name: 'Todos',
-      image: 'assets/images/producto1.jpg',
-      description: 'Son todos nuestros productos a la venta',
-      altText: 'Teclas para teclados'
-    },
-    {
-      id: 1,
-      name: 'KeyCaps',
-      image: 'assets/images/producto1.jpg',
-      description: 'Son las tapas de las teclas. La parte que tocas con los dedos, normalmente con letras, números o símbolos impresos.',
-      altText: 'Teclas para teclados'
-    },
-    {
-      id: 2,
-      name: 'Switches',
-      image: 'assets/images/producto2.jpeg',
-      description: 'Detectan la pulsación y determinan la sensación (clicky, suave, etc.) y la respuesta del teclado.',
-      altText: 'Switches para teclados'
-    },
-    {
-      id: 3,
-      name: 'Carcasa',
-      image: 'assets/images/producto3.jpg',
-      description: 'Es la estructura externa del teclado. Sostiene todas las partes internas y le da forma, estabilidad y estética al teclado.',
-      altText: 'Marco para teclados'
-    },{
-      id: 4,
-      name: 'Nuevo',
-      image: 'assets/images/producto3.jpg',
-      description: 'Es la estructura externa del teclado. Sostiene todas las partes internas y le da forma, estabilidad y estética al teclado.',
-      altText: 'Marco para teclados'
-    }
-  ];
+  constructor(private http: HttpClient) {}
 
-  getProductos() {
-    return this.productos;
+  // ----- CATEGORÍAS -----
+
+  getCategorias(): Observable<any[]> {
+    return this.http.get<any[]>(this.categoriasUrl);
   }
 
-  getDestacados() {
-    return this.destacados;
+  cargarCategorias(): void {
+    this.http.get<any[]>(this.categoriasUrl).subscribe({
+      next: (data) => this.categoriasSubject.next(data),
+      error: (err) => console.error('Error cargando categorías', err)
+    });
   }
 
-  getdestacadosPorId(id: number) {
-    return this.destacados.find(p => p.id === id);
+  // ----- PRODUCTOS -----
+
+  getProductos(): Observable<any[]> {
+    return this.http.get<any[]>(this.productosUrl);
   }
 
-  getCategorias(): any[] {
-    return this.categorias;
+  getProductoPorId(id: number): Observable<any> {
+    return this.http.get<any>(`${this.productosUrl}/${id}`);
   }
 
-  getProductoPorId(id: number) {
-    return this.productos.find(p => p.id === id);
+  getProductosPorCategoria(categoriaId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.productosUrl}/categoria/${categoriaId}`);
   }
 
-  getProductosPorCategoria(categoriaId: number): any[] {
-    if (categoriaId === 0) return this.productos;
-    return this.productos.filter(p => p.categoriaId === categoriaId);
+  // ----- DESTACADOS -----
+
+  getDestacados(): Observable<any[]> {
+    const id = 3; // Valor fijo para obtener destacados
+    return this.http.get<any[]>(`${this.destacadosUrl}/${id}`);
   }
 }

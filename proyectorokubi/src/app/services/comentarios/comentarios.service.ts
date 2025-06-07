@@ -1,45 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComentariosService {
+  private readonly baseUrl = 'http://localhost:3000/api';
+  private readonly commentUrl = `${this.baseUrl}/comment`;
 
-  comentarios = [
-    {
-      idComentario:0,
-      idProduc:1,
-      nameUsuario: 'Ben Dover',
-      avatar:'assets/images/producto2.jpeg',
-      nameProducto: 'Teclado perosonalizado', 
-      textoComentario:'Más que un teclado, una sensación',
-      valoracion:'5 Estrellas'
-    },
-    {
-      idComentario:1,
-      idProduc:1,
-      nameUsuario: 'Anita Dick',
-      avatar:'assets/images/producto2.jpeg',
-      nameProducto: 'Switch tactile blanco',
-      textoComentario:'Una locura estos switches, nunca había sentido algo asi',
-      valoracion:'4.5 Estrellas'
-    },
-    {
-      idComentario:2,
-      idProduc:2,
-      nameUsuario: 'Dixon Mayas',
-      avatar:'assets/images/producto2.jpeg',
-      nameProducto: 'Teclado perosonalizado', 
-      textoComentario:'Teclado bueno, le encantó a mi nieto',
-      valoracion:'5 Estrellas'
-    }
-  ]
+  constructor(private http: HttpClient) {}
 
-  getComent() {
-    return this.comentarios;
+  getComent(): Observable<any[]>  {
+    return this.http.get<any[]>(this.commentUrl);
   }
 
-  getComentsId(id:number){
-    return this.comentarios.filter(comentarios => comentarios.idProduc === id);
+  getComentsId(id:number): Observable<any> {
+    return this.http.get<any>(`${this.commentUrl}/product/${id}`);
   }
 }

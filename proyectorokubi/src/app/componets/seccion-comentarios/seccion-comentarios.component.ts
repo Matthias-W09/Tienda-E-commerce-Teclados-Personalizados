@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 import { CartaComentarioComponent } from '../../componets/carta-comentario/carta-comentario.component'
 import {GatewayServiciosService} from '../../services/gatewayServicios/gateway-servicios.service';
 import { IonTitle } from '@ionic/angular/standalone';
@@ -9,6 +10,9 @@ import { IonTitle } from '@ionic/angular/standalone';
   templateUrl: './seccion-comentarios.component.html',
   styleUrls: ['./seccion-comentarios.component.scss'],
   standalone: true,
+    providers: [
+      GatewayServiciosService
+    ],
   imports: [
     IonTitle,
     CommonModule,
@@ -21,7 +25,10 @@ export class SeccionComentariosComponent  implements OnInit {
 
   constructor(private comentariosService: GatewayServiciosService) { }
 
-  ngOnInit() {
-    this.comentarios = this.comentariosService.obtenerComentarios();
-  }
+ngOnInit() {
+  this.comentariosService.obtenerComentarios().subscribe(data => {
+    this.comentarios = data;
+    console.log('Categorías cargadas:', this.comentariosService);
+  });
+}
 }

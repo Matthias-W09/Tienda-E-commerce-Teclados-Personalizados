@@ -15,6 +15,9 @@ import {GatewayServiciosService} from '../../services/gatewayServicios/gateway-s
   templateUrl: './inicio-admin.page.html',
   styleUrls: ['./inicio-admin.page.scss'],
   standalone: true,
+  providers: [
+    GatewayServiciosService
+  ],
   imports: [ 
     IonContent, 
     CommonModule, 

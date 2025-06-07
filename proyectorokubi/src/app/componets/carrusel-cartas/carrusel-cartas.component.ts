@@ -4,12 +4,17 @@ import { ProductCardComponent} from '../../componets/carta-dinamica/carta-dinami
 import { GatewayServiciosService } from '../../services/gatewayServicios/gateway-servicios.service';
 import { IonGrid, IonButton, IonIcon} from '@ionic/angular/standalone';
 import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonTitle} from '@ionic/angular/standalone';
+import { ProductoService } from 'src/app/services/productos/producto-service.service';
 
 @Component({
   selector: 'app-carrusel-cartas',
   templateUrl: './carrusel-cartas.component.html',
   styleUrls: ['./carrusel-cartas.component.scss'],
   standalone: true,
+  providers: [
+    GatewayServiciosService,
+    ProductoService,
+  ],
   imports: [
     IonTitle,
     IonCard,
@@ -29,10 +34,12 @@ export class CarruselCartasComponent  implements OnInit {
 
   constructor(private servicios: GatewayServiciosService){}
   
-  ngOnInit() {
-    this.categorias = this.servicios.obtenerCategorias();
-    setInterval(() => this.next(), 5000);
-  }
+ngOnInit() {
+  this.servicios.obtenerCategorias$().subscribe(data => {
+    this.categorias = data;
+    console.log('Categorías cargadas:', this.categorias);
+  });
+}
 
   cardWidth = 300 + 24; // 300px card + 24px approx gap
   visibleCards = 4;

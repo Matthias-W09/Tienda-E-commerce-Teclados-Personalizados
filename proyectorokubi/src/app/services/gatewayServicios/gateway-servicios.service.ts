@@ -4,6 +4,8 @@ import { ProductoService } from '../../services/productos/producto-service.servi
 import { ComentariosService } from '../../services/comentarios/comentarios.service';
 import { CarritoService } from '../../services/carrito/carrito.service';
 import { FormConfigService } from '../../services/forms/form-config.service';
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +15,8 @@ export class GatewayServiciosService {
     private productoService: ProductoService,
     private comentarioService: ComentariosService,
     private formularioService: FormConfigService,
-    private carritoService: CarritoService
+    private carritoService: CarritoService,
+    private http: HttpClient
   ) {}
 
   // funciones productos
@@ -21,16 +24,20 @@ export class GatewayServiciosService {
     return this.productoService.getProductos();
   }
 
-  obtenerProductoPorId(id: number) {
+  obtenerProductoPorId(id: number): Observable<any> {
     return this.productoService.getProductoPorId(id);
   }
 
-  obtenerDestacados() {
+  obtenerDestacados(): Observable<any[]> {
     return this.productoService.getDestacados();
   }
 
-  obtenerCategorias() {
+  obtenerCategorias$(): Observable<any[]> {
     return this.productoService.getCategorias();
+  }
+
+  cargarCategorias(): void {
+    this.productoService.cargarCategorias();
   }
 
   obtenerPorCategoria(id: number) {
@@ -38,11 +45,11 @@ export class GatewayServiciosService {
   }
 
   //Funciones comentarios
-  obtenerComentarios() {
+  obtenerComentarios(): Observable<any[]> {
     return this.comentarioService.getComent();
   }
 
-  obtenerComentariosPorProducto(id: number) {
+  obtenerComentariosPorProducto(id: number): Observable<any[]> {
     return this.comentarioService.getComentsId(id);
   }
 

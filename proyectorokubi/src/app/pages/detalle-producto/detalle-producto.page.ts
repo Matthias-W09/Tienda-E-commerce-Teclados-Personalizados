@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { 
   IonContent, 
   IonTitle, 
@@ -23,6 +24,9 @@ import { GatewayServiciosService } from '../../services/gatewayServicios/gateway
   templateUrl: './detalle-producto.page.html',
   styleUrls: ['./detalle-producto.page.scss'],
   standalone: true,
+  providers: [
+    GatewayServiciosService
+  ],
   imports: [
     IonContent, 
     IonTitle, 
@@ -74,13 +78,21 @@ export class DetalleProductoPage implements OnInit {
   }
 
   ngOnInit() {
-    this.id = Number(this.route.snapshot.paramMap.get('idProducto'));
+  this.id = Number(this.route.snapshot.paramMap.get('idProducto'));
 
-    if (!isNaN(this.id)) {
-      this.producto = this.servicios.obtenerProductoPorId(this.id);
-    } else {
-      console.warn('ID de producto inválido');
-    }
+  if (!isNaN(this.id)) {
+    this.servicios.obtenerProductoPorId(this.id).subscribe({
+      next: (producto) => {
+        this.producto = producto; // Asignar el producto recibido
+        console.log('Producto cargado:', this.producto);
+      },
+      error: (err) => {
+        console.error('Error al cargar producto:', err);
+      }
+    });
+  } else {
+    console.warn('ID de producto inválido');
   }
+}
 }
 
