@@ -3,7 +3,7 @@
 
     <div slot="start" class="logo-title-container">
       <img src="assets/images/image.png" alt="Logo Robuki" routerLink="/landing" class="logo">
-      <ion-title routerLink="/landing">Robuki</ion-title>
+      <ion-title (click)=desloguear() routerLink="/landing">Robuki</ion-title>
     </div>
 
     <div class="barraBuscar">
@@ -11,7 +11,7 @@
     </div>
     
     <div class="secciones">
-      <ion-icon name="log-in" routerLink="/inicio-sesion"></ion-icon>
+      <ion-icon name="log-in" [routerLink]='ruta' (click)=accionSegunLogin()></ion-icon>
       <ion-icon name="cart" routerLink="/carrito"></ion-icon>
     </div>
 

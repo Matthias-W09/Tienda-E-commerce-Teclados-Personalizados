@@ -25,6 +25,22 @@ export class GatewayServiciosService {
     return this.usuariosService.nuevoUsuario(data);
   }
 
+  loginUsuario(data: { mail: string, password: string }) {
+    return this.usuariosService.login(data.mail, data.password);
+  }
+
+  logoutUsuario() {
+    return this.usuariosService.logout();
+  }
+
+  estaLogueado(): boolean {
+    return this.usuariosService.estaLogueado();
+  }
+
+  deslogearUsuario() {
+    this.usuariosService.logout();
+  }
+
   // funciones productos
   obtenerProductos() {
     return this.productoService.getProductos();

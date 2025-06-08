@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { GatewayServiciosService } from '../../services/gatewayServicios/gateway-servicios.service';
 import { HeaderComponent } from '../../componets/header/header.component';
 import { FooterComponent } from '../../componets/footer/footer.component';
 
@@ -11,6 +12,36 @@ import { FooterComponent } from '../../componets/footer/footer.component';
   templateUrl: './inicio-sesion.page.html',
   styleUrls: ['./inicio-sesion.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterModule, HeaderComponent, FooterComponent]
+  imports: [
+    IonicModule,
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    HeaderComponent,
+    FooterComponent
+  ]
 })
-export class InicioSesionPage {}
+export class InicioSesionPage {
+  loginForm: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private servicio: GatewayServiciosService,
+    private router: Router
+  ) {
+    this.loginForm = this.fb.group({
+      mail: ['', [Validators.required]],
+      password: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const credentials = this.loginForm.value;
+      this.servicio.loginUsuario(credentials);
+    } else {
+      console.log('Formulario inválido');
+      this.loginForm.markAllAsTouched();
+    }
+  }
+}
