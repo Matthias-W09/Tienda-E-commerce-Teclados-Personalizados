@@ -42,7 +42,7 @@ export class InicioAdminPage {
   currentFormType: string | null = null;
   formData: any = {};
 
-  constructor(public formConfig: GatewayServiciosService) {}
+  constructor(public servicio: GatewayServiciosService) {}
 
   onItemSelected(itemId: number) {
     const selectedItem = this.listItems.find(item => item.id === itemId);
@@ -63,8 +63,23 @@ export class InicioAdminPage {
     }
   }
 
-  private guardarProducto(producto: any) {
-    console.log('Guardando producto:', producto);
+  private guardarProducto(data: any) {
+    const producto = {
+      name: data.nombre,
+      categoria: data.categoria,
+      descripcion: data.descripcion,
+      stock: data.stock,
+      precio: data.precio,
+    };
+
+    this.servicio.nuevoProducto(producto).subscribe({
+      next: (respuesta) => {
+        console.log('Producto guardado correctamente:', respuesta);
+      },
+      error: (error) => {
+        console.error('Error al guardar el producto:', error);
+      }
+    });
   }
 
   private guardarPromocion(promocion: any) {

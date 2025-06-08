@@ -5,17 +5,17 @@
     <div class="filaUno">
       <div class="imagen">
         <div class="img-wrapper">
-          <ion-img [src]="producto.image"></ion-img>
+          <ion-img [src]="producto?.image"></ion-img>
         </div>
       </div>
 
       <div class="infoProduct">
-        <ion-title>{{ producto.name }}</ion-title>
+        <ion-title>{{ producto?.name }}</ion-title>
 
-        <ion-text class="descripcion">Descripción: {{ producto.altText }}</ion-text>
-        <ion-text class="descripcion">Precio por unidad: ${{ producto.precio }}</ion-text>
+        <ion-text class="descripcion">Descripción: {{ producto?.altText }}</ion-text>
+        <ion-text class="descripcion">Precio por unidad: ${{ producto?.precio }}</ion-text>
         <ion-text class="descripcion">Compatibilidades: proximante</ion-text>
-        <ion-text class="descripcion">Stock disponible: {{ producto.stock }}</ion-text>
+        <ion-text class="descripcion">Stock disponible: {{ producto?.stock }}</ion-text>
         
         <div class="botones">
 

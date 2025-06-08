@@ -43,6 +43,10 @@ export class ProductoService {
     return this.http.get<any[]>(`${this.productosUrl}/categoria/${categoriaId}`);
   }
 
+  agregarProducto(producto: any): Observable<any> {
+    return this.http.post(`${this.productosUrl}/addProduct`, producto);
+  }
+
   // ----- DESTACADOS -----
 
   getDestacados(): Observable<any[]> {

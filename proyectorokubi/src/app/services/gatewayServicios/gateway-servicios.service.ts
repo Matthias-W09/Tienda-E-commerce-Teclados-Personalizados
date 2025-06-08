@@ -36,6 +36,10 @@ export class GatewayServiciosService {
     return this.productoService.getCategorias();
   }
 
+  nuevoProducto(producto: any): Observable<any[]> {
+    return this.productoService.agregarProducto(producto);
+  }
+
   cargarCategorias(): void {
     this.productoService.cargarCategorias();
   }

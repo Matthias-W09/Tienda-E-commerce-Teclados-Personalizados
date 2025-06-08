@@ -10,10 +10,10 @@
         <app-product-card 
           *ngFor="let categoria of categorias"
           [urlPage]="'/productos-principal'"
-          [title]="categoria.name"
-          [imageUrl]="categoria.image"
-          [description]="categoria.description"
-          [altText]="categoria.altText"
+          [title]="categoria?.name"
+          [imageUrl]="categoria?.image"
+          [description]="categoria?.description"
+          [altText]="categoria?.altText"
           [showDescription]="true">
         </app-product-card>
       </div>

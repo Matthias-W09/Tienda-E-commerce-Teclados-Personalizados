@@ -3,15 +3,16 @@ import { FormField } from '../../form-field.interface';
 
 @Injectable({ providedIn: 'root' })
 export class FormConfigService {
+
+  private apiUrl = 'http://localhost:3000/api/products';
+
   private formConfigs: { [key: string]: FormField[] } = {
     producto: [
       { name: 'nombre', label: 'Nombre', type: 'text', required: true },
-      { name: 'codigo', label: 'Codigo', type: 'text', required: true },
-      { name: 'precio', label: 'Precio', type: 'number', required: true },
+      { name: 'categoria', label: 'categoria', type:'text', required: true},
       { name: 'descripcion', label: 'Descripción', type: 'textarea'},
       { name: 'stock', label: 'Stock', type: 'number'},
-      { name: 'categoria', label: 'Categoria', type: 'textarea', required: true },
-      { name: 'compatibilidades', label: 'Compatibilidades', type: 'textarea'},
+      { name: 'precio', label: 'Precio', type: 'number', required: true }
     ],
     promocion: [
       { name: 'codigo', label: 'Código', type: 'text'},

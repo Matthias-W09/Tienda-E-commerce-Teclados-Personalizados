@@ -6,11 +6,11 @@
   
     <app-carta-comentario
       *ngFor="let coment of comentarios"
-      [producName]="coment.nameProducto"
-      [texto]="coment.textoComentario"
-      [avatarUrl]="coment.avatar"
-      [name]="coment.nameUsuario"
-      [valoracion]="coment.valoracion">
+      [producName]="coment?.nameProducto"
+      [texto]="coment?.textoComentario"
+      [avatarUrl]="coment?.avatar"
+      [name]="coment?.nameUsuario"
+      [valoracion]="coment?.valoracion">
     </app-carta-comentario>
   </div>
 </div>

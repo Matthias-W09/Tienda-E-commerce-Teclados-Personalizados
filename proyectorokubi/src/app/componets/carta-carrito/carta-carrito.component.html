@@ -1,16 +1,16 @@
 <ion-card class="prodcuto">
   <ion-card-content>
 
-    <a [routerLink]="'/detalle-producto/' + producto.id" class="col-imagen">
-      <ion-img class="imagen" [src]="producto.image" [alt]="producto.name"></ion-img>
+    <a [routerLink]="'/detalle-producto/' + producto?.id" class="col-imagen">
+      <ion-img class="imagen" [src]="producto?.image" [alt]="producto?.name"></ion-img>
     </a>
 
-    <a [routerLink]="'/detalle-producto/' + producto.id" class="col-titulo">
-      <ion-title class="producName">{{ producto.name }}</ion-title>
+    <a [routerLink]="'/detalle-producto/' + producto?.id" class="col-titulo">
+      <ion-title class="producName">{{ producto?.name }}</ion-title>
     </a>
 
     <div class="col-detalles">
-      <ion-text>Precio por unidad: {{ producto.precio }}</ion-text>
+      <ion-text>Precio por unidad: {{ producto?.precio }}</ion-text>
       <ion-text>Unidades: {{ unidadesProducto }}</ion-text>
       <ion-text>Total: ${{ totalProducto }}</ion-text>
 

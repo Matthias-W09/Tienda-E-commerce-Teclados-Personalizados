@@ -8,10 +8,10 @@
       <div class="carousel-track" [style.transform]="'translateX(-' + currentOffset + 'px)'">
         <app-carta-destacado
           *ngFor="let producto of destacados"
-          [urlPage]="'/detalle-producto/' + producto.id"
-          [title]="producto.name"
-          [imageUrl]="producto.image"
-          [altText]="producto.altText">
+          [urlPage]="'/detalle-producto/' + producto?.id"
+          [title]="producto?.name"
+          [imageUrl]="producto?.image"
+          [altText]="producto?.altText">
         </app-carta-destacado>
       </div>
     </div>
