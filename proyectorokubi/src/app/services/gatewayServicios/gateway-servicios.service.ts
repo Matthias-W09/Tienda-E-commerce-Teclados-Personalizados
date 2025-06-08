@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UsuariosService } from '../../services/usuarios/usuarios.service';
 import { ProductoService } from '../../services/productos/producto-service.service';
 import { ComentariosService } from '../../services/comentarios/comentarios.service';
 import { CarritoService } from '../../services/carrito/carrito.service';
@@ -15,9 +16,14 @@ export class GatewayServiciosService {
     private productoService: ProductoService,
     private comentarioService: ComentariosService,
     private formularioService: FormConfigService,
+    private usuariosService: UsuariosService,
     private carritoService: CarritoService,
     private http: HttpClient
   ) {}
+  // funciones Usuarios
+  registrarUsuario(data: any): Observable<any[]> {
+    return this.usuariosService.nuevoUsuario(data);
+  }
 
   // funciones productos
   obtenerProductos() {
