@@ -41,6 +41,10 @@ export class GatewayServiciosService {
     this.usuariosService.logout();
   }
 
+  rolUsuario(){
+    return this.usuariosService.obtenerRol();
+  }
+
   // funciones productos
   obtenerProductos() {
     return this.productoService.getProductos();

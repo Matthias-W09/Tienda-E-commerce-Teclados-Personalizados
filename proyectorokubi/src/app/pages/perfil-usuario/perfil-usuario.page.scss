@@ -1,0 +1,58 @@
+ion-content {
+    --background: #198089;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Usamos viewport height como base */
+    overflow: hidden;
+  
+    .admin-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0; /* Importante para flexbox */
+        overflow: hidden;
+
+        .page-title {
+            color: #F7DAB2;
+            margin: 3.5rem 0 1rem;
+            padding: 0 1rem;
+            text-align: center;
+            flex-shrink: 0; /* Evita que se encoja */
+        }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            min-height: 0; /* Crucial para el cálculo flexible */
+            overflow: hidden;
+        }
+
+        .main-content {
+            flex: 1;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            background: #198089;
+            max-width: 75%;
+            border-radius: 20px 0 0 0;
+            height: 100%;
+            overflow-y: auto;
+      
+            .placeholder-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                color: #F7DAB2;
+                text-align: center;
+      
+                ion-icon {
+                    font-size: 48px;
+                    margin-bottom: 16px;
+                    color: #F7DAB2;
+                }
+            }
+        }
+    }
+}

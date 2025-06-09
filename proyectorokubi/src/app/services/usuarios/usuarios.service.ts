@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -12,6 +12,36 @@ export class UsuariosService {
   private readonly usuariosUrl = `${this.baseUrl}/usuarios`;
 
   constructor(private http: HttpClient) { }
+
+  private guardarToken(token: string): void {
+    localStorage.setItem(TOKEN_KEY, token);
+  }
+
+  private borrarToken(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('rol');
+    localStorage.removeItem('id');
+    localStorage.removeItem('name');
+  }
+
+  private setUsuario() {
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    this.http.get<{ usuario: { id: number, name: string, rol: number } }>(
+      `${this.usuariosUrl}/setUsuario`,
+      { headers } // 👈 Esto es importante
+    ).subscribe(res => {
+      const { rol, id, name } = res.usuario;
+
+      localStorage.setItem('rol', rol.toString());
+      localStorage.setItem('id', id.toString());
+      localStorage.setItem('name', name);
+    });
+  }
 
   nuevoUsuario(usuario: any): Observable<any> {
     return this.http.post(`${this.usuariosUrl}/NuevoUsuario`, usuario);
@@ -28,27 +58,25 @@ export class UsuariosService {
           console.error('Error en login', err);
         }
       });
+    this.setUsuario();
   }
 
   logout() {
     this.borrarToken();
-    // Redirigir o actualizar UI
-  }
-
-  
-  guardarToken(token: string): void {
-    localStorage.setItem(TOKEN_KEY, token);
   }
 
   obtenerToken(): string | null {
     return localStorage.getItem(TOKEN_KEY);
   }
 
-  borrarToken(): void {
-    localStorage.removeItem(TOKEN_KEY);
+  obtenerRol(): number | null {
+    return Number(localStorage.getItem('rol'));
   }
 
   estaLogueado(): boolean {
     return !!this.obtenerToken();
   }
+
+
+
 }

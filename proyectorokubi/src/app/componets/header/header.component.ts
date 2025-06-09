@@ -8,7 +8,8 @@ import {
 import { addIcons } from 'ionicons';
 import { 
   cart, 
-  logIn
+  logIn,
+  logOut
 } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
@@ -32,17 +33,13 @@ import { GatewayServiciosService } from '../../services/gatewayServicios/gateway
 })
 export class HeaderComponent  implements OnInit {
 
-  tof: boolean = false; // Variable para verificar si el usuario está logueado
-  ruta: string = ''; // Ruta a la que se redirigirá al usuario
-
-  idUsuario : number = 0; //constante para pruebas
   constructor(    
     private servicio: GatewayServiciosService,
-    private router: Router
   ) { 
     addIcons({ 
       cart, 
-      logIn
+      logIn,
+      logOut
     });
   }
 
@@ -51,23 +48,22 @@ export class HeaderComponent  implements OnInit {
   }
 
   ngOnInit() {
-    // Verificamos si el usuario está logueado al iniciar el componente
-    this.tof = this.servicio.estaLogueado();
-    this.accionSegunLogin();
+
   }
 
-  accionSegunLogin() {
-  if (this.tof) {
-    this.ruta = '/inicio-admin';
-  } else {
-    this.ruta = '/inicio-sesion';
+  get rutaUsuario() {
+    if(!this.servicio.estaLogueado()){
+      return '/inicio-sesion';
+    }
+    const rol = this.servicio.rolUsuario();
+    if(rol === 0){
+      return '/inicio-admin';
+    }
+
+    return '/perfil-usuario';
   }
-}
 
   desloguear() {
     this.servicio.logoutUsuario();
-    this.tof = false; // Actualizamos el estado de logueo
-    this.accionSegunLogin(); // Actualizamos la ruta según el estado de logueo
   }
-
 }
