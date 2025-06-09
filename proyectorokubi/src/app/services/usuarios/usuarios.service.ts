@@ -77,7 +77,7 @@ export class UsuariosService {
     return !this.obtenerToken();
   }
 
-  rutaUsuario(): String{
+  rutaUsuario(): string{
     if(!this.estaLogueado()){
       return '/inicio-sesion';
     }
