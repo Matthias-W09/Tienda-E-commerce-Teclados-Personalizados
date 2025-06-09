@@ -74,9 +74,19 @@ export class UsuariosService {
   }
 
   estaLogueado(): boolean {
-    return !!this.obtenerToken();
+    return !this.obtenerToken();
   }
 
+  rutaUsuario(): String{
+    if(!this.estaLogueado()){
+      return '/inicio-sesion';
+    }
+    const rol = this.obtenerRol();
 
+    if(rol === 1){
+      return '/inicio-admin';
+    }
 
+    return '/perfil-usuario';
+  }
 }

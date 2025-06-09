@@ -41,8 +41,8 @@ export class GatewayServiciosService {
     this.usuariosService.logout();
   }
 
-  rolUsuario(){
-    return this.usuariosService.obtenerRol();
+  rutaUsuario(){
+    return this.usuariosService.rutaUsuario();
   }
 
   // funciones productos

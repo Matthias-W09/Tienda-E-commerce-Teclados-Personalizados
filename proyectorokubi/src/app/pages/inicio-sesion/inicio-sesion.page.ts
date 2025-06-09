@@ -27,12 +27,15 @@ export class InicioSesionPage {
   constructor(
     private fb: FormBuilder,
     private servicio: GatewayServiciosService,
-    private router: Router
   ) {
     this.loginForm = this.fb.group({
       mail: ['', [Validators.required]],
       password: ['', Validators.required]
     });
+  }
+
+  get ruta(){
+    return this.servicio.rutaUsuario();
   }
 
   onSubmit() {

@@ -51,16 +51,8 @@ export class HeaderComponent  implements OnInit {
 
   }
 
-  get rutaUsuario() {
-    if(!this.servicio.estaLogueado()){
-      return '/inicio-sesion';
-    }
-    const rol = this.servicio.rolUsuario();
-    if(rol === 0){
-      return '/inicio-admin';
-    }
-
-    return '/perfil-usuario';
+  get ruta(){
+    return this.servicio.rutaUsuario();
   }
 
   desloguear() {
