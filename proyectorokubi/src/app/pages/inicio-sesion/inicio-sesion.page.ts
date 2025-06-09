@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
@@ -21,21 +22,32 @@ import { FooterComponent } from '../../componets/footer/footer.component';
     FooterComponent
   ]
 })
-export class InicioSesionPage {
+export class InicioSesionPage implements OnDestroy {
   loginForm: FormGroup;
+  private subs: Subscription = new Subscription();
 
   constructor(
     private fb: FormBuilder,
     private servicio: GatewayServiciosService,
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       mail: ['', [Validators.required]],
       password: ['', Validators.required]
     });
+
+    this.subs.add(
+      this.servicio.usuario$.subscribe(usuario => {
+        if (usuario) {
+          const ruta = this.servicio.rutaUsuario();
+          this.router.navigateByUrl(ruta);
+        }
+      })
+    );
   }
 
-  get ruta(){
-    return this.servicio.rutaUsuario();
+  ngOnDestroy() {
+    this.subs.unsubscribe(); // Limpieza al salir del componente
   }
 
   onSubmit() {

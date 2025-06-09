@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { 
   IonHeader, 
   IonToolbar, 
@@ -32,6 +33,8 @@ import { GatewayServiciosService } from '../../services/gatewayServicios/gateway
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent  implements OnInit {
+  private subs = new Subscription();
+  usuario: any | null = null;
 
   constructor(    
     private servicio: GatewayServiciosService,
@@ -48,7 +51,11 @@ export class HeaderComponent  implements OnInit {
   }
 
   ngOnInit() {
-
+    this.subs.add(
+      this.servicio.usuario$.subscribe(u => {
+        this.usuario = u;
+      })
+    );
   }
 
   get ruta(){

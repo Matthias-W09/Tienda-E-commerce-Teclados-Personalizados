@@ -5,7 +5,6 @@ import { ProductoService } from '../../services/productos/producto-service.servi
 import { ComentariosService } from '../../services/comentarios/comentarios.service';
 import { CarritoService } from '../../services/carrito/carrito.service';
 import { FormConfigService } from '../../services/forms/form-config.service';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,6 @@ export class GatewayServiciosService {
     private formularioService: FormConfigService,
     private usuariosService: UsuariosService,
     private carritoService: CarritoService,
-    private http: HttpClient
   ) {}
   // funciones Usuarios
   registrarUsuario(data: any): Observable<any[]> {
@@ -43,6 +41,10 @@ export class GatewayServiciosService {
 
   rutaUsuario(){
     return this.usuariosService.rutaUsuario();
+  }
+
+  get usuario$() {
+    return this.usuariosService.usuario$;
   }
 
   // funciones productos
