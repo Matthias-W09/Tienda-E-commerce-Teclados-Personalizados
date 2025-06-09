@@ -1,7 +1,18 @@
 # Presentado por:
 - Carlos Aguirre  
 - Javier Donetch  
-- Matías Romero  
+- Matías Romero
+  
+---
+> ⚠️ **Nota importante:**  
+> Debido a problemas técnicos con los equipos personales de algunos integrantes, surgieron complicaciones para ejecutar correctamente el entorno de desarrollo unificado. Considerando los tiempos limitados de entrega, se creó un nuevo repositorio que contiene **todos los archivos necesarios para la Entrega 2**, organizados y funcionales para su evaluación.  
+>  
+> 📦 Repositorio complementario para la Entrega 2 (incluye frontend, backend y demás archivos clave):  
+> 👉 [https://github.com/donetch/ApiPrueba.git](https://github.com/donetch/ApiPrueba.git)  
+>  
+> 💡 **Nota adicional:**  
+> El frontend original se mantiene disponible y funcional en este repositorio principal, tanto en la rama principal como en otras branches.
+---
 
 # Tienda-E-commerce-Teclados-Personalizados
 
