@@ -5,7 +5,7 @@
   
 ---
 > ⚠️ **Nota importante:**  
-> Debido a problemas técnicos con los equipos personales de algunos integrantes, surgieron complicaciones para ejecutar correctamente el entorno de desarrollo unificado. Considerando los tiempos limitados de entrega, se creó un nuevo repositorio que contiene **todos los archivos necesarios para la Entrega 2**, organizados y funcionales para su evaluación.  
+> Debido a problemas técnicos con los equipos personales de algunos integrantes, surgieron complicaciones para ejecutar correctamente el entorno de desarrollo unificado. Considerando los tiempos limitados de entrega, se creó un nuevo repositorio que contiene **todos los archivos necesarios para la Entrega 2**, para su evaluación.  
 >  
 > 📦 Repositorio complementario para la Entrega 2 (incluye frontend, backend y demás archivos clave):  
 > 👉 [https://github.com/donetch/ApiPrueba.git](https://github.com/donetch/ApiPrueba.git)  
