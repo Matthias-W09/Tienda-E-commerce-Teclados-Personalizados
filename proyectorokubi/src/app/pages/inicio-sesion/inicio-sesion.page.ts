@@ -26,7 +26,7 @@ export class InicioSesionPage implements OnDestroy {
   loginForm: FormGroup;
   private subs: Subscription = new Subscription();
 
-  constructor(
+    constructor(
     private fb: FormBuilder,
     private servicio: GatewayServiciosService,
     private router: Router
@@ -36,14 +36,14 @@ export class InicioSesionPage implements OnDestroy {
       password: ['', Validators.required]
     });
 
+    // Escuchar directamente la ruta
     this.subs.add(
-      this.servicio.usuario$.subscribe(usuario => {
-        if (usuario) {
-          const ruta = this.servicio.rutaUsuario();
+      this.servicio.rutaUsuario$.subscribe(ruta => {
+        if (ruta !== '/inicio-sesion') {
           this.router.navigateByUrl(ruta);
         }
       })
-    );
+    )
   }
 
   ngOnDestroy() {

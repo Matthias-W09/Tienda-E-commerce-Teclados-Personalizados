@@ -43,8 +43,8 @@ export class GatewayServiciosService {
     return this.usuariosService.rutaUsuario();
   }
 
-  get usuario$() {
-    return this.usuariosService.usuario$;
+  get rutaUsuario$() {
+    return this.usuariosService.rutaUsuario$;
   }
 
   // funciones productos

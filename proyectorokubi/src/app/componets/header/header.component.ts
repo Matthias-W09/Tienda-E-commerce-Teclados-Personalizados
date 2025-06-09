@@ -33,7 +33,7 @@ import { GatewayServiciosService } from '../../services/gatewayServicios/gateway
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent  implements OnInit {
-  private subs = new Subscription();
+  rutaUsuario$ = this.servicio.rutaUsuario$;
   usuario: any | null = null;
 
   constructor(    
@@ -51,11 +51,7 @@ export class HeaderComponent  implements OnInit {
   }
 
   ngOnInit() {
-    this.subs.add(
-      this.servicio.usuario$.subscribe(u => {
-        this.usuario = u;
-      })
-    );
+
   }
 
   get ruta(){

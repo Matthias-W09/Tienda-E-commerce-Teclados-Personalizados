@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 interface Usuario {
   id: number;
@@ -19,6 +20,18 @@ export class UsuariosService {
 
   private usuarioSubject = new BehaviorSubject<Usuario | null>(null);
   usuario$ = this.usuarioSubject.asObservable();
+
+  rutaUsuario$ = this.usuarioSubject.asObservable().pipe(
+    map(usuario => {
+      if (!usuario) {
+        return '/inicio-sesion';
+      }
+      if (usuario.rol === 0) {
+        return '/inicio-admin';
+      }
+      return '/perfil-usuario';
+    })
+  );
 
   constructor(private http: HttpClient) {
     this.cargarUsuarioDesdeToken(); 
@@ -50,14 +63,14 @@ export class UsuariosService {
         localStorage.setItem('rol', usuario.rol.toString());
         localStorage.setItem('id', usuario.id.toString());
         localStorage.setItem('name', usuario.name);
-        this.usuarioSubject.next(usuario); // 🔥 actualiza el estado reactivo
+        this.usuarioSubject.next(usuario);
       });
   }
 
   private cargarUsuarioDesdeToken() {
     const token = localStorage.getItem(TOKEN_KEY);
     if (token) {
-      this.setUsuario(); // Si hay token, intenta cargar el usuario
+      this.setUsuario();
     }
   }
 
@@ -91,7 +104,7 @@ export class UsuariosService {
   }
 
   estaLogueado(): boolean {
-    return !this.obtenerToken();
+    return !!this.obtenerToken();
   }
 
   rutaUsuario(): string{
