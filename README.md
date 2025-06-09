@@ -10,11 +10,13 @@
 ## Índice
 
 1. [Resumen del Proyecto](#resumen-del-proyecto)  
-2. [Requerimientos](#requerimientos)  
-3. [Arquitectura de la Información](#arquitectura-de-la-información)  
-4. [Diseño de prototipos](#prototipo-de-diseño)  
-5. [Librerías en Angular](#librerías-usadas-con-angular)  
-6. [Tecnologías](#tecnologías)
+2. [Actualizaciones Realizadas](#actualizaciones-realizadas)  
+3. [Requerimientos](#requerimientos)  
+4. [Arquitectura de la Información](#flujos-de-navegación-del-landing-page)  
+5. [Diseño de Prototipos](#prototipo-de-diseño)  
+6. [Librerías Usadas](#librerías-usadas)  
+7. [Tecnologías](#tecnologías-utilizadas)  
+8. [Instalación](#instalación)
 
 ---
 
@@ -26,6 +28,16 @@ El proyecto está orientado a ofrecer una experiencia interactiva tanto para el 
 
 Esta entrega contempla el diseño de la arquitectura, definición de requerimientos, prototipado en Figma y desarrollo de la estructura inicial del frontend.
 
+---
+## 🔄 Actualizaciones realizadas
+
+- Se implementó un backend con Node.js y Express para el manejo de autenticación, usuarios y productos.
+- Se añadió autenticación con tokens JWT y almacenamiento seguro del token en Ionic Storage.
+- Se conectó el frontend de Angular con el backend mediante servicios HTTP.
+- Se añadieron validaciones en los formularios de registro e inicio de sesión.
+- Se creó un módulo de autenticación en Angular, separado y reutilizable.
+- Se mejoró la gestión de estado del usuario autenticado.
+- Se desarrolló un panel administrativo básico para la gestión de productos y promociones.
 ---
 
 ## Requerimientos
@@ -233,21 +245,42 @@ link de apoyo https://www.canva.com/design/DAGlO_EwYPM/n5XAu4L9lEuTTDRuS4Kz9w/ed
 ---
 
 ## Librerías usadas con Angular
+### Frontend (Angular + Ionic)
 
-- **Bootstrap** – para estilos responsivos y componentes reutilizables
+- `@ionic/angular`: Componentes UI optimizados para móviles.
+- `@angular/forms`: Gestión avanzada de formularios reactivos.
+- `@angular/router`: Manejo de rutas y navegación SPA.
+- `@capacitor/storage`: Para persistencia de datos locales (tokens).
+- `bootstrap`: Estilos CSS y sistema de grillas responsivas.
+- `ngx-toastr`: Notificaciones emergentes para feedback al usuario.
+- `rxjs`: Manejo de programación reactiva (observables).
+
+### Backend (Node.js + Express)
+
+- `express`: Framework para servidor y rutas HTTP.
+- `cors`: Política de intercambio entre dominios.
+- `dotenv`: Configuración de variables de entorno.
+- `jsonwebtoken`: Tokens de autenticación seguros.
 
 ---
 
-## Tecnologías
+## ⚙️ Tecnologías utilizadas
 
-- **Ionic Framework** (v7+)
-- **Angular** (v15+)
-- **TypeScript**
-- **Figma** (para diseño de interfaces y prototipado)
-- **Capacitor**
-- **SASS**
-- **RxJS**
-- **Angular Router**
+### Frontend (Angular + Ionic)
+
+- **Ionic Framework**: Componentes responsivos para interfaces móviles y web.
+- **Angular**: Framework SPA para el desarrollo de interfaces modernas.
+- **Angular Router**: Manejo de rutas en la navegación.
+- **Reactive Forms**: Formularios dinámicos y validación.
+- **HttpClient**: Comunicación con el backend.
+- **Ionic Storage**: Almacenamiento de tokens JWT de sesión.
+
+### Backend (Node.js + Express)
+
+- **Node.js**: Entorno de ejecución para JavaScript en el servidor.
+- **Express.js**: Framework para la creación de APIs REST.
+- **jsonwebtoken**: Generación y verificación de tokens JWT.
+- **cors**: Configuración de políticas de acceso entre dominios.
 
 ---
 
@@ -284,3 +317,7 @@ Para correr este proyecto en tu máquina local, sigue los siguientes pasos:
     ```
 
 Debes tener Node.js y Ionic instalados antes de ejecutar npm install y ionic serve.
+---
+🔌 Puertos en Localhost
+- Frontend (Página Web): http://localhost:8100
+- Backend (API REST): http://localhost:3000
