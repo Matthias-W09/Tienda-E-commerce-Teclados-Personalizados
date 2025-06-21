@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { 
   IonContent, 
-  IonIcon
 } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../componets/header/header.component';
 import { FooterComponent } from '../../componets/footer/footer.component';
 import { SelectableListComponent } from '../../componets/lista-seleccion/lista-seleccion.component';
-import { FormDinamicaComponent } from '../../componets/form-dinamica/form-dinamica.component';
+import { ListaVentasComponent } from 'src/app/componets/lista-ventas/lista-ventas.component';
+import { ListaComentariosComponent} from '../../componets/lista-comentarios/lista-comentarios.component'
 import { GatewayServiciosService } from '../../services/gatewayServicios/gateway-servicios.service';
+import { PerfilComponent } from 'src/app/componets/perfil/perfil.component';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -19,42 +20,38 @@ import { GatewayServiciosService } from '../../services/gatewayServicios/gateway
   imports: [ 
     IonContent, 
     CommonModule, 
-    FormsModule, 
-    IonIcon,
+    FormsModule,
     HeaderComponent, 
-    SelectableListComponent, 
-    FooterComponent, 
-    FormDinamicaComponent
+    SelectableListComponent,
+    PerfilComponent,
+    FooterComponent
   ]
 })
 export class PerfilUsuarioPage {
+
+  idUser: Number = 0;
+
   listItems = [
-    { id: 1, name: 'Perfil', formType: 'producto' },
-    { id: 2, name: 'Historial de compras', formType: 'promocion' },
-    { id: 3, name: 'Tus Comentarios', formType: 'combo' }
-  ];
+    { id: 1, name: 'Perfil', component: PerfilComponent },
+    { id: 2, name: 'Historial de compras', component: ListaVentasComponent },
+    { id: 3, name: 'Tus Comentarios', component: ListaComentariosComponent }
+  ];;
   
   selectedId: number | null = null;
-  currentFormType: string | null = null;
-  formData: any = {};
+  currentComponent: any = null
+  
 
-  constructor(public servicio: GatewayServiciosService) {}
+  constructor(private servicio: GatewayServiciosService) {
+    this.idUser = this.servicio.getIdUser();
+  }
+
+  getComponentInputs(): any {
+    return { id: this.idUser, padre: 'perfil'};
+  }
 
   onItemSelected(itemId: number) {
     const selectedItem = this.listItems.find(item => item.id === itemId);
     this.selectedId = itemId;
-    this.currentFormType = selectedItem?.formType || null;
-    this.formData = {}; 
-  }
-  onFormSubmit(formData: any) {
-    console.log('Datos enviados:', formData);
-    switch(this.currentFormType) {
-      case 'producto':
-        console.log("Perfil")
-        break;
-      case 'promocion':
-        console.log("Ventas")
-        break;
-    }
+    this.currentComponent = selectedItem?.component || null;
   }
 }

@@ -14,18 +14,12 @@
       </app-selectable-list>
       
       <div class="main-content">
-        @if (currentFormType) {
-          <app-dynamic-form
-            [fields]="servicio.obtenerConfiguracionFormulario(currentFormType)"
-            [submitButtonText]="'Guardar ' + currentFormType"
-            (formSubmit)="onFormSubmit($event)">
-          </app-dynamic-form>
-        } @else {
-          <div class="placeholder-content">
-            <ion-icon name="list-outline"></ion-icon>
-            <p>Seleccione una opción del menú</p>
-          </div>
-        }
+        <ng-container *ngIf="currentComponent">
+          <ng-container 
+            *ngComponentOutlet="currentComponent;
+            inputs: getComponentInputs()">
+          </ng-container>
+        </ng-container>
       </div>
     </div>
   </div>

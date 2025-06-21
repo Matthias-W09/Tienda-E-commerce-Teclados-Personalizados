@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,11 @@ export class ComentariosService {
     return this.http.get<any[]>(this.commentUrl);
   }
 
-  getComentsId(id:number): Observable<any> {
-    return this.http.get<any>(`${this.commentUrl}/product/${id}`);
+  getComentsIdProducto(id:number): Observable<any> {
+    return this.http.get<any[]>(`${this.commentUrl}/product/${id}`);
+  }
+
+  getComentsIdUsuario(id:number): Observable<any> {
+    return this.http.get<any[]>(`${this.commentUrl}/usuario/${id}`);
   }
 }

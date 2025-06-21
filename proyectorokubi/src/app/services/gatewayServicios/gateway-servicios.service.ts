@@ -4,6 +4,7 @@ import { UsuariosService } from '../../services/usuarios/usuarios.service';
 import { ProductoService } from '../../services/productos/producto-service.service';
 import { ComentariosService } from '../../services/comentarios/comentarios.service';
 import { CarritoService } from '../../services/carrito/carrito.service';
+import { VentasService } from '../../services/ventas/ventas.service'
 import { FormConfigService } from '../../services/forms/form-config.service';
 
 @Injectable({
@@ -17,6 +18,7 @@ export class GatewayServiciosService {
     private formularioService: FormConfigService,
     private usuariosService: UsuariosService,
     private carritoService: CarritoService,
+    private ventasService: VentasService
   ) {}
   // funciones Usuarios
   registrarUsuario(data: any): Observable<any[]> {
@@ -35,12 +37,16 @@ export class GatewayServiciosService {
     return this.usuariosService.estaLogueado();
   }
 
-  deslogearUsuario() {
-    this.usuariosService.logout();
+  obtenerDatosUser(id: number): Observable<any[]>{
+    return this.usuariosService.getDatosUser(id);
   }
 
   rutaUsuario(){
     return this.usuariosService.rutaUsuario();
+  }
+
+  getIdUser(): Number{
+    return this.usuariosService.idUser();
   }
 
   get rutaUsuario$() {
@@ -82,12 +88,10 @@ export class GatewayServiciosService {
   }
 
   obtenerComentariosPorProducto(id: number): Observable<any[]> {
-    return this.comentarioService.getComentsId(id);
+    return this.comentarioService.getComentsIdProducto(id);
   }
-
-  //Funciones forms
-  obtenerConfiguracionFormulario(formType: string) {
-    return this.formularioService.getFormConfig(formType);
+  obtenerComentariosPorUsuario(id: number): Observable<any[]> {
+    return this.comentarioService.getComentsIdUsuario(id);
   }
 
   //Funciones carrito
@@ -114,5 +118,15 @@ export class GatewayServiciosService {
 
   obtenerCarrito() {
     return this.carritoService.getCarrito();
+  }
+
+  //Funciones Ventas
+  comprasDelUser(id: Number): Observable<any>{
+    return this.ventasService.obtenerVentasUsuario(id);
+  }
+
+  //Funciones forms
+  obtenerConfiguracionFormulario(formType: string) {
+    return this.formularioService.getFormConfig(formType);
   }
 }

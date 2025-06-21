@@ -119,4 +119,14 @@ export class UsuariosService {
 
     return '/perfil-usuario';
   }
+    idUser(): Number{
+    return Number(localStorage.getItem('id'));
+  }
+
+  getDatosUser(id: number): Observable<any[]>{
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.obtenerToken()}`
+    });
+    return this.http.get<any[]>(`${this.usuariosUrl}/${id}`,{headers});
+  }
 }

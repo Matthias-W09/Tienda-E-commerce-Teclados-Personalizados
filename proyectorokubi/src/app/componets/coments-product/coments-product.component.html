@@ -1,16 +1,9 @@
 <div class="comentarios">
 
   <ion-input class="nuevoComent">Nuevo comentario</ion-input>
-  <div *ngIf="comentarios.length > 0">
+  <div>
     <ion-title>Comentarios</ion-title>
-  
-    <app-carta-comentario
-      *ngFor="let coment of comentarios"
-      [producName]="coment?.nameProducto"
-      [texto]="coment?.textoComentario"
-      [avatarUrl]="coment?.avatar"
-      [name]="coment?.nameUsuario"
-      [valoracion]="coment?.valoracion">
-    </app-carta-comentario>
+    
+    <app-lista-comentarios [id]="id" padre="producto"></app-lista-comentarios>
   </div>
 </div>
