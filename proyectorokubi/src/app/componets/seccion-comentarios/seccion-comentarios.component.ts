@@ -28,7 +28,7 @@ export class SeccionComentariosComponent  implements OnInit {
 ngOnInit() {
   this.comentariosService.obtenerComentarios().subscribe(data => {
     this.comentarios = data;
-    console.log('Categorías cargadas:', this.comentariosService);
+    console.log('Categorías cargadas uwu:', this.comentarios);
   });
 }
 }

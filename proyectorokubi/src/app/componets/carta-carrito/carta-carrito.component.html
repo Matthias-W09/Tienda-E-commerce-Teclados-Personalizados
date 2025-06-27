@@ -1,18 +1,23 @@
 <ion-card class="prodcuto">
   <ion-card-content>
 
-    <a [routerLink]="'/detalle-producto/' + producto?.id" class="col-imagen">
-      <ion-img class="imagen" [src]="producto?.image" [alt]="producto?.name"></ion-img>
+    <!-- Usamos item.idProducto para el routerLink -->
+    <a [routerLink]="'/detalle-producto/' + item.idProducto" class="col-imagen">
+      <!-- Usamos item.image y item.nameProducto -->
+      <ion-img class="imagen" [src]="item.image" [alt]="item.nameProducto"></ion-img>
     </a>
 
-    <a [routerLink]="'/detalle-producto/' + producto?.id" class="col-titulo">
-      <ion-title class="producName">{{ producto?.name }}</ion-title>
+    <!-- Usamos item.idProducto y item.nameProducto -->
+    <a [routerLink]="'/detalle-producto/' + item.idProducto" class="col-titulo">
+      <ion-title class="producName">{{ item.nameProducto }}</ion-title>
     </a>
 
     <div class="col-detalles">
-      <ion-text>Precio por unidad: {{ producto?.precio }}</ion-text>
-      <ion-text>Unidades: {{ unidadesProducto }}</ion-text>
-      <ion-text>Total: ${{ totalProducto }}</ion-text>
+      <!-- Ahora item.total es el total del producto, y item.cantidad es la cantidad -->
+      <!-- Podemos calcular el precio por unidad dividiendo total / cantidad -->
+      <ion-text>Precio por unidad: ${{ (item.total / item.cantidad) | number:'1.2-2' }}</ion-text>
+      <ion-text>Unidades: {{ item.cantidad }}</ion-text>
+      <ion-text>Total: ${{ item.total | number:'1.2-2' }}</ion-text>
 
       <div class="botones-cantidad">
         <ion-button class="boton-circular" (click)="sumar()">
