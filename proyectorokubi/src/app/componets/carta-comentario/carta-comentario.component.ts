@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { 
   IonCard, 
   IonCardContent, 
@@ -21,7 +22,8 @@ import {
     IonText,
     IonItem,
     IonAvatar,
-    IonLabel
+    IonLabel,
+    RouterModule
   ]
 })
 export class CartaComentarioComponent{
@@ -30,5 +32,11 @@ export class CartaComentarioComponent{
   @Input() texto: string = '';
   @Input() avatarUrl: string = '';
   @Input() name: string = '';
-  @Input() valoracion: Number = 0;
+  @Input() valoracion: number = 0;
+  @Input() idProducto: number = 0;
+
+  urlPage: string = '';
+  ngOnInit(): void {
+    this.urlPage = `/detalle-producto/${this.idProducto}`;
+  }
 }

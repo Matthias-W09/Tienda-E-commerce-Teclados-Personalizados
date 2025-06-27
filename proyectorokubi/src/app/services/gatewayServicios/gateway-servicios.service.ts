@@ -96,6 +96,11 @@ export class GatewayServiciosService {
     return this.comentarioService.getComentsIdUsuario(id);
   }
 
+  generarNuevoComentario(idProducto: number, nuevoComentario: string): void{
+    console.log("Enviando datos Comentarios")
+    this.comentarioService.nuevoComentarioUsuario(idProducto, this.getUserId(), nuevoComentario)
+  }
+
   //Funciones carrito
   get carrito$(): Observable<CarritoFront[]> {
     // Esto ahora retorna el observable del carrito del CarritoService,
