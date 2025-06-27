@@ -7,7 +7,11 @@ import {
   IonImg, 
   IonText,
   IonButton,
-  IonIcon
+  IonIcon,
+  IonSelect, 
+  IonSelectOption,
+  IonItem, 
+  IonLabel 
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { 
@@ -18,7 +22,9 @@ import { HeaderComponent } from '../../componets/header/header.component';
 import { FooterComponent } from '../../componets/footer/footer.component';
 import { ComentsProductComponent } from '../../componets/coments-product/coments-product.component';
 import { GatewayServiciosService } from '../../services/gatewayServicios/gateway-servicios.service';
-import { ToastController } from '@ionic/angular'; // Importar ToastController
+import { ToastController } from '@ionic/angular';
+import { CurrencyConversionResponse } from '../../services/divisas/divisas.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -29,6 +35,7 @@ import { ToastController } from '@ionic/angular'; // Importar ToastController
     GatewayServiciosService
   ],
   imports: [
+    CommonModule,
     IonContent, 
     IonTitle, 
     IonImg, 
@@ -37,19 +44,34 @@ import { ToastController } from '@ionic/angular'; // Importar ToastController
     IonIcon,
     ComentsProductComponent,
     HeaderComponent, 
-    FooterComponent]
+    FooterComponent,
+    IonSelect, 
+    IonSelectOption,
+    IonItem, 
+    IonLabel 
+  ]
 })
 export class DetalleProductoPage implements OnInit {
 
-  producto: any; // Aquí almacenaremos los detalles del producto
-  apartados: number = 0; // Cantidad de unidades que el usuario quiere añadir al carrito
-  total: number = 0; // Total calculado en el frontend (solo para visualización local antes de añadir)
-  id: number = 0; // ID del producto de la URL
+  producto: any; 
+  apartados: number = 0; 
+  total: number = 0; 
+  id: number = 0;
 
+  selectedCurrency: string = 'CLP'; 
+  convertedPrice: number = 0; 
+  availableCurrencies: { code: string; name: string }[] = [
+    { code: 'CLP', name: 'Peso Chileno' },
+    { code: 'USD', name: 'Dólar Estadounidense' },
+    { code: 'EUR', name: 'Euro' },
+    { code: 'GBP', name: 'Libra Esterlina' },
+    { code: 'BRL', name: 'Real Brasileño' }
+  ];
+  
   constructor(
     private route: ActivatedRoute,
     private servicios: GatewayServiciosService,
-    private toastController: ToastController // Inyectar ToastController
+    private toastController: ToastController
   ) {
     addIcons({ 
       add,
@@ -58,27 +80,25 @@ export class DetalleProductoPage implements OnInit {
   }
 
   ngOnInit() {
-    // Obtener el ID del producto de la URL
     this.id = Number(this.route.snapshot.paramMap.get('idProducto'));
 
     if (!isNaN(this.id)) {
-      // Cargar los detalles del producto desde el servicio
       this.servicios.obtenerProductoPorId(this.id).subscribe({
         next: (producto) => {
-          this.producto = producto; // Asignar el producto recibido
-          console.log('Producto cargado:', this.producto);
-          // Inicializar el total con el precio del producto si se quiere 1 unidad por defecto
-          // O solo resetearlo si no se añade nada automáticamente
-          this.calculoTotal(); // Asegura que el total se calcule al cargar
+          this.producto = producto; 
+          console.log('Product loaded:', this.producto);
+          this.calculoTotal(); 
+          console.log('Calling convertProductPrice from ngOnInit...');
+          this.convertProductPrice(); // Call conversion on product load
         },
         error: (err) => {
-          console.error('Error al cargar producto:', err);
-          this.presentToast('Error al cargar el producto. Inténtelo de nuevo.', 'danger');
+          console.error('Error loading product:', err);
+          this.presentToast('Error loading product. Please try again later.', 'danger');
         }
       });
     } else {
-      console.warn('ID de producto inválido');
-      this.presentToast('ID de producto inválido.', 'danger');
+      console.warn('Invalid product ID');
+      this.presentToast('Invalid product ID.', 'danger');
     }
   }
 
@@ -88,24 +108,25 @@ export class DetalleProductoPage implements OnInit {
   sumar(){
     if (this.producto && this.apartados < this.producto.stock) {
       this.apartados++;
-      this.calculoTotal(); // Recalcula el total localmente para la visualización
+      this.calculoTotal(); 
     } else if (this.producto) {
-      this.presentToast('No hay más stock disponible.', 'warning');
+      this.presentToast('No more stock available.', 'warning');
     }
   }
 
   /**
-   * Decrementa la cantidad de productos a añadir al carrito, sin bajar de 0.
+   * Decrementa la cantidad de productos a añadir al carrito, not going below 0.
    */
   restar(){
     if (this.apartados > 0) {
       this.apartados--;
-      this.calculoTotal(); // Recalcula el total localmente para la visualización
+      this.calculoTotal(); 
     }
   }
 
   /**
-   * Calcula el total del precio de los productos seleccionados localmente.
+   * Calculates the total price of the selected products locally.
+   * This is for displaying the total *before* adding to the cart.
    */
   calculoTotal(){
     if (this.producto) {
@@ -114,34 +135,81 @@ export class DetalleProductoPage implements OnInit {
   }
 
   /**
-   * Agrega el producto con la cantidad seleccionada al carrito a través del backend.
+   * Adds the selected product with the chosen quantity to the cart via the backend.
    */
   agregar(){
     if (this.id === 0 || this.apartados === 0) {
-      this.presentToast('Seleccione una cantidad para añadir al carrito.', 'warning');
+      this.presentToast('Select a quantity to add to the cart.', 'warning');
       return;
     }
 
-    // Llama al servicio de Gateway para agregar el producto al carrito.
-    // Solo necesitamos idProduct y cantidad. El backend maneja el cálculo del total.
     this.servicios.agregarProductoAlCarrito(this.id, this.apartados).subscribe({
       next: (response) => {
-        console.log('Producto agregado al carrito:', response);
-        this.presentToast('Producto agregado al carrito exitosamente.', 'success');
-        this.apartados = 0; // Reiniciar la cantidad para una nueva adición
-        this.calculoTotal(); // Reiniciar el total local
+        console.log('Product added to cart:', response);
+        this.presentToast('Product successfully added to cart.', 'success');
+        this.apartados = 0; 
+        this.calculoTotal(); 
       },
       error: (err) => {
-        console.error('Error al agregar producto al carrito:', err);
-        this.presentToast('Error al agregar producto al carrito.', 'danger');
+        console.error('Error adding product to cart:', err);
+        this.presentToast('Error adding product to cart.', 'danger');
       }
     });
   }
 
   /**
-   * Muestra un mensaje de tipo Toast en la parte inferior de la pantalla.
-   * @param message El texto del mensaje.
-   * @param color El color del Toast (ej. 'success', 'danger', 'primary', 'warning').
+   * Handles the change in the selected currency dropdown.
+   * @param event The change event from the IonSelect.
+   */
+  onCurrencyChange(event: any) {
+    console.log('Currency change event triggered. New currency:', event.detail.value);
+    this.selectedCurrency = event.detail.value;
+    console.log('Calling convertProductPrice from onCurrencyChange...');
+    this.convertProductPrice();
+  }
+
+  /**
+   * Converts the product's price to the currently selected currency.
+   */
+  convertProductPrice() {
+    console.log('Inside convertProductPrice function.');
+    console.log('Current product:', this.producto);
+    console.log('Selected currency:', this.selectedCurrency);
+    console.log('Product price:', this.producto?.precio);
+
+
+    if (this.producto && this.selectedCurrency && this.producto.precio) {
+      const baseCurrency = 'CLP'; 
+      const amountToConvert = parseFloat(this.producto.precio);
+
+      if (this.selectedCurrency === baseCurrency) {
+        console.log('Selected currency is base currency. No conversion needed.');
+        this.convertedPrice = amountToConvert; 
+        return;
+      }
+      
+      console.log(`Attempting to convert ${amountToConvert} ${baseCurrency} to ${this.selectedCurrency}`);
+      this.servicios.convertirDivisa(baseCurrency, this.selectedCurrency, amountToConvert).subscribe({
+        next: (res: CurrencyConversionResponse) => {
+          this.convertedPrice = res.cantidad_convertida;
+          console.log(`Conversion successful! Converted ${amountToConvert} ${baseCurrency} to ${this.convertedPrice} ${this.selectedCurrency}`);
+        },
+        error: (err) => {
+          console.error('Error converting currency:', err);
+          this.presentToast('Error converting currency. Please try again.', 'danger');
+          this.convertedPrice = amountToConvert; 
+        }
+      });
+    } else {
+      console.warn('Cannot convert price: Product, selected currency, or product price is missing.');
+      this.convertedPrice = this.producto ? parseFloat(this.producto.precio) : 0; 
+    }
+  }
+
+  /**
+   * Displays a Toast message at the bottom of the screen.
+   * @param message The text of the message.
+   * @param color The color of the Toast (e.g., 'success', 'danger', 'primary', 'warning').
    */
   private async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({

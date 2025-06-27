@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { 
-  IonContent, 
-} from '@ionic/angular/standalone';
+  IonContent, IonIcon } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../componets/header/header.component';
 import { FooterComponent } from '../../componets/footer/footer.component';
 import { SelectableListComponent } from '../../componets/lista-seleccion/lista-seleccion.component';
@@ -17,7 +16,7 @@ import { PerfilComponent } from 'src/app/componets/perfil/perfil.component';
   templateUrl: './perfil-usuario.page.html',
   styleUrls: ['./perfil-usuario.page.scss'],
   standalone: true,
-  imports: [ 
+  imports: [IonIcon,  
     IonContent, 
     CommonModule, 
     FormsModule,

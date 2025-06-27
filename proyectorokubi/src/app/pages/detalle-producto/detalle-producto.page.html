@@ -12,13 +12,34 @@
       <div class="infoProduct">
         <ion-title>{{ producto?.name }}</ion-title>
 
+        
+        
+        <!-- Dropdown para selección de divisa -->
+        <ion-item class="currency-selector">
+          <ion-label position="stacked">Mostrar precio en:</ion-label>
+          <ion-select
+            [value]="selectedCurrency"
+            (ionChange)="onCurrencyChange($event)"
+            interface="popover"
+            placeholder="Seleccionar divisa"
+          >
+            <ion-select-option *ngFor="let currency of availableCurrencies" [value]="currency.code">
+              {{ currency.name }} ({{ currency.code }})
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
         <ion-text class="descripcion">Descripción: {{ producto?.altText }}</ion-text>
-        <ion-text class="descripcion">Precio por unidad: ${{ producto?.precio }}</ion-text>
-        <ion-text class="descripcion">Compatibilidades: proximante</ion-text>
+
+        <!-- Muestra el precio convertido -->
+        <ion-text class="descripcion">
+          Precio por unidad: {{ selectedCurrency }} {{ convertedPrice | number:'1.2-2' }}
+        </ion-text>
+        
+        <ion-text class="descripcion">Compatibilidades: Proximamente</ion-text>
         <ion-text class="descripcion">Stock disponible: {{ producto?.stock }}</ion-text>
         
         <div class="botones">
-
           <ion-text class="compra">{{apartados}}</ion-text>
 
           <ion-button class="boton-circular" (click)="sumar()">
@@ -29,7 +50,8 @@
             <ion-icon name="remove" [style.font-size]="'50px'"></ion-icon>
           </ion-button>
 
-          <ion-text class="total">Total: ${{total}} </ion-text>
+          <!-- El total local sigue mostrando en la divisa base, puedes añadir lógica para convertirlo también si lo deseas -->
+          <ion-text class="total">Total: ${{total | number:'1.2-2'}} </ion-text>
 
           <ion-button class = "carrito" (click)="agregar()">Agregar al carrito</ion-button>
         </div>
@@ -45,5 +67,3 @@
   <app-footer></app-footer>
 
 </ion-content>
-
- 

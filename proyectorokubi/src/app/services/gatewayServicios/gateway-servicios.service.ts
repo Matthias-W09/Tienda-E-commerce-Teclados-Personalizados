@@ -6,19 +6,29 @@ import { ComentariosService } from '../../services/comentarios/comentarios.servi
 import { CarritoService, CarritoFront } from '../../services/carrito/carrito.service';
 import { VentasService } from '../../services/ventas/ventas.service'
 import { FormConfigService } from '../../services/forms/form-config.service';
+import { DivisasService } from '../../services/divisas/divisas.service';
+
+export interface CurrencyConversionResponse {
+  moneda_origen: string;
+  moneda_destino: string;
+  rateo_convercion: number;
+  cantidad_original: number;
+  cantidad_convertida: number;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class GatewayServiciosService {
-
+  
   constructor(
     private productoService: ProductoService,
     private comentarioService: ComentariosService,
     private formularioService: FormConfigService,
     private usuariosService: UsuariosService,
     private carritoService: CarritoService,
-    private ventasService: VentasService
+    private ventasService: VentasService,
+    private divisasService: DivisasService
   ) {}
   // funciones Usuarios
   registrarUsuario(data: any): Observable<any[]> {
@@ -175,4 +185,10 @@ export class GatewayServiciosService {
   obtenerConfiguracionFormulario(formType: string) {
     return this.formularioService.getFormConfig(formType);
   }
+
+  //Funciones divisas
+  convertirDivisa(from: string, to: string, amount: number): Observable<CurrencyConversionResponse> {
+    return this.divisasService.convertirDivisa(from, to, amount);
+  }
 }
+

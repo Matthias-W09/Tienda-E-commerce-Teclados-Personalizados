@@ -136,4 +136,43 @@ ion-content {
     padding: 1.5rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
+
+  /* --- ESTILOS PARA EL SELECTOR DE DIVISAS --- */
+.currency-selector {
+  --background: #F7DAB2; /* Un color de fondo más claro que la tarjeta principal */
+  --border-radius: 10px; /* Bordes redondeados */
+  --border-color: #F7DAB2; /* Borde naranja */
+  --border-width: 1px;
+  margin-bottom: 15px;
+  padding: 5px 10px; /* Espaciado interno */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sutil sombra */
+
+  ion-label {
+    font-size: 0.9em;
+    color: #cc5220; /* Color del texto de la etiqueta (naranja oscuro) */
+    font-weight: bold;
+    margin-bottom: 5px; /* Espacio entre label y select */
+  }
+
+  ion-select {
+    font-size: 1em;
+    color: #000; /* Color del texto seleccionado */
+    --padding-start: 0;
+    --padding-end: 0;
+    --placeholder-color: #888;
+    --placeholder-opacity: 0.7;
+  }
+
+  // Estilo para el texto dentro del select cuando se selecciona una opción
+  .select-text {
+    color: #000; // Asegura que el texto seleccionado sea legible
+    font-weight: 500;
+  }
+
+  // Estilo para el icono de la flecha del select
+  .select-icon {
+    color: #cc5220; // Color del icono de la flecha
+    opacity: 1;
+  }
+}
 }
