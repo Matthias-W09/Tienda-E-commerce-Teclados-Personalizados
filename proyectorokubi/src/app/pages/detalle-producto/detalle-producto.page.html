@@ -14,7 +14,6 @@
 
         
         
-        <!-- Dropdown para selección de divisa -->
         <ion-item class="currency-selector">
           <ion-label position="stacked">Mostrar precio en:</ion-label>
           <ion-select
@@ -31,7 +30,6 @@
 
         <ion-text class="descripcion">Descripción: {{ producto?.altText }}</ion-text>
 
-        <!-- Muestra el precio convertido -->
         <ion-text class="descripcion">
           Precio por unidad: {{ selectedCurrency }} {{ convertedPrice | number:'1.2-2' }}
         </ion-text>
@@ -50,7 +48,6 @@
             <ion-icon name="remove" [style.font-size]="'50px'"></ion-icon>
           </ion-button>
 
-          <!-- El total local sigue mostrando en la divisa base, puedes añadir lógica para convertirlo también si lo deseas -->
           <ion-text class="total">Total: ${{total | number:'1.2-2'}} </ion-text>
 
           <ion-button class = "carrito" (click)="agregar()">Agregar al carrito</ion-button>

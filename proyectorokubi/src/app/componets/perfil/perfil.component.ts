@@ -24,7 +24,7 @@ export class PerfilComponent implements OnInit, OnDestroy {
   @Input() id: number = 0;
   @Input() padre: string = '';
 
-  datosUsuario?: any; // Aquí se guardarán los datos del usuario (ahora será directamente el objeto)
+  datosUsuario?: any; 
   private destroy$ = new Subject<void>();
 
   constructor(private servicio: GatewayServiciosService) { }
@@ -46,14 +46,12 @@ export class PerfilComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (usuarioArray) => {
-          // Asumimos que el backend devuelve un array con un único objeto de usuario.
-          // Si el array tiene al menos un elemento, asignamos el primer elemento a datosUsuario.
           if (usuarioArray && usuarioArray.length > 0) {
             this.datosUsuario = usuarioArray[0];
             console.log('PerfilComponent: Datos de usuario cargados y asignados:', this.datosUsuario); 
           } else {
             console.warn('PerfilComponent: No se encontraron datos para el usuario con ID:', this.id);
-            this.datosUsuario = undefined; // O un objeto vacío si prefieres
+            this.datosUsuario = undefined;
           }
         },
         error: (err) => {

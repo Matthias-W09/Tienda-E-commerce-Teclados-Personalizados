@@ -1,15 +1,9 @@
-<!-- page-wrapper: Este div envuelve toda la página para controlar su altura total. -->
 <div class="page-wrapper">
-  <!-- app-header: Componente de cabecera de la aplicación. -->
   <app-header></app-header>
 
-  <!-- ion-content: Componente de contenido de Ionic, ahora configurado para expandirse verticalmente. -->
   <ion-content>
-    <!-- layout-wrapper: Contenedor principal para el diseño de dos columnas (sidebar + contenido principal). -->
     <div class="layout-wrapper">
-      <!-- sidebar-container: Contenedor para la lista de opciones seleccionables (sidebar). -->
       <div class="sidebar-container">
-        <!-- app-selectable-list: Componente para la lista de opciones. -->
         <app-selectable-list
           [items]="listItems"
           [selectedItemId]="selectedId"
@@ -17,18 +11,14 @@
         </app-selectable-list>
       </div>
 
-      <!-- main-content-area: Contenedor para el contenido principal que cambia dinámicamente. -->
       <div class="main-content-area">
-        <!-- ng-container: Contenedor para mostrar dinámicamente el componente seleccionado. -->
         <ng-container *ngIf="currentComponent">
-          <!-- ngComponentOutlet: Directiva para renderizar un componente dinámicamente. -->
           <ng-container
             *ngComponentOutlet="currentComponent;
             inputs: getComponentInputs()">
           </ng-container>
         </ng-container>
 
-        <!-- Placeholder-content: Contenido que se muestra cuando no hay ningún componente seleccionado. -->
         <ng-container *ngIf="!currentComponent">
           <div class="placeholder-content">
             <ion-icon name="information-circle-outline"></ion-icon>
@@ -39,6 +29,5 @@
     </div>
   </ion-content>
 
-  <!-- app-footer: Componente de pie de página de la aplicación. -->
   <app-footer></app-footer>
 </div>

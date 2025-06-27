@@ -2,14 +2,14 @@ ion-content {
     --background: #198089;
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Usamos viewport height como base */
+    height: 100vh; 
     overflow: hidden;
   
     .admin-container {
         flex: 1;
         display: flex;
         flex-direction: column;
-        min-height: 0; /* Importante para flexbox */
+        min-height: 0; 
         overflow: hidden;
 
         .page-title {
@@ -17,13 +17,13 @@ ion-content {
             margin: 3.5rem 0 1rem;
             padding: 0 1rem;
             text-align: center;
-            flex-shrink: 0; /* Evita que se encoja */
+            flex-shrink: 0; 
         }
 
         .content-wrapper {
             flex: 1;
             display: flex;
-            min-height: 0; /* Crucial para el cálculo flexible */
+            min-height: 0; 
             overflow: hidden;
         }
 

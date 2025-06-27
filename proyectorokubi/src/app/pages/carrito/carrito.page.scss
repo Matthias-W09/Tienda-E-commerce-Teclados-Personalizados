@@ -1,5 +1,5 @@
 .carrito {
-  padding-top: 60px; // espacio para el header
+  padding-top: 60px; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,8 +32,8 @@
     flex-direction: row;
     width: 100%;
     justify-content: center;
-    align-items: flex-start; // para que crezca según el contenido
-    flex-wrap: wrap; // permite adaptarse en pantallas pequeñas si fuera necesario
+    align-items: flex-start;
+    flex-wrap: wrap; 
   }
 
   .itemsCarrito {

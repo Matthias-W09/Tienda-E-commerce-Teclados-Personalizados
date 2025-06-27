@@ -12,8 +12,8 @@ ion-content {
 
       .content-wrapper {
         display: flex;
-        justify-content: center; // centra horizontalmente
-        align-items: flex-start; // opcional: alinear arriba
+        justify-content: center; 
+        align-items: flex-start; 
         height: 100%;
         padding: 16px;
       }
@@ -23,8 +23,8 @@ ion-content {
       width: 75%;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center; // 🔹 Centra horizontalmente el contenido
-      padding: 16px; // puedes usar padding horizontal y vertical si quieres
+      justify-content: center; 
+      padding: 16px;
       align-items: flex-start;
       overflow-x: auto;
     
@@ -32,10 +32,10 @@ ion-content {
         display: inline-flex;
         width: 220px;
         height: 320px;
-        margin: 8px; // para que quede centrado mejor entre líneas
+        margin: 8px; 
     
         &:last-child {
-          margin-right: 8px; // o simplemente elimina esta regla si usas margin general
+          margin-right: 8px; 
         }
       }
     }

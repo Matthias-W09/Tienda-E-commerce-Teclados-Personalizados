@@ -1,105 +1,95 @@
-/* Estilos globales para asegurar que la aplicación ocupe toda la altura de la ventana */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Evita el desplazamiento de la ventana principal */
+  overflow: hidden; 
 }
 
-/* El :host asegura que el componente ocupe toda la altura disponible */
 :host {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* page-wrapper: Contenedor principal que define la altura total de la página */
 .page-wrapper {
   display: flex;
   flex-direction: column;
-  height: 95vh; /* Se ha ajustado la altura a un 95% del viewport height. Modifica este valor si deseas una altura diferente. */
-  overflow: hidden; /* Asegura que no haya desplazamiento fuera de este contenedor */
+  height: 95vh; 
+  overflow: hidden; 
 }
 
-/* ion-content: Estilos para el contenido principal de Ionic */
 ion-content {
-  flex: 1; /* Permite que ion-content crezca y ocupe el espacio disponible entre el header y el footer */
+  flex: 1; 
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Importante para que el scroll lo maneje el contenido interno */
+  overflow: hidden; 
 
-  /* layout-wrapper: Contenedor principal para el diseño de dos columnas */
   .layout-wrapper {
     display: flex;
-    flex: 1; /* Ocupa el espacio restante dentro de ion-content */
+    flex: 1;
     width: 100%;
-    margin-top: 55px; /* Margen superior como en el SCSS de referencia */
-    overflow: hidden; /* Importante para que los hijos flex manejen su propio scroll */
+    margin-top: 55px;
+    overflow: hidden;
     
-
-    /* sidebar-container: Contenedor para la lista seleccionable */
     .sidebar-container {
-      width: 25%; /* Ancho de la barra lateral */
-      min-width: 200px; /* Ancho mínimo para la barra lateral */
-      background: #F7DAB2; /* Usa la variable de Ionic o el color original */
-      padding-right: 10px; /* Espacio entre la barra lateral y el contenido principal */
-      flex-shrink: 0; /* Evita que la barra lateral se encoja */
-      overflow-y: auto; /* Permite el desplazamiento vertical si la lista es muy larga */
+      width: 25%; 
+      min-width: 200px; 
+      background: #F7DAB2;
+      padding-right: 10px; 
+      flex-shrink: 0; 
+      overflow-y: auto; 
 
       app-selectable-list {
-        height: 100%; /* Asegura que la lista ocupe toda la altura del sidebar */
+        height: 100%; 
       }
     }
 
-    /* main-content-area: Contenedor para el contenido principal dinámico */
     .main-content-area {
-      flex: 1; /* Ocupa el espacio restante horizontalmente */
+      flex: 1; 
       display: flex;
-      flex-direction: column; /* Para centrar el contenido del placeholder */
-      padding: 20px; /* Relleno general para el contenido */
-      background: #198089; /* Color de fondo del contenido principal */
-      border-radius: 0 20px 20px 0; /* Ajusta los bordes redondeados para el lado derecho */
-      height: 100%; /* Importante: permite el scroll interno */
-      overflow-y: auto; /* Habilita el desplazamiento vertical si el contenido excede la altura */
+      flex-direction: column;
+      padding: 20px; 
+      background: #198089; 
+      border-radius: 0 20px 20px 0;
+      height: 100%; 
+      overflow-y: auto;
 
-      /* placeholder-content: Estilos para el mensaje cuando no hay nada seleccionado */
       .placeholder-content {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100%; /* Ocupa la altura completa del main-content-area */
-        color: #F7DAB2; /* Mantiene el color original */
+        height: 100%; 
+        color: #F7DAB2; 
         text-align: center;
 
         ion-icon {
           font-size: 48px;
           margin-bottom: 16px;
-          color: #F7DAB2; /* Mantiene el color original */
+          color: #F7DAB2;
         }
       }
     }
   }
 }
 
-/* Media query para pantallas pequeñas (ej. móviles) */
 @media (max-width: 768px) {
   ion-content .layout-wrapper {
-    flex-direction: column; /* Cambia a columna en móviles */
-    margin-top: 0; /* Sin margen superior cuando está apilado */
+    flex-direction: column; 
+    margin-top: 0; 
   }
 
   ion-content .layout-wrapper .sidebar-container {
-    width: 100%; /* Ancho completo */
-    min-width: unset; /* Elimina la restricción de ancho mínimo */
-    border-radius: 20px 20px 0 0; /* Ajusta los bordes redondeados */
-    padding-right: 0; /* Elimina el relleno derecho */
-    height: auto; /* Ajusta la altura según el contenido */
-    order: -1; /* Mueve la barra lateral a la parte superior */
+    width: 100%;
+    min-width: unset; 
+    border-radius: 20px 20px 0 0;
+    padding-right: 0; 
+    height: auto; 
+    order: -1;
   }
 
   ion-content .layout-wrapper .main-content-area {
-    width: 100%; /* Ancho completo */
-    border-radius: 0 0 20px 20px; /* Ajusta los bordes redondeados */
+    width: 100%;
+    border-radius: 0 0 20px 20px; 
   }
 }

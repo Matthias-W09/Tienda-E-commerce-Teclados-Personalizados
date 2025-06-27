@@ -16,8 +16,6 @@ import { CarritoFront } from '../../services/carrito/carrito.service'; // Import
   styleUrls: ['./carrito.page.scss'],
   standalone: true,
   providers: [
-    // Generalmente, si un servicio es `providedIn: 'root'`, no necesitas listarlo aquí.
-    // Quitarlo evita crear una nueva instancia específica para este componente.
     GatewayServiciosService
   ],
   imports: [
@@ -33,26 +31,19 @@ import { CarritoFront } from '../../services/carrito/carrito.service'; // Import
   ]
 })
 export class CarritoPage implements OnInit {
-  // El observable que contendrá los productos del carrito, con el tipo CarritoFront
   carrito$: Observable<CarritoFront[]>;
 
   constructor(
     private servicios: GatewayServiciosService,
     private toastController: ToastController
   ) {
-    // `this.servicios.carrito$` ahora proviene del `BehaviorSubject` en `CarritoService`,
-    // que se actualizará después de cada operación del carrito con el backend.
     this.carrito$ = this.servicios.carrito$;
   }
 
   ngOnInit() {
-    // Al inicializar la página, se debe cargar el carrito desde el backend.
-    // Esto dispara la llamada a la API y actualiza el `BehaviorSubject` en `CarritoService`.
     this.servicios.obtenerCarrito().subscribe({
       next: (carrito) => {
         console.log('Carrito cargado exitosamente:', carrito);
-        // No es necesario hacer nada aquí con `carrito` directamente, ya que `carrito$`
-        // ya está observando el `BehaviorSubject` que se actualizó.
       },
       error: (err) => {
         console.error('Error al cargar el carrito al iniciar la página:', err);
@@ -61,33 +52,17 @@ export class CarritoPage implements OnInit {
     });
   }
 
-  /**
-   * Maneja el evento cuando un producto es eliminado del carrito.
-   * Este método es para la retroalimentación visual al usuario.
-   * La lógica de eliminación real ocurre en `carta-carrito.component.ts`.
-   * @param idProducto El ID del producto eliminado.
-   */
   async manejarProductoEliminado(idProducto: number) {
-    // Intentamos obtener el nombre del producto del carrito actual (si aún está disponible)
     const currentCarrito = await firstValueFrom(this.carrito$);
     const productInCart = currentCarrito.find(p => p.idProducto === idProducto);
-    // Usamos el nombre del producto o un ID genérico para el mensaje
     const nombre = productInCart?.nameProducto || `producto con ID ${idProducto}`;
 
     this.presentToast(`"${nombre}" ha sido eliminado del carrito.`, 'danger');
   }
 
-  /**
-   * Maneja el evento cuando la cantidad de un producto en el carrito es actualizada.
-   * Este método es para la retroalimentación visual al usuario.
-   * La lógica de actualización real ocurre en `carta-carrito.component.ts`.
-   * @param event Objeto con idProducto, cantidad y total del producto actualizado.
-   */
   async manejarProductoActualizado(event: { idProducto: number, cantidad: number, total: number }) {
-    // Intentamos obtener el nombre del producto del carrito actual
     const currentCarrito = await firstValueFrom(this.carrito$);
     const productInCart = currentCarrito.find(p => p.idProducto === event.idProducto);
-    // Usamos el nombre del producto o un ID genérico para el mensaje
     const nombre = productInCart?.nameProducto || `producto con ID ${event.idProducto}`;
 
     this.presentToast(
@@ -96,11 +71,6 @@ export class CarritoPage implements OnInit {
     );
   }
 
-  /**
-   * Muestra un mensaje de tipo Toast en la parte inferior de la pantalla.
-   * @param message El texto del mensaje.
-   * @param color El color del Toast (ej. 'success', 'danger', 'primary').
-   */
   private async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({
       message: message,
@@ -111,7 +81,4 @@ export class CarritoPage implements OnInit {
     await toast.present();
   }
 
-  // La función `buscarProductoPorId` ya no es necesaria aquí,
-  // ya que la información del producto (nombre, imagen) ahora viene directamente
-  // en la interfaz `CarritoFront` desde el backend.
 }

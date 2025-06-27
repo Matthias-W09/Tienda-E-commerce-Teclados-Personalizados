@@ -89,7 +89,7 @@ export class DetalleProductoPage implements OnInit {
           console.log('Product loaded:', this.producto);
           this.calculoTotal(); 
           console.log('Calling convertProductPrice from ngOnInit...');
-          this.convertProductPrice(); // Call conversion on product load
+          this.convertProductPrice();
         },
         error: (err) => {
           console.error('Error loading product:', err);
@@ -102,9 +102,6 @@ export class DetalleProductoPage implements OnInit {
     }
   }
 
-  /**
-   * Incrementa la cantidad de productos a añadir al carrito, respetando el stock.
-   */
   sumar(){
     if (this.producto && this.apartados < this.producto.stock) {
       this.apartados++;
@@ -114,9 +111,6 @@ export class DetalleProductoPage implements OnInit {
     }
   }
 
-  /**
-   * Decrementa la cantidad de productos a añadir al carrito, not going below 0.
-   */
   restar(){
     if (this.apartados > 0) {
       this.apartados--;
@@ -124,19 +118,12 @@ export class DetalleProductoPage implements OnInit {
     }
   }
 
-  /**
-   * Calculates the total price of the selected products locally.
-   * This is for displaying the total *before* adding to the cart.
-   */
   calculoTotal(){
     if (this.producto) {
       this.total = parseFloat(this.producto.precio) * this.apartados;
     }
   }
 
-  /**
-   * Adds the selected product with the chosen quantity to the cart via the backend.
-   */
   agregar(){
     if (this.id === 0 || this.apartados === 0) {
       this.presentToast('Select a quantity to add to the cart.', 'warning');
@@ -157,10 +144,6 @@ export class DetalleProductoPage implements OnInit {
     });
   }
 
-  /**
-   * Handles the change in the selected currency dropdown.
-   * @param event The change event from the IonSelect.
-   */
   onCurrencyChange(event: any) {
     console.log('Currency change event triggered. New currency:', event.detail.value);
     this.selectedCurrency = event.detail.value;
@@ -168,9 +151,6 @@ export class DetalleProductoPage implements OnInit {
     this.convertProductPrice();
   }
 
-  /**
-   * Converts the product's price to the currently selected currency.
-   */
   convertProductPrice() {
     console.log('Inside convertProductPrice function.');
     console.log('Current product:', this.producto);
@@ -206,11 +186,6 @@ export class DetalleProductoPage implements OnInit {
     }
   }
 
-  /**
-   * Displays a Toast message at the bottom of the screen.
-   * @param message The text of the message.
-   * @param color The color of the Toast (e.g., 'success', 'danger', 'primary', 'warning').
-   */
   private async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({
       message: message,
