@@ -22,4 +22,18 @@ export class ComentariosService {
   getComentsIdUsuario(id:number): Observable<any> {
     return this.http.get<any[]>(`${this.commentUrl}/usuario/${id}`);
   }
+
+  nuevoComentarioUsuario(idProduct: number, idUser: number, textoComentario: string): void{
+    const valoracion: number = -1;
+    console.log("Datos Comentarios")
+      this.http.post(`${this.commentUrl}/nuevoComment`, {
+        idProduct,
+        idUser,
+        textoComentario,
+        valoracion
+      }).subscribe({
+        next: res => console.log("Comentario enviado correctamente:", res),
+        error: err => console.error("Error al enviar comentario:", err)
+      });
+  }
 }

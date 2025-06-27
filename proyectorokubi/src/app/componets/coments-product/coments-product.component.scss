@@ -24,6 +24,26 @@
     color: #000;
   }
 
+  ion-button {
+    --background: #F85021;
+    --color: #fff;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 12px 24px;
+    margin-top: 16px;
+    transition: 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
   app-carta-comentario {
     width: 100%;
     margin-bottom: 16px; // Espacio entre comentarios

@@ -1,6 +1,16 @@
 <div class="comentarios">
 
-  <ion-input class="nuevoComent">Nuevo comentario</ion-input>
+  <ion-input
+    class="nuevoComent"
+    placeholder="Nuevo comentario"
+    [(ngModel)]="nuevoComentario"
+    type="text">
+  </ion-input>
+
+  <ion-button (click)="nuevoCommet()">
+    Enviar comentario
+  </ion-button>
+
   <div>
     <ion-title>Comentarios</ion-title>
     
